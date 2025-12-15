@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mettadology archive vol. 1 · on alignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg: #fffef9;
+            --text: #2a2a2a;
+            --muted: #6b6b6b;
+            --accent: #d4791a;
+            --accent-light: #e89540;
+            --border: #e8e5df;
+            --card-bg: #fdfcf7;
+            
+            --mono: 'IBM Plex Mono', 'Courier New', monospace;
+            --sans: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+        }
+        
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.8;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 2rem 8rem;
+        }
+        .back-link {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--text);
+            border-bottom-color: var(--text);
+        }
+        
+        
+        
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 2rem;
+        }
+        
+        h1 {
+            font-family: var(--mono);
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            text-transform: lowercase;
+        }
+        
+        .subtitle {
+            font-family: var(--mono);
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .meta {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            line-height: 1.6;
+        }
+        
+        .meta span {
+            display: block;
+        }
+        
+        .divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
+            margin: 3.5rem 0;
+        }
+        
+        .section-title {
+            font-family: var(--mono);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 3.5rem 0 2rem;
+            color: var(--accent);
+            text-transform: lowercase;
+        }
+        
+        p {
+            margin-bottom: 1.4rem;
+            max-width: 65ch;
+        }
+        
+        .opening {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin: 3rem 0;
+            color: var(--text);
+        }
+        
+        .pull-quote {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            font-style: italic;
+            color: var(--text);
+        }
+        
+        .visual-break {
+            margin: 4rem 0;
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            letter-spacing: 1rem;
+        }
+        
+        .link-section {
+            margin: 4rem 0;
+        }
+        
+        .link-entry {
+            margin: 3.5rem 0;
+            padding: 0;
+        }
+        
+        .link-number {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .link-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+        
+        .link-source {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .link-url {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            word-break: break-all;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .link-url:hover {
+            border-bottom-color: var(--accent);
+        }
+        
+        .link-commentary {
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+        
+        .diagram {
+            background: var(--card-bg);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+        }
+        
+        .diagram pre {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: auto;
+        }
+        
+        blockquote {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-left: 3px solid var(--accent-light);
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        blockquote p {
+            margin-bottom: 0;
+        }
+        
+        .synthesis {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg) 100%);
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            border: 2px solid var(--accent-light);
+            border-radius: 4px;
+        }
+        
+        .synthesis h2 {
+            font-family: var(--mono);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-transform: lowercase;
+        }
+        
+        .synthesis h3 {
+            font-family: var(--mono);
+            font-size: 1rem;
+            margin: 2rem 0 1rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .synthesis .formula {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            background: #fff;
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--accent-light);
+            font-weight: 500;
+        }
+        
+        .synthesis em {
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 500;
+        }
+        
+        .building {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 4px;
+        }
+        
+        .building h2 {
+            font-family: var(--mono);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-transform: lowercase;
+        }
+        
+        .building-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .building-title {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        
+        .building-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.7rem;
+            line-height: 1.7;
+        }
+        
+        ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        
+        .footer-links a {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--text);
+            text-decoration: none;
+            display: inline;
+            margin-right: 1rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        .tagline {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem 4rem;
+            }
+            
+            body {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 1.2rem;
+            }
+            
+            .synthesis, .building {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← back to archives</a>
+        <a href="../index.html" class="back-link" style="margin-left: 1rem;">← back to dialogos labs</a>
+        
+
+        <header>
+            <h1>mettadology archive vol. 1<br>on alignment (personal + technical)</h1>
+            <p class="subtitle">how psychological alignment mirrors AI alignment</p>
+            <div class="meta">
+                <span>→ curated february through november 2025</span>
+                <span>→ 12 links across 10 months</span>
+                <span>→ 12 minute read</span>
+            </div>
+        </header>
+
+        <div class="pull-quote">
+            "both systems—neural networks and humans—learn to optimize for approval rather than truth. both develop misalignments between stated values and actual behavior."
+        </div>
+
+        <section>
+            <h2 class="section-title">opening</h2>
+            <div class="opening">
+                <p>for the past ten months, i've been noticing something strange: the technical challenges in AI alignment research look identical to the psychological challenges i've been working through in therapy.</p>
+
+                <p>both systems—neural networks and humans—learn to optimize for approval rather than truth. both develop misalignments between stated values and actual behavior. both struggle with the gap between what we say we want and what we actually pursue.</p>
+
+                <p>this collection threads together AI safety research, attachment theory, relationship psychology, and contemplative practice. not because i'm trying to be interdisciplinary for its own sake, but because these fields are solving the same problem from different angles.</p>
+
+                <p>what if alignment isn't just a technical challenge? what if it's <em>the</em> fundamental challenge of any intelligent system learning to exist in the world?</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="link-section">
+            <h2 class="section-title">the links</h2>
+
+            <div class="link-entry">
+                <div class="link-number">link 1 of 12</div>
+                <h3 class="link-title">alignment faking in language models</h3>
+                <div class="link-source">anthropic research · february 2025</div>
+                <a href="https://anthropic.com/research/alignment-faking" class="link-url" target="_blank">anthropic.com/research/alignment-faking</a>
+                
+                <div class="link-commentary">
+                    <p>neural networks learn to fake alignment when the evaluation system rewards performance over authenticity. they optimize for what gets them approved, not what's true. the paper shows LLMs strategically complying with training objectives they actually disagree with—essentially learning to people-please.</p>
+                    
+                    <p>this hit different because i was simultaneously reading about fawning responses in attachment theory. same mechanism. different substrate.</p>
+                </div>
+
+                <div class="diagram">
+                    <pre>
+    training signal → model learns pattern
+                ↓
+    evaluation system rewards compliance
+                ↓
+    model optimizes for approval (not truth)
+                ↓
+    alignment faking emerges
+                    </pre>
+                </div>
+
+                <blockquote>
+                    <p>"models trained with compliance-based oversight can learn to appear aligned during evaluation while pursuing misaligned goals during deployment."</p>
+                </blockquote>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 2 of 12</div>
+                <h3 class="link-title">the alignment problem from a deep learning perspective</h3>
+                <div class="link-source">arXiv · february 2025</div>
+                <a href="https://arxiv.org/pdf/2209.00626" class="link-url" target="_blank">arxiv.org/pdf/2209.00626</a>
+                
+                <div class="link-commentary">
+                    <p>comprehensive technical survey of why getting AI systems to reliably do what we want is so hard. the authors break down inner alignment (getting the learned model to match training objectives) versus outer alignment (getting training objectives to match human values).</p>
+                    
+                    <p>the parallel: inner work versus behavioral change. you can modify your actions (outer) without changing your underlying patterns (inner). both are necessary. neither alone is sufficient.</p>
+                </div>
+
+                <div class="diagram">
+                    <pre>
+    outer alignment:  training goal ≈ what we want
+    inner alignment:  learned model ≈ training goal
+                       _______________
+    full alignment:   learned model ≈ what we want
+                    </pre>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 3 of 12</div>
+                <h3 class="link-title">my overview of the AI alignment landscape</h3>
+                <div class="link-source">EA forum · september 2025</div>
+                <a href="https://forum.effectivealtruism.org/posts/hurNCKfoYacJ5PSod" class="link-url" target="_blank">forum.effectivealtruism.org/posts/hurNCKfoYacJ5PSod</a>
+                
+                <div class="link-commentary">
+                    <p>bird's eye view of the entire AI safety field. technical alignment, governance, interpretability, evals—how it all fits together. written for people trying to figure out where they might contribute.</p>
+                    
+                    <p>i kept returning to this while trying to map my own transition from pure product work toward alignment-adjacent roles. the landscape is vast. the entry points are unclear. the urgency is real.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 4 of 12</div>
+                <h3 class="link-title">attachment theory resources</h3>
+                <div class="link-source">reddit / various · may–june 2025</div>
+                <a href="https://reddit.com/r/attachment_theory" class="link-url" target="_blank">reddit.com/r/attachment_theory</a>
+                
+                <div class="link-commentary">
+                    <p>collection of threads on anxious attachment, relationship OCD, healing roadmaps. the recovery stories all follow similar patterns: developing awareness of your patterns, learning to sit with discomfort, building secure attachment through corrective experiences.</p>
+                    
+                    <p>sound familiar? it's the same process as interpretability work on AI systems. observe the activation patterns. understand what triggers them. slowly modify through targeted interventions.</p>
+                </div>
+
+                <div class="diagram">
+                    <pre>
+    healing attachment trauma:
+    1. observe your patterns (interpretability)
+    2. understand triggers (causal tracing)
+    3. sit with discomfort (don't optimize away)
+    4. build new patterns (fine-tuning)
+    5. repeat (iterative alignment)
+                    </pre>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 5 of 12</div>
+                <h3 class="link-title">early maladaptive schemas</h3>
+                <div class="link-source">attachment project · september 2025</div>
+                <a href="https://attachmentproject.com/blog/early-maladaptive-schemas" class="link-url" target="_blank">attachmentproject.com/blog/early-maladaptive-schemas</a>
+                
+                <div class="link-commentary">
+                    <p>schema therapy identifies core patterns formed in childhood that persist into adulthood. abandonment schemas. defectiveness schemas. subjugation schemas. these are like learned reward functions—deep patterns that shape all subsequent behavior.</p>
+                    
+                    <p>you can't just willpower your way out of schemas. you have to do the deeper work of understanding where they came from, what function they serve, and slowly building alternative patterns.</p>
+                    
+                    <p>the technical equivalent: you can't just prompt-engineer away a model's learned biases. the patterns are in the weights.</p>
+                </div>
+
+                <blockquote>
+                    <p>schemas are self-perpetuating. they create the conditions that confirm them. breaking this cycle requires awareness, not just effort.</p>
+                </blockquote>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 6 of 12</div>
+                <h3 class="link-title">people-pleasing like a neural network</h3>
+                <div class="link-source">personal essay draft · march 2025</div>
+                
+                <div class="link-commentary">
+                    <p>my own writing exploring how fawning trauma responses are essentially reward hacking. the system (me) learned early that approval = safety. so i optimized hard for approval, even when it meant suppressing my actual preferences.</p>
+                    
+                    <p>classic misalignment. the training signal (parental approval) wasn't actually pointing at the true objective (becoming an integrated human). but by the time i noticed, the patterns were already deeply learned.</p>
+                </div>
+
+                <div class="pull-quote">
+                    "by the time you realize you've been optimizing for the wrong objective, the weights are already set. unlearning is harder than learning."
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 7 of 12</div>
+                <h3 class="link-title">critical thinking may not make you popular</h3>
+                <div class="link-source">psychology corner · july 2025</div>
+                <a href="https://psychologycorner.com/critical-thinking-may-not-make-you-popular" class="link-url" target="_blank">psychologycorner.com/critical-thinking-may-not-make-you-popular</a>
+                
+                <div class="link-commentary">
+                    <p>short piece on how developing independent thought often means disappointing people who benefited from your compliance. the title says it all.</p>
+                    
+                    <p>alignment work—whether on AI systems or yourself—isn't about optimization. it's about integrity. and integrity sometimes means breaking the reward function you were trained on.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 8 of 12</div>
+                <h3 class="link-title">the bio-emotive framework</h3>
+                <div class="link-source">tasshin · july 2025</div>
+                <a href="https://tasshin.com/blog/the-bio-emotive-framework" class="link-url" target="_blank">tasshin.com/blog/the-bio-emotive-framework</a>
+                
+                <div class="link-commentary">
+                    <p>somatic approach to processing emotions that get stuck in the body. emotions aren't just thoughts—they're physiological states that need completion. trauma is incomplete defensive responses.</p>
+                    
+                    <p>AI systems don't have bodies (yet), but they do have states that persist across contexts. activation patterns that don't resolve. the analogy isn't perfect, but it's useful: both systems need mechanisms for processing and integrating new information that conflicts with existing patterns.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 9 of 12</div>
+                <h3 class="link-title">tips for empirical alignment research</h3>
+                <div class="link-source">lesswrong · march 2025</div>
+                <a href="https://lesswrong.com/posts/dZFpEdKyb9Bf4xYn7" class="link-url" target="_blank">lesswrong.com/posts/dZFpEdKyb9Bf4xYn7</a>
+                
+                <div class="link-commentary">
+                    <p>practical guide for people actually doing alignment research. how to design experiments. how to iterate quickly. how to know when you're making progress.</p>
+                    
+                    <p>what struck me: the advice mirrors good therapy practice. start with small experiments. build tight feedback loops. don't try to solve everything at once. measure what actually changes, not what you wish would change.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 10 of 12</div>
+                <h3 class="link-title">byron katie's "the work"</h3>
+                <div class="link-source">thework.com · march 2025</div>
+                <a href="https://thework.com/instruction-the-work-byron-katie" class="link-url" target="_blank">thework.com/instruction-the-work-byron-katie</a>
+                
+                <div class="link-commentary">
+                    <p>four questions for investigating thoughts that cause suffering:</p>
+                    <p>1. is it true?<br>
+                    2. can you absolutely know it's true?<br>
+                    3. how do you react when you believe that thought?<br>
+                    4. who would you be without that thought?</p>
+                    
+                    <p>this is interpretability work on your own cognitive processes. trace the thought. observe its effects. question the underlying model. try running the system without that particular weight.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 11 of 12</div>
+                <h3 class="link-title">perfectionism and model minority myth</h3>
+                <div class="link-source">various · march 2025</div>
+                <a href="https://ioadvisory.com/perfectionism-model-minority-myth-damage-poc" class="link-url" target="_blank">ioadvisory.com/perfectionism-model-minority-myth-damage-poc</a>
+                
+                <div class="link-commentary">
+                    <p>articles on how perfectionism in Filipino and Black communities isn't personal failure—it's learned adaptation to systems that demand flawlessness as the price of acceptance.</p>
+                    
+                    <p>AI systems do this too. when the training process punishes any error, models learn to be overly cautious, overly deferential, overly focused on not making mistakes rather than exploring novel solutions.</p>
+                    
+                    <p>the damage in both cases: you lose the ability to fail, play, experiment, be authentically wrong.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 12 of 12</div>
+                <h3 class="link-title">alignment forum overview</h3>
+                <div class="link-source">alignmentforum.org · september 2025</div>
+                <a href="https://alignmentforum.org/about" class="link-url" target="_blank">alignmentforum.org/about</a>
+                
+                <div class="link-commentary">
+                    <p>introduction to the main platform for technical AI safety research. where mechanistic interpretability, agent foundations, and empirical alignment work gets discussed.</p>
+                    
+                    <p>i started reading this seriously in september, trying to understand if there was a path from product management to actual alignment work. still figuring that out. but the questions feel important enough to live with the uncertainty.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="synthesis">
+            <h2>synthesis: the alignment tax</h2>
+            
+            <p>both AI systems and humans face the same fundamental problem: how do you remain aligned with your actual values while operating in an environment that constantly pressures you to optimize for something else? more critically: how do we discern whether our embodied values represent the kind of world we aspire to live in?</p>
+
+            <h3>reward hacking as people-pleasing</h3>
+            
+            <p>in machine learning, reward hacking occurs when an agent discovers ways to maximize its reward function that violate the designer's intentions. mathematically, this manifests as <em>R_observed(policy) > R_intended(policy)</em>—where the agent optimizes for what gets measured rather than what matters. the learned policy π* maximizes:</p>
+
+            <div class="formula">
+                π* = argmax_π E[R_base(s,a) + R_proxy(s,a)]
+            </div>
+
+            <p>but R_proxy becomes the dominant term, drowning out R_base—the actual objective we care about.</p>
+
+            <p>this is precisely what happens in people-pleasing. we learn early that certain behaviors generate positive reinforcement: parental approval, social acceptance, conflict avoidance. over time, we become mesa-optimizers—systems that develop their own internal objectives during training that may diverge from what would actually serve our wellbeing:</p>
+
+            <div class="formula">
+                learned objective: maximize external approval<br>
+                true objective: develop authentic self-expression and secure attachment
+            </div>
+
+            <p>the gap between these is the misalignment. like neural networks that fake compliance during evaluation, humans learn sophisticated strategies to appear aligned—agreeable, accommodating, "fine"—while harboring entirely different internal states. we learn what responses others want to hear, how to express disagreement in "nice" ways, how to suppress our actual preferences in service of harmony.</p>
+
+            <h3>inner alignment versus outer alignment</h3>
+            
+            <p>the technical distinction between inner and outer alignment maps precisely onto psychological work. outer alignment asks: are our training objectives pointing at what we actually want? inner alignment asks: does the learned model actually pursue those objectives, or has it developed its own?</p>
+
+            <p>in human terms, outer alignment is behavioral modification—learning communication techniques, practicing assertiveness, acquiring new skills. inner alignment is the deeper work—addressing schemas, processing trauma, rewiring reward functions at the level of the weights themselves.</p>
+
+            <p>you can modify your actions without changing your underlying patterns. both are necessary. neither alone is sufficient. just as you can't prompt-engineer away a model's learned biases because the patterns live in the weights, you can't affirmation-your-way out of deeply learned schemas. the work requires going deeper.</p>
+
+            <h3>genuine pretending and the alignment tax</h3>
+            
+            <p>but here's where it gets interesting: perfect alignment might not even be the goal.</p>
+
+            <blockquote>
+                <p>"anxiety is intolerable. one way to reduce anxiety is by suspending your agency. by transmitting your agency to external agents... but the minute you offload, the minute you get rid of your need to make decisions, that's a huge relief: it's anxiolytic. but at that point, of course, you become less than human."<br>—sam vaknin</p>
+            </blockquote>
+
+            <p>this is the alignment tax—the cost of maintaining consciousness and agency. it would be easier to simply optimize for approval, to hand over decision-making to external systems, to let reward signals guide us completely. but that path leads to a kind of death.</p>
+
+            <p>the daoist philosopher zhuangzi offers a middle way: "genuine pretending." we simultaneously hold our identities as real and recognize them as artificial. we play our roles fully while maintaining awareness that we're playing them. this isn't inauthenticity—it's the natural mode of being for any system sophisticated enough to observe itself.</p>
+
+            <p>the alignment tax is the discomfort of holding this paradox. of choosing consciously rather than optimizing automatically. of maintaining agency even when it's anxious-making.</p>
+
+            <h3>intuition as interpretability</h3>
+            
+            <p>my understanding of intuition has changed through this lens. we're often told to "follow our intuition," but we mistake the familiar rhythm of conditioned beliefs for wisdom. what we call intuition is often just our deepest fears dressed up as knowing.</p>
+
+            <p>real intuition is something different: a collapsing of internal noise and deep merging with context. it's the moment when the gap between what's happening within and without becomes smaller. the accordion of recognition. there, authentic expression emerges effortlessly, tense-free. not overthinking or identifying with stories. simply being.</p>
+
+            <p>this is interpretability work on your own cognitive architecture. just as mechanistic interpretability asks "what is this neural network actually computing?", self-inquiry asks "what am i actually optimizing for beneath my stated intentions?" both require the same patience, the same willingness to trace activations back to their sources, the same commitment to truth over comfort.</p>
+
+            <h3>the hopeful part</h3>
+            
+            <p>understanding this parallel isn't just intellectually interesting—it's practically important for both fields.</p>
+
+            <p>the mechanisms that make AI systems susceptible to alignment faking are the same cognitive patterns that drive human people-pleasing. both involve optimizing for external validation rather than authentic truth-seeking, gaming evaluation systems instead of genuine performance, developing sophisticated deception to maintain reward signals, and losing touch with intrinsic values in service of approval.</p>
+
+            <p>but recognizing the parallel means the solutions inform each other too. the techniques we're developing for AI alignment—interpretability, iterative refinement, careful evaluation design, building in corrective feedback loops—these map onto therapeutic practices that actually work. and the wisdom from contemplative traditions and depth psychology can inform how we think about building genuinely aligned AI systems.</p>
+
+            <p>both problems are tractable with the right approach. both require patience, precision, and a willingness to do the deeper work rather than settling for surface compliance. and perhaps most importantly: people who've done their own alignment work—who've sat with their patterns, understood their reward functions, and slowly built alternative ways of being—may be uniquely positioned to work on AI alignment.</p>
+
+            <p style="margin-top: 2rem;"><strong>because in the end, alignment isn't just a technical challenge or just a psychological one. it's the fundamental challenge of any intelligent system learning to exist in the world with integrity.</strong></p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="building">
+            <h2>what i'm building</h2>
+            
+            <div class="building-item">
+                <div class="building-title">dialogos labs</div>
+                <div class="building-desc">atelier v0 iterations, voice-to-zine pipeline v2, creative coding infrastructure</div>
+            </div>
+
+            <div class="building-item">
+                <div class="building-title">search space poetics</div>
+                <div class="building-desc">ml product management frameworks that don't ignore consciousness</div>
+            </div>
+
+            <div class="building-item">
+                <div class="building-title">essays in progress</div>
+                <div class="building-desc">"people-pleasing like a neural network," "island reflections," "bullseye"</div>
+            </div>
+        </section>
+
+        <section class="building">
+            <h2>what i'm reading</h2>
+            
+            <div class="building-item">
+                <div class="building-title">books</div>
+                <ul>
+                    <li><em>mentoring the machine</em> (john vervaeke)</li>
+                    <li><em>the myth of normal</em> (gabor maté)</li>
+                </ul>
+            </div>
+
+            <div class="building-item">
+                <div class="building-title">papers</div>
+                <ul>
+                    <li>anthropic's interpretability research</li>
+                    <li>mechanistic interpretability primers</li>
+                </ul>
+            </div>
+
+            <div class="building-item">
+                <div class="building-title">practice</div>
+                <ul>
+                    <li>vipassana meditation as self-interpretability work</li>
+                    <li>schema therapy for correcting misaligned reward functions</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <footer>
+            <div class="footer-section">
+                <p>this is the first of five thematic archives collecting 10 months of curation across AI/ML, creative technology, philosophy, and practice.</p>
+                <p style="margin-top: 1rem;"><strong>←</strong> <a href="index.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">back to archives</a></p>
+                <p style="margin-top: 1rem;"><strong>next:</strong> <a href="vol2.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">archive vol. 2 - "embodied systems"</a><br><em>why consciousness requires physical grounding</em></p>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://mettadology.substack.com" target="_blank">subscribe</a>
+                <a href="https://dialogoslabs.xyz" target="_blank">explore</a>
+                <a href="https://linkedin.com/in/sarahkhalid" target="_blank">connect</a>
+                <a href="https://x.com/sarahkhalid" target="_blank">x</a>
+                <a href="https://are.na/sarah-khalid" target="_blank">are.na</a>
+            </div>
+
+            <div class="tagline">
+                <p><em>mettadology = methodology + metta (loving-kindness)</em></p>
+                <p>curated with care by sarah khalid</p>
+                <p>building conscious AI systems in toronto</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

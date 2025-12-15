@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mettadology archive vol. 3 · creative infrastructure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg: #fffef9;
+            --text: #2a2a2a;
+            --muted: #6b6b6b;
+            --accent: #6d28d9;
+            --accent-light: #a78bfa;
+            --border: #e8e5df;
+            --card-bg: #fdfcf7;
+            
+            --mono: 'IBM Plex Mono', 'Courier New', monospace;
+            --sans: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+        }
+        
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.8;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 2rem 8rem;
+        }
+        .back-link {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--text);
+            border-bottom-color: var(--text);
+        }
+        
+        
+        
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 2rem;
+        }
+        
+        h1 {
+            font-family: var(--mono);
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            text-transform: lowercase;
+        }
+        
+        .subtitle {
+            font-family: var(--mono);
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .meta {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            line-height: 1.6;
+        }
+        
+        .meta span {
+            display: block;
+        }
+        
+        .divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
+            margin: 3.5rem 0;
+        }
+        
+        .section-title {
+            font-family: var(--mono);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 3.5rem 0 2rem;
+            color: var(--accent);
+            text-transform: lowercase;
+        }
+        
+        p {
+            margin-bottom: 1.4rem;
+            max-width: 65ch;
+        }
+        
+        .opening {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin: 3rem 0;
+            color: var(--text);
+        }
+        
+        .pull-quote {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            font-style: italic;
+            color: var(--text);
+        }
+        
+        .visual-break {
+            margin: 4rem 0;
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            letter-spacing: 1rem;
+        }
+        
+        .link-section {
+            margin: 4rem 0;
+        }
+        
+        .link-entry {
+            margin: 3.5rem 0;
+            padding: 0;
+        }
+        
+        .link-number {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .link-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+        
+        .link-source {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .link-url {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            word-break: break-all;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .link-url:hover {
+            border-bottom-color: var(--accent);
+        }
+        
+        .link-commentary {
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+        
+        blockquote {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-left: 3px solid var(--accent-light);
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        blockquote p {
+            margin-bottom: 0;
+        }
+        
+        .synthesis {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg) 100%);
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            border: 2px solid var(--accent-light);
+            border-radius: 4px;
+        }
+        
+        .synthesis h2 {
+            font-family: var(--mono);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-transform: lowercase;
+        }
+        
+        .synthesis h3 {
+            font-family: var(--mono);
+            font-size: 1rem;
+            margin: 2rem 0 1rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .synthesis em {
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 500;
+        }
+        
+        .building {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 4px;
+        }
+        
+        .building h2 {
+            font-family: var(--mono);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-transform: lowercase;
+        }
+        
+        .building-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .building-title {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        
+        .building-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.7rem;
+            line-height: 1.7;
+        }
+        
+        ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        
+        .footer-links a {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--text);
+            text-decoration: none;
+            display: inline;
+            margin-right: 1rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        .tagline {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem 4rem;
+            }
+            
+            body {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 1.2rem;
+            }
+            
+            .synthesis, .building {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← back to archives</a>
+        <a href="../index.html" class="back-link" style="margin-left: 1rem;">← back to dialogos labs</a>
+        
+
+        <header>
+            <h1>mettadology archive vol. 3<br>creative infrastructure</h1>
+            <p class="subtitle">building technology as spiritual practice</p>
+            <div class="meta">
+                <span>→ curated february through november 2025</span>
+                <span>→ 12 links across 10 months</span>
+                <span>→ 11 minute read</span>
+            </div>
+        </header>
+
+        <div class="pull-quote">
+            "technology can be devotional. building can be meditation. entrepreneurship can be spiritual practice."
+        </div>
+
+        <section>
+            <h2 class="section-title">opening</h2>
+            <div class="opening">
+                <p>there's a moment that happens when you're deep in building something—when the code compiles, the design clicks, the essay structure reveals itself. it's not about the output. it's about the quality of attention you brought to the process.</p>
+
+                <p>i've been collecting work that treats building as spiritual practice: developers who approach code as meditation, designers who see constraints as koans, writers who treat revision as contemplative inquiry. not self-help spirituality grafted onto tech work, but the recognition that making things well requires the same presence as any wisdom tradition.</p>
+
+                <p>the tech industry loves to talk about "craft" while optimizing for velocity. we celebrate 10x engineers while ignoring that mastery comes from sustained attention, not heroic bursts. we preach innovation while following the same patterns, using the same tools, building the same things.</p>
+
+                <p>but there's another tradition emerging: the indie web, the digital gardens, the small tools, the handmade software. people building not for scale or exit, but for the sake of building well. technology as creative practice, not just commercial product.</p>
+
+                <p><em>this collection asks: what if infrastructure—the systems we build to build things—could itself be a spiritual practice? what does conscious entrepreneurship actually look like?</em></p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="link-section">
+            <h2 class="section-title">the links</h2>
+
+            <div class="link-entry">
+                <div class="link-number">link 1 of 12</div>
+                <h3 class="link-title">search space poetics</h3>
+                <div class="link-source">sarah khalid / dialogos labs · ongoing</div>
+                
+                <div class="link-commentary">
+                    <p>my book-in-progress on creative ML product management. the premise: building AI/ML products requires both technical rigor and poetic sensibility. search spaces aren't just mathematical constructs—they're creative possibility spaces.</p>
+                    
+                    <p>the title comes from seeing product management as navigating vast combinatorial spaces. how do you prune infinite possibility into focused solutions? how do you direct attention toward what matters? relevance realization as creative practice.</p>
+                    
+                    <p>this is infrastructure for thinking: frameworks, mental models, decision-making practices. not "how to ship features" but "how to think clearly while building complex systems."</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 2 of 12</div>
+                <h3 class="link-title">indie web & digital gardens</h3>
+                <div class="link-source">various · ongoing collection</div>
+                
+                <div class="link-commentary">
+                    <p>the movement away from platform dependency toward personal, evolving, interconnected websites. not blogs (finished, polished, chronological) but gardens (growing, messy, networked).</p>
+                    
+                    <p>digital gardening is infrastructure for thinking in public. notes that link to notes. ideas that evolve over time. writing that doesn't pretend to be finished. it's the opposite of content marketing—it's thinking as practice, made visible.</p>
+                    
+                    <p>practitioners: andy matuschak, maggie appleton, gwern branwen, robin sloan. each has built custom infrastructure reflecting their actual thinking processes, not generic templates.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 3 of 12</div>
+                <h3 class="link-title">dialogos labs: conscious entrepreneurship</h3>
+                <div class="link-source">sarah khalid · march 2025</div>
+                <a href="https://dialogoslabs.xyz" class="link-url" target="_blank">dialogoslabs.xyz</a>
+                
+                <div class="link-commentary">
+                    <p>my attempt at building a studio that integrates: technical ML consulting, creative AI tools, conscious business practices, and spiritual alignment. not trying to be a unicorn—trying to be a sustainable practice.</p>
+                    
+                    <p>the business model is the values made concrete. multiple income streams for resilience. small team plus contractor network for flexibility. products that generate revenue while sleeping. services that maintain creative edge. physical artifacts alongside digital tools.</p>
+                    
+                    <p>this is infrastructure for a different kind of career: where wealth building and spiritual practice accelerate each other rather than competing.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 4 of 12</div>
+                <h3 class="link-title">robin sloan's writing on flip phones</h3>
+                <div class="link-source">robin sloan · various</div>
+                
+                <div class="link-commentary">
+                    <p>sloan writes about the "flip phone era" of computing: tools that do one thing excellently. software so good you'd pay for it even without constant updates. this isn't anti-technology—it's pro-craftsmanship.</p>
+                    
+                    <p>his newsletter software Spring '83 is an example: beautiful constraints, focused purpose, community-driven development. infrastructure that respects both makers and users.</p>
+                    
+                    <p>the principle: not everything needs to scale. some tools should stay small, focused, excellent. intimacy over growth.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 5 of 12</div>
+                <h3 class="link-title">game presentations as creative communication</h3>
+                <div class="link-source">sarah khalid · ongoing project</div>
+                
+                <div class="link-commentary">
+                    <p>my experiments turning boring slide decks into interactive experiences. presentations don't have to be linear PDFs—they can be spaces you explore, puzzles you solve, stories you experience.</p>
+                    
+                    <p>built with bitsy, twine, simple HTML/CSS. the constraint: must be completable in 10 minutes, work without installation, convey actual information. creativity through limitation.</p>
+                    
+                    <p>this is infrastructure for communication: making ideas memorable not through repetition but through engagement. embodied cognition applied to information design.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 6 of 12</div>
+                <h3 class="link-title">obsidian & tools for thought</h3>
+                <div class="link-source">various · ongoing</div>
+                
+                <div class="link-commentary">
+                    <p>personal knowledge management systems as infrastructure for thinking. obsidian, roam research, tiddlywiki—tools that let you build your own thinking environment.</p>
+                    
+                    <p>the key insight: your notes should link like your thoughts link. bidirectional connections. emergence rather than hierarchy. systems that grow organically rather than forcing predetermined structure.</p>
+                    
+                    <p>this is infrastructure that respects how minds actually work: associative, networked, contextual. not filing cabinets—neural gardens.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 7 of 12</div>
+                <h3 class="link-title">static site generators & ownership</h3>
+                <div class="link-source">hugo, 11ty, jekyll · ongoing</div>
+                
+                <div class="link-commentary">
+                    <p>the quiet revolution of static sites: your content as files you own, not database entries in someone's server. deploy anywhere. migrate easily. control completely.</p>
+                    
+                    <p>combined with git for version control, markdown for portability, RSS for distribution—this is infrastructure for digital sovereignty. your writing outlasts platforms. your archive survives company shutdowns.</p>
+                    
+                    <p>not about technology for its own sake. about building things that last.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 8 of 12</div>
+                <h3 class="link-title">bootstrapped SaaS sustainability</h3>
+                <div class="link-source">indie hackers, microconf · ongoing</div>
+                
+                <div class="link-commentary">
+                    <p>the counter-narrative to VC scaling: profitable from day one, growing sustainably, optimizing for longevity not exit. companies that support one person's good life or a small team's collaborative practice.</p>
+                    
+                    <p>infrastructure for different success metrics: monthly recurring revenue that covers expenses, customer relationships based on value exchange, growth determined by capacity not external pressure.</p>
+                    
+                    <p>this isn't anti-ambition. it's intentional ambition: clarity about what you're actually optimizing for.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 9 of 12</div>
+                <h3 class="link-title">are.na as curatorial practice</h3>
+                <div class="link-source">are.na · ongoing</div>
+                <a href="https://are.na" class="link-url" target="_blank">are.na</a>
+                
+                <div class="link-commentary">
+                    <p>visual bookmarking platform that feels more like making art than organizing links. channels as collections, blocks as thoughts, connections as meaning-making.</p>
+                    
+                    <p>infrastructure for aesthetic practice: your taste made visible through arrangement and juxtaposition. curation as creative act. collections that tell stories through what's included and excluded.</p>
+                    
+                    <p>this is how you develop taste: by practicing discernment repeatedly, publicly, iteratively.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 10 of 12</div>
+                <h3 class="link-title">coaching systems as infrastructure</h3>
+                <div class="link-source">sarah khalid · search space poetics coaching · 2025</div>
+                
+                <div class="link-commentary">
+                    <p>my four-track system for PM career development: from non-technical entry to AI/ML mastery. not just content delivery—infrastructure for transformation.</p>
+                    
+                    <p>track 1: strategic positioning for career changers. track 2: foundational PM skills. track 3: technical fluency. track 4: AI/ML specialization. each builds on the others. each is complete on its own.</p>
+                    
+                    <p>this is infrastructure for helping others build infrastructure: frameworks for thinking, practices for learning, communities for support. teaching as system-building.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 11 of 12</div>
+                <h3 class="link-title">zines & physical artifacts</h3>
+                <div class="link-source">various · ongoing collection</div>
+                
+                <div class="link-commentary">
+                    <p>why make physical things in a digital age? because embodiment matters. because holding paper engages different cognitive processes than scrolling screens. because constraints of print force clarity.</p>
+                    
+                    <p>zines as infrastructure for thought: ideas that you fold, staple, share hand-to-hand. limited editions. deliberate imperfection. authentic voice over polished branding.</p>
+                    
+                    <p>this bridges my voice-to-zine pipeline with broader DIY publishing culture. digital tools enabling physical craft.</p>
+                </div>
+            </div>
+
+            <div class="visual-break">∗ ∗ ∗</div>
+
+            <div class="link-entry">
+                <div class="link-number">link 12 of 12</div>
+                <h3 class="link-title">version control for life</h3>
+                <div class="link-source">various · ongoing practice</div>
+                
+                <div class="link-commentary">
+                    <p>git for code. markdown for writing. plain text for everything. the principle: your work should be version-controlled, searchable, portable, future-proof.</p>
+                    
+                    <p>infrastructure for memory: every iteration preserved, every decision traceable, every thought recoverable. not perfectionism—archaeology. you can see how you got here.</p>
+                    
+                    <p>this is how you compound learning: by keeping everything, organizing nothing (until later), trusting search and serendipity over premature taxonomy.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="synthesis">
+            <h2>synthesis: building as devotion</h2>
+            
+            <p>for ten months i've been watching two narratives about technology diverge completely.</p>
+
+            <p><strong>narrative one:</strong> move fast and break things. scale at all costs. raise VC. hire aggressively. growth is everything. exit is the goal. the hustle never stops.</p>
+
+            <p><strong>narrative two:</strong> build slowly and fix things. scale thoughtfully. bootstrap sustainably. hire intentionally. alignment is everything. service is the goal. the practice never ends.</p>
+
+            <p>i'm building toward narrative two. not because narrative one is wrong—it works brilliantly for certain problems. but because narrative two is vastly underserved, deeply needed, and honestly more interesting.</p>
+
+            <h3>the technical argument for slowness</h3>
+            
+            <p>indie web builders, digital gardeners, local-first developers—they're all solving the same problem: how do you build technology that isn't extractive? that doesn't depend on surveillance capitalism, venture capital timelines, or exploitative scaling?</p>
+
+            <p>the answer keeps being: <em>small, considered, sustainable infrastructure</em>.</p>
+
+            <p>robin sloan's writing about the "flip phone era" of computing. tools that do one thing excellently. software so good you'd pay for it even without features added. this isn't anti-technology—it's pro-craftsmanship.</p>
+
+            <p>version control for thinking (obsidian, roam, tiddlywiki). publishing systems that outlast platforms (static sites, RSS, email). personal archives that won't disappear when a company shuts down. these are spiritual practices dressed as technical decisions.</p>
+
+            <h3>the business argument for consciousness</h3>
+            
+            <p>here's what nobody tells you about bootstrapped businesses: the constraint of sustainability forces clarity about values.</p>
+
+            <p>when you can't raise $10M to "figure it out later," you have to know what you're actually building and why. when you can't hire fast, you choose collaborators carefully. when you can't afford extraction, you build regeneratively.</p>
+
+            <p>dialogos labs isn't trying to be a unicorn. it's trying to be a practice—a way of integrating technical excellence, creative expression, conscious business, and spiritual alignment. software products that work while you sleep. ML consulting at rates that reflect mastery. coaching for people navigating similar integrations.</p>
+
+            <p>the business model is the values made concrete. multiple income streams means resilience. small team plus contractor network means flexibility. product plus service means learning loops. physical artifacts plus digital tools means embodiment.</p>
+
+            <p>this is infrastructure for a different kind of career: one where wealth building and spiritual practice accelerate each other rather than competing.</p>
+
+            <h3>the creative argument for constraints</h3>
+            
+            <p>the most interesting creative work is happening in constrained spaces. bitsy games with 8x8 sprites. tweets of exactly 280 characters. newsletters. zines. static sites. tools with fewer features, not more.</p>
+
+            <p>why? because constraints force decisions. decisions reveal values. values create coherence. coherence creates beauty.</p>
+
+            <p>my voice-to-zine pipeline could have endless features. instead: speak, transcribe, format, print. four steps. the constraint creates space for the actual work—thinking clearly enough that four steps is sufficient.</p>
+
+            <p>game presentations instead of boring slides. physical zines instead of PDFs. screenshot gardens instead of bookmark folders. each constraint is a practice in attention.</p>
+
+            <h3>what conscious entrepreneurship actually means</h3>
+            
+            <p>it's not affirmations and vision boards. it's the daily practice of building infrastructure that reflects your actual values:</p>
+
+            <p><strong>financial decisions</strong> that prioritize sustainability over growth<br>
+            <strong>time allocation</strong> that protects creative flow over busywork<br>
+            <strong>relationship building</strong> based on mutual support, not extraction<br>
+            <strong>product development</strong> oriented toward long-term value, not quick exits<br>
+            <strong>communication</strong> that's authentic rather than optimized for algorithms</p>
+
+            <p>the spiritual practice isn't separate from the business. the business <em>is</em> the practice. every decision is a chance to align or misalign. every interaction is feedback about your actual values versus your stated ones.</p>
+
+            <h3>the synthesis</h3>
+            
+            <p>technology can be devotional. building can be meditation. entrepreneurship can be spiritual practice.</p>
+
+            <p>not because we add meditation apps to our morning routines (though that's fine). but because we bring the same quality of attention to our work that contemplatives bring to their practice: <em>sustained focus, beginner's mind, commitment to truth, willingness to revise, patience with emergence, devotion to craft</em>.</p>
+
+            <p>the infrastructure we build—the tools, systems, businesses, practices—these shape what's possible for ourselves and others. building them well is itself a form of service.</p>
+
+            <p style="margin-top: 2rem;"><strong>the most conscious technology might be technology built by people doing their own inner work.</strong></p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="building">
+            <h2>what i'm building</h2>
+            
+            <div class="building-item">
+                <div class="building-title">dialogos labs</div>
+                <div class="building-desc">conscious AI studio integrating software products, ML consulting, coaching systems</div>
+            </div>
+
+            <div class="building-item">
+                <div class="building-title">search space poetics</div>
+                <div class="building-desc">book + coaching system for creative ML product management</div>
+            </div>
+
+            <div class="building-item">
+                <div class="building-title">creative infrastructure</div>
+                <div class="building-desc">voice-to-zine pipeline, game presentations, physical artifacts</div>
+            </div>
+        </section>
+
+        <section class="building">
+            <h2>what i'm reading</h2>
+            
+            <div class="building-item">
+                <div class="building-title">books</div>
+                <ul>
+                    <li><em>shop class as soulcraft</em> (matthew crawford)</li>
+                    <li><em>the timeless way of building</em> (christopher alexander)</li>
+                </ul>
+            </div>
+
+            <div class="building-item">
+                <div class="building-title">practice</div>
+                <ul>
+                    <li>building in public as spiritual discipline</li>
+                    <li>constraints as creative scaffolding</li>
+                    <li>sustainable business as consciousness practice</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <footer>
+            <div class="footer-section">
+                <p>this is the third of five thematic archives collecting 10 months of curation across AI/ML, creative technology, philosophy, and practice.</p>
+                <p style="margin-top: 1rem;"><strong>←</strong> <a href="index.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">back to archives</a></p>
+                <p style="margin-top: 1rem;"><strong>previous:</strong> <a href="vol2.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">archive vol. 2 - "embodied systems"</a><br><em>why consciousness requires physical grounding</em></p>
+                <p style="margin-top: 1rem;"><strong>next:</strong> <a href="vol4.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">archive vol. 4 - "networked wisdom"</a><br><em>collective intelligence and conscious community</em></p>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://mettadology.substack.com" target="_blank">subscribe</a>
+                <a href="https://dialogoslabs.xyz" target="_blank">explore</a>
+                <a href="https://linkedin.com/in/sarahkhalid" target="_blank">connect</a>
+                <a href="https://x.com/sarahkhalid" target="_blank">x</a>
+                <a href="https://are.na/sarah-khalid" target="_blank">are.na</a>
+            </div>
+
+            <div class="tagline">
+                <p><em>mettadology = methodology + metta (loving-kindness)</em></p>
+                <p>curated with care by sarah khalid</p>
+                <p>building conscious AI systems in toronto</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
