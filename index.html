@@ -112,9 +112,7 @@ background-color: transparent;
 background-color: #434750;  
 }
 
-.topnav {
-  display: none;
-}
+/* Topnav is now visible with hamburger menu */
  
 </style>
  
@@ -123,13 +121,12 @@ background-color: #434750;
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="https://dialogoslabs.xyz/" class="active">home</a>
-  <a href="products/">products</a>
-  <a href="library/">library</a>
-  <a href="community/">community</a>
-  <a href="contact/">contact</a>
+  <a href="./" class="active">home</a>
+  <a href="mettadology/index.html">mettadology</a>
+  <a href="sabbaticus/index.html">sabbaticus</a>
+  <a href="poetic-tech-toolkit/index.html">poetic tech toolkit</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
+    <i class="fa fa-bars" id="menuIcon"></i>
   </a>
 </div>
 
@@ -138,12 +135,6 @@ background-color: #434750;
 <div id="container">
  
 <div id="header">
- 
-<div id="nav">
-    <a href="mettadology/">mettadology</a> · 
-    <a href="sabbaticus/">sabbaticus</a> · 
-    <a href="poetic-tech-toolkit/">poetic tech toolkit</a>
-</div>
  
 <h1><i>dialogos</i></h1></div>
  

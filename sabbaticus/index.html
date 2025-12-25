@@ -17,105 +17,93 @@
 <style>
  
 body{
-background-color: #57543e;
+background-color: #9faa96;
 font-family: 'Fira Code';
-}
- 
-#all{
-position: absolute;
-left: 50%;
-top: 50%;
--webkit-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
-width: 410px;
-height: 520px;
-}
- 
-#container{
-width: 300px;
-height: 500px;
-background-color: #fff;
-    opacity: 1.0;
-padding: 10px;
-}
- 
-#header{
-height: 70px;
-background-image: url('https://i.imgur.com/A6q8dfx.jpeg');
-background-position: top left;
-padding: 5px;
-position: relative;
-}
- 
-#header h1{
-font-weight: normal;
-font-family: 'Cormorant Garamond';
-color: #fff;
-font-size: 40px;
-letter-spacing: 3px;
-text-shadow: 1px 1px 4px #25272b;
-margin: 0px;
-position: absolute;
-bottom: 0px;
-right: 0px;
-}
- 
-#content{
-overflow: scroll;
-overflow-x: hidden;
-height: 240px;
-padding: 4px;
-text-align: justify;
-color: #444951;
-margin-bottom: 5px;
-margin-top: 5px;
-}
- 
-#content p{
-margin-top: 22x;
-font-size: 11px;
-}
- 
-#bottom{
-height: 150px;
-background-image: url('https://i.imgur.com/A6q8dfx.jpeg');
-background-position: bottom left;
-}
- 
-#nav{
-font-size: 13px;
-color: #fff;
-text-transform: uppercase;
-letter-spacing: 1px;
-}
- 
-#nav a{
-color: #ffffff;
-opacity: 0.8;
-text-decoration: none;
-}
- 
-#nav a:hover{
-color: #fff;
-opacity: 1;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 }
 
-::-webkit-scrollbar{
-width: 6px; 
-}
- 
-::-webkit-scrollbar-track{
-background-color: transparent;
-}
- 
-::-webkit-scrollbar-thumb{
-background-color: #434750;  
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.topnav {
-  display: none;
+.content {
+  text-align: center;
+  color: #2b2b2b;
 }
- 
+
+h1 {
+  font-family: 'Cormorant Garamond';
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 2rem;
+  color: #2b2b2b;
+  letter-spacing: 2px;
+}
+
+.description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  color: #2b2b2b;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.coming-soon {
+  font-family: 'Fira Code';
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #57543e;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+
+.follow-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(43, 43, 43, 0.2);
+}
+
+.follow-section p {
+  font-family: 'Fira Code';
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: #2b2b2b;
+  margin-bottom: 1rem;
+}
+
+.follow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #2b2b2b;
+  color: #9faa96;
+  text-decoration: none;
+  font-family: 'Fira Code';
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  border: 2px solid #2b2b2b;
+}
+
+.follow-link:hover {
+  background-color: transparent;
+  color: #2b2b2b;
+}
+
 </style>
  
 </head>
@@ -123,43 +111,33 @@ background-color: #434750;
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="https://dialogoslabs.xyz/" class="active">home</a>
-  <a href="../products/">products</a>
-  <a href="../library/">library</a>
-  <a href="../community/">community</a>
-  <a href="../contact/">contact</a>
+  <a href="../">home</a>
+  <a href="../mettadology/index.html">mettadology</a>
+  <a href="./" class="active">sabbaticus</a>
+  <a href="../poetic-tech-toolkit/index.html">poetic tech toolkit</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
+    <i class="fa fa-bars" id="menuIcon"></i>
   </a>
 </div>
 
-<div id="all">
-
-<div id="container">
- 
-<div id="header">
- 
-<div id="nav">
-    <a href="../">home</a>
-</div>
- 
-<h1><i>sabbaticus</i></h1></div>
- 
-<div id="content">
-
-<p>sabbaticus is an AI proxy for knowledge workers on leave. go on vacation without worrying about catch-up.</p>
- 
-<p>designed for professionals who need to step away but want to stay connected, sabbaticus acts as your intelligent assistant while you're away, handling routine inquiries and keeping you informed without the stress of constant availability.</p>
- 
-</div>
- 
-<div id="bottom"></div>
- 
-</div>
- 
+<div class="content-wrapper">
+  <div class="content">
+    <h1><i>sabbaticus</i></h1>
+    <div class="description">
+      <p>sabbaticus is an AI proxy for knowledge workers on leave. go on vacation without worrying about catch-up.</p>
+      <p>designed for professionals who need to step away but want to stay connected, sabbaticus acts as your intelligent assistant while you're away, handling routine inquiries and keeping you informed without the stress of constant availability.</p>
+    </div>
+    <div class="coming-soon">coming soon — beta launching in 2026</div>
+    <div class="follow-section">
+      <p>follow for updates when we launch</p>
+      <a href="https://www.linkedin.com/company/dialogoslabs/" target="_blank" class="follow-link">
+        <i class="fa fa-linkedin"></i>
+        linkedin
+      </a>
+    </div>
+  </div>
 </div>
  
 </body>
  
 </html>
-
