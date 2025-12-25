@@ -3,413 +3,1171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mettadology archives · dialogos labs</title>
+    <title>Mettadology — Creative Web & Philosophical AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         :root {
-            --bg: #fffef9;
-            --text: #2a2a2a;
-            --muted: #6b6b6b;
-            --vol1: #d4791a;
-            --vol2: #2e7d32;
-            --vol3: #6d28d9;
-            --vol4: #0891b2;
-            --vol5: #dc2626;
-            --border: #e8e5df;
-            --card-bg: #fdfcf7;
-            
-            --mono: 'IBM Plex Mono', 'Courier New', monospace;
-            --sans: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            --ivory: #faf7f2;
+            --cream: #f4ede4;
+            --sand: #e8dcc8;
+            --terracotta: #c87259;
+            --sage: #9faa96;
+            --charcoal: #2b2b2b;
+            --warm-gray: #867d72;
+            --serif: 'Crimson Pro', Georgia, serif;
+            --display: 'DM Serif Display', Georgia, serif;
+            --mono: 'IBM Plex Mono', monospace;
         }
-        
+
         body {
-            font-family: var(--sans);
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.8;
+            background: var(--ivory);
+            color: var(--charcoal);
+            font-family: var(--serif);
             font-size: 17px;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem 8rem;
+
+        /* Intro Animation */
+        .intro-sequence {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            background: var(--ivory);
+            transition: opacity 1.5s ease, visibility 1.5s ease;
         }
-        
-        .back-link {
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            color: var(--muted);
-            text-decoration: none;
+
+        .intro-sequence.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-graphic {
+            width: min(400px, 70vw);
+            height: min(400px, 70vw);
+            position: relative;
             margin-bottom: 2rem;
-            display: inline-block;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s;
         }
-        
-        .back-link:hover {
-            color: var(--text);
-            border-bottom-color: var(--text);
+
+        .book-stack {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateStackContinuous 6s ease-in-out infinite;
         }
-        
-        header {
-            text-align: center;
-            margin-bottom: 4rem;
-            padding-bottom: 2rem;
+
+        @keyframes rotateStackContinuous {
+            0% { transform: rotateX(-20deg) rotateY(0deg); }
+            100% { transform: rotateX(-20deg) rotateY(360deg); }
         }
-        
-        h1 {
+
+        .book {
+            position: absolute;
+            width: 180px;
+            height: 30px;
+            border: 2px solid var(--charcoal);
+            left: 50%;
+            top: 50%;
+            margin-left: -90px;
+            transform-style: preserve-3d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-family: var(--mono);
-            font-size: 2rem;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
             text-transform: lowercase;
         }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+
+        .book:nth-child(1) {
+            transform: translateZ(60px) translateY(-45px);
+            background: var(--terracotta);
+            color: var(--ivory);
         }
-        
-        .meta {
+
+        .book:nth-child(1)::before {
+            content: 'may you be happy';
+        }
+
+        .book:nth-child(2) {
+            transform: translateZ(30px) translateY(-30px);
+            background: var(--sage);
+            color: var(--charcoal);
+        }
+
+        .book:nth-child(2)::before {
+            content: 'may you be happy';
+        }
+
+        .book:nth-child(3) {
+            transform: translateZ(0px) translateY(-15px);
+            background: var(--sand);
+            color: var(--warm-gray);
+        }
+
+        .book:nth-child(3)::before {
+            content: 'may you be happy';
+        }
+
+        .book:nth-child(4) {
+            transform: translateZ(-30px) translateY(0px);
+            background: var(--warm-gray);
+            color: var(--ivory);
+        }
+
+        .book:nth-child(4)::before {
+            content: 'may you be happy';
+        }
+
+        .book:nth-child(5) {
+            transform: translateZ(-60px) translateY(15px);
+            background: var(--cream);
+            color: var(--terracotta);
+        }
+
+        .book:nth-child(5)::before {
+            content: 'may you be happy';
+        }
+
+        .intro-title {
+            font-family: var(--display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--charcoal);
+            opacity: 0;
+            animation: fadeInTitle 1s ease-out 1.5s forwards;
+        }
+
+        @keyframes fadeInTitle {
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(43, 43, 43, 0.1);
+            opacity: 0;
+            animation: fadeInHeader 0.8s ease-out 5.5s forwards;
+        }
+
+        @keyframes fadeInHeader {
+            to { opacity: 1; }
+        }
+
+        .logo {
+            font-family: var(--display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--charcoal);
+            letter-spacing: 0.02em;
+        }
+
+        nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-size: 0.9rem;
+            font-family: var(--mono);
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        nav a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10rem 4rem 6rem;
+            opacity: 0;
+            animation: fadeInMain 1s ease-out 5.8s forwards;
+        }
+
+        @keyframes fadeInMain {
+            to { opacity: 1; }
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .page-header h1 {
+            font-family: var(--display);
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .page-header .tagline {
+            font-family: var(--mono);
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 2rem;
+        }
+
+        .page-header .description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--warm-gray);
+            max-width: 65ch;
+            margin: 0 auto 3rem;
+        }
+
+        .definition {
             font-family: var(--mono);
             font-size: 0.85rem;
-            color: var(--muted);
+            color: var(--terracotta);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 3rem;
         }
-        
-        .intro {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 4px;
+
+        /* Bookshelf Section - Stripe Press Inspired */
+        .bookshelf-container {
+            margin: 6rem auto;
         }
-        
-        .intro p {
+
+        .shelf-header {
+            margin-bottom: 3rem;
+        }
+
+        .shelf-header h2 {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
             margin-bottom: 1rem;
         }
-        
-        .intro p:last-child {
-            margin-bottom: 0;
+
+        .shelf-description {
+            font-size: 1.05rem;
+            color: var(--warm-gray);
+            max-width: 65ch;
         }
-        
-        .volumes {
+
+        .bookshelf {
             display: grid;
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
             margin: 4rem 0;
+            perspective: 1000px;
         }
-        
-        .volume-card {
-            background: var(--card-bg);
-            border-radius: 4px;
-            padding: 2rem;
-            border-left: 4px solid;
-            transition: all 0.3s ease;
+
+        .book-card {
             text-decoration: none;
-            color: var(--text);
-            display: block;
+            color: var(--charcoal);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: relative;
         }
-        
-        .volume-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+        .book-card:hover {
+            transform: translateY(-8px);
         }
-        
-        .volume-card.vol1 { border-left-color: var(--vol1); }
-        .volume-card.vol2 { border-left-color: var(--vol2); }
-        .volume-card.vol3 { border-left-color: var(--vol3); }
-        .volume-card.vol4 { border-left-color: var(--vol4); }
-        .volume-card.vol5 { border-left-color: var(--vol5); }
-        
-        .volume-number {
+
+        .book-cover {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--sand), var(--cream));
+            border: 3px solid var(--charcoal);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 8px 8px 0 rgba(43, 43, 43, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .book-card:hover .book-cover {
+            box-shadow: 12px 12px 0 rgba(43, 43, 43, 0.15);
+        }
+
+        .book-card:nth-child(1) .book-cover {
+            background: linear-gradient(135deg, #c87259, #d88a74);
+        }
+
+        .book-card:nth-child(2) .book-cover {
+            background: linear-gradient(135deg, #9faa96, #b2bba9);
+        }
+
+        .book-card:nth-child(3) .book-cover {
+            background: linear-gradient(135deg, #e8dcc8, #f0e6d6);
+        }
+
+        .book-card:nth-child(4) .book-cover {
+            background: linear-gradient(135deg, #867d72, #9c9489);
+        }
+
+        .book-card:nth-child(5) .book-cover {
+            background: linear-gradient(135deg, #f4ede4, #faf7f2);
+        }
+
+        .book-cover .vol-number {
             font-family: var(--mono);
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
+            opacity: 0.8;
         }
-        
-        .vol1 .volume-number { color: var(--vol1); }
-        .vol2 .volume-number { color: var(--vol2); }
-        .vol3 .volume-number { color: var(--vol3); }
-        .vol4 .volume-number { color: var(--vol4); }
-        .vol5 .volume-number { color: var(--vol5); }
-        
-        .volume-title {
-            font-family: var(--mono);
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
+
+        .book-cover .book-title {
+            font-family: var(--display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin: 1rem 0;
         }
-        
-        .volume-subtitle {
-            font-style: italic;
-            color: var(--muted);
-            margin-bottom: 1rem;
+
+        .book-cover .book-subtitle {
             font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.85;
         }
-        
-        .volume-description {
-            line-height: 1.7;
-            color: var(--text);
-            margin-bottom: 1rem;
-        }
-        
-        .volume-meta {
+
+        .book-spine {
             font-family: var(--mono);
-            font-size: 0.8rem;
-            color: var(--muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .book-meta {
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .themes-section {
-            margin: 4rem 0;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 4px;
-        }
-        
-        .themes-section h2 {
+            gap: 1rem;
+            margin-top: 1.5rem;
             font-family: var(--mono);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text);
+            font-size: 0.75rem;
+            color: var(--warm-gray);
         }
-        
-        .theme-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+
+        .coming-soon {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
-        
-        .theme-item {
-            padding: 1rem;
-            border-left: 3px solid var(--border);
+
+        .coming-soon:hover {
+            transform: none;
         }
-        
-        .theme-item.vol1 { border-left-color: var(--vol1); }
-        .theme-item.vol2 { border-left-color: var(--vol2); }
-        .theme-item.vol3 { border-left-color: var(--vol3); }
-        .theme-item.vol4 { border-left-color: var(--vol4); }
-        
-        .theme-title {
-            font-weight: 500;
-            margin-bottom: 0.3rem;
+
+        .coming-soon .book-cover {
+            filter: grayscale(0.3);
         }
-        
-        .theme-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.6;
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--charcoal);
+            color: var(--ivory);
+            padding: 0.3rem 0.7rem;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        
-        footer {
-            margin-top: 6rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
+
+        /* Core Themes Overview */
+        .themes-section {
+            margin: 5rem 0;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(43, 43, 43, 0.15);
+            border-bottom: 1px solid rgba(43, 43, 43, 0.15);
+        }
+
+        .themes-title {
+            font-family: var(--display);
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
             text-align: center;
+            margin-bottom: 0.5rem;
         }
-        
-        .footer-links {
-            margin-bottom: 2rem;
-        }
-        
-        .footer-links a {
+
+        .themes-intro {
             font-family: var(--mono);
             font-size: 0.85rem;
-            color: var(--text);
-            text-decoration: none;
-            display: inline;
-            margin: 0 1rem;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--warm-gray);
+            text-align: center;
+            margin-bottom: 3rem;
         }
-        
-        .footer-links a:hover {
-            color: var(--vol1);
-            border-bottom-color: var(--vol1);
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        .tagline {
+
+        .theme-card {
+            padding: 2rem;
+            background: var(--cream);
+            border-left: 3px solid var(--terracotta);
+            transition: all 0.3s ease;
+        }
+
+        .theme-card:hover {
+            background: var(--sand);
+            transform: translateX(4px);
+        }
+
+        .theme-card h3 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--charcoal);
+        }
+
+        .theme-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--warm-gray);
+            margin: 0;
+        }
+
+        /* Latest Issue Section */
+        .latest-issue-section {
+            margin: 6rem 0 8rem;
+        }
+
+        .latest-header {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: var(--terracotta);
+            color: var(--ivory);
+            padding: 0.4rem 1rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .latest-header h2 {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .latest-description {
+            font-size: 1.05rem;
+            color: var(--warm-gray);
+            max-width: 65ch;
+        }
+
+        .featured-issue {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--cream);
+            border: 3px solid var(--charcoal);
+            padding: 3rem;
+        }
+
+        .issue-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
             font-family: var(--mono);
             font-size: 0.8rem;
-            color: var(--muted);
-            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--warm-gray);
         }
-        
+
+        .issue-number {
+            color: var(--terracotta);
+            font-weight: 500;
+        }
+
+        .issue-title {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .issue-subtitle {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--warm-gray);
+            margin-bottom: 2rem;
+        }
+
+        .issue-highlights {
+            margin: 2rem 0 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .highlight-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .issue-formats {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .format-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border: 2px solid var(--charcoal);
+            background: transparent;
+            color: var(--charcoal);
+            text-decoration: none;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .format-link.primary {
+            background: var(--charcoal);
+            color: var(--ivory);
+        }
+
+        .format-link.primary:hover {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+
+        .format-link:not(.primary):hover {
+            background: var(--charcoal);
+            color: var(--ivory);
+        }
+
+        .format-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Magazine Cover */
+        .magazine-cover {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--terracotta), #d88a74);
+            border: 3px solid var(--charcoal);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 12px 12px 0 rgba(43, 43, 43, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magazine-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(43, 43, 43, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .cover-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .cover-issue {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        .cover-title {
+            font-family: var(--display);
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--charcoal);
+            position: relative;
+            z-index: 1;
+            margin: auto 0;
+        }
+
+        .cover-themes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-tag {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.4rem 0.8rem;
+            background: rgba(43, 43, 43, 0.2);
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            background: var(--charcoal);
+            color: var(--ivory);
+            padding: 5rem 4rem;
+            margin: 6rem -4rem;
+            text-align: center;
+        }
+
+        .subscribe-section h2 {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .subscribe-section p {
+            max-width: 60ch;
+            margin: 0 auto 2.5rem;
+            color: var(--cream);
+        }
+
+        .subscribe-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .subscribe-form form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--ivory);
+            background: transparent;
+            color: var(--ivory);
+            font-family: var(--mono);
+            font-size: 0.9rem;
+        }
+
+        .subscribe-form input::placeholder {
+            color: var(--warm-gray);
+        }
+
+        .subscribe-form button {
+            padding: 1rem 2rem;
+            background: var(--terracotta);
+            color: var(--ivory);
+            border: 2px solid var(--terracotta);
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-form button:hover {
+            background: transparent;
+            color: var(--terracotta);
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 65ch;
+            margin: 6rem auto;
+            line-height: 1.8;
+        }
+
+        .about-section h2 {
+            font-family: var(--display);
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .about-section p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(43, 43, 43, 0.2);
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+        }
+
+        footer a {
+            color: var(--terracotta);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.7;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1.5rem 4rem;
+            header {
+                padding: 1rem 2rem;
             }
-            
-            h1 {
-                font-size: 1.5rem;
+
+            nav a {
+                margin-left: 1.5rem;
+                font-size: 0.8rem;
             }
-            
-            .theme-grid {
+
+            main {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .featured-issue {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
             }
-            
-            .volume-meta {
+
+            .featured-cover {
+                order: -1;
+            }
+
+            .magazine-cover {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .issue-formats {
                 flex-direction: column;
-                gap: 0.5rem;
+            }
+
+            .format-link {
+                justify-content: center;
+            }
+
+            .bookshelf {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 2rem;
+            }
+
+            .subscribe-section {
+                margin: 4rem -2rem;
+                padding: 3rem 2rem;
+            }
+
+            .subscribe-form form {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-link">← back to dialogos labs</a>
-        
-        <header>
-            <h1>mettadology archives</h1>
-            <p class="subtitle">curation across AI/ML, creative technology, philosophy, and practice</p>
-            <p class="meta">archival volumes of 2025 · curated by sarah khalid</p>
-        </header>
-
-        <div class="intro">
-            <p>this is an archived series of work that sits at the intersection of technical implementations and contemplative practice. links that made me think differently about alignment, embodiment, infrastructure, and community.</p>
-            
-            <p>each volume follows a thread: starting with a question, weaving through research and practice, ending with synthesis. these aren't comprehensive surveys. they're curated perspectives on what it means to build technology consciously.</p>
-            
-            <p><strong>mettadology = methodology + metta (loving-kindness)</strong></p>
-        </div>
-
-        <div class="volumes">
-            <a href="vol1.html" class="volume-card vol1">
-                <div class="volume-number">archive vol. 1</div>
-                <h2 class="volume-title">on alignment</h2>
-                <p class="volume-subtitle">how psychological alignment mirrors AI alignment</p>
-                <p class="volume-description">both AI systems and humans face the same fundamental problem: how do you remain aligned with your actual values while operating in an environment that constantly pressures you to optimize for something else?</p>
-                <div class="volume-meta">
-                    <span>12 links</span>
-                    <span>12 minute read</span>
-                    <span>reward hacking · mesa-optimization · inner work</span>
-                </div>
-            </a>
-
-            <a href="vol2.html" class="volume-card vol2">
-                <div class="volume-number">archive vol. 2</div>
-                <h2 class="volume-title">embodied systems</h2>
-                <p class="volume-subtitle">why consciousness requires physical grounding</p>
-                <p class="volume-description">the body isn't just the vehicle for the brain—it's part of the cognitive system itself. consciousness requires physical grounding, and the most interesting technology is bringing computation back into the body.</p>
-                <div class="volume-meta">
-                    <span>10 links</span>
-                    <span>10 minute read</span>
-                    <span>voice interfaces · local-first · somatic practice</span>
-                </div>
-            </a>
-
-            <a href="vol3.html" class="volume-card vol3">
-                <div class="volume-number">archive vol. 3</div>
-                <h2 class="volume-title">creative infrastructure</h2>
-                <p class="volume-subtitle">building technology as spiritual practice</p>
-                <p class="volume-description">technology can be devotional. building can be meditation. entrepreneurship can be spiritual practice. the infrastructure we build shapes what's possible for ourselves and others.</p>
-                <div class="volume-meta">
-                    <span>12 links</span>
-                    <span>11 minute read</span>
-                    <span>indie web · digital gardens · conscious business</span>
-                </div>
-            </a>
-
-            <a href="vol4.html" class="volume-card vol4">
-                <div class="volume-number">archive vol. 4</div>
-                <h2 class="volume-title">networked wisdom</h2>
-                <p class="volume-subtitle">collective intelligence and conscious community</p>
-                <p class="volume-description">intelligence is fundamentally relational. the most sophisticated intelligence—both human and artificial—will be networked, collaborative, emergent. we think together or we don't think at all.</p>
-                <div class="volume-meta">
-                    <span>10 links</span>
-                    <span>10 minute read</span>
-                    <span>open source · sangha · multi-agent systems</span>
-                </div>
-            </a>
-
-            <a href="vol5.html" class="volume-card vol5">
-                <div class="volume-number">archive vol. 5</div>
-                <h2 class="volume-title">integrated being</h2>
-                <p class="volume-subtitle">living without fragmentation</p>
-                <p class="volume-description">bringing it all together: alignment, embodiment, infrastructure, and community as one integrated practice. the possibility of living without fragmentation.</p>
-                <div class="volume-meta">
-                    <span>capstone synthesis</span>
-                    <span>13 minute read</span>
-                    <span>integration · wholeness · undivided life</span>
-                </div>
-            </a>
-        </div>
-
-        <div class="themes-section">
-            <h2>connecting values across volumes</h2>
-            <div class="theme-grid">
-                <div class="theme-item vol1">
-                    <div class="theme-title">alignment as practice</div>
-                    <p class="theme-desc">technical and psychological alignment require the same work: observation, understanding, slow modification</p>
-                </div>
-                
-                <div class="theme-item vol2">
-                    <div class="theme-title">embodiment matters</div>
-                    <p class="theme-desc">consciousness isn't abstract—it's grounded in breath, movement, physical presence</p>
-                </div>
-                
-                <div class="theme-item vol3">
-                    <div class="theme-title">infrastructure as values</div>
-                    <p class="theme-desc">the systems we build reveal what we actually care about, not what we say we care about</p>
-                </div>
-                
-                <div class="theme-item vol4">
-                    <div class="theme-title">intelligence is relational</div>
-                    <p class="theme-desc">wisdom emerges from connection, collaboration, conscious community</p>
-                </div>
-                
-                <div class="theme-item vol1">
-                    <div class="theme-title">inner work = outer work</div>
-                    <p class="theme-desc">personal transformation and building better systems are the same project</p>
-                </div>
-                
-                <div class="theme-item vol2">
-                    <div class="theme-title">constraints as creativity</div>
-                    <p class="theme-desc">limitations force decisions that reveal values and create coherence</p>
-                </div>
-                
-                <div class="theme-item vol3">
-                    <div class="theme-title">slowness as advantage</div>
-                    <p class="theme-desc">sustainable infrastructure outlasts extractive scaling</p>
-                </div>
-                
-                <div class="theme-item vol4">
-                    <div class="theme-title">community as practice</div>
-                    <p class="theme-desc">individual growth requires collective containers</p>
-                </div>
+    <!-- Intro Animation -->
+    <div class="intro-sequence" id="introSequence">
+        <div class="intro-graphic">
+            <div class="book-stack">
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
             </div>
         </div>
-
-        <footer>
-            <div class="footer-links">
-                <a href="https://mettadology.substack.com" target="_blank">subscribe</a>
-            </div>
-
-            <div class="tagline">
-                <p><em>mettadology = methodology + metta (loving-kindness)</em></p>
-                <p>curated with care by sarah khalid in montreal</p>
-            </div>
-        </footer>
+        <div class="intro-title">Mettadology</div>
     </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Mettadology</div>
+        <nav>
+            <a href="#latest">Latest</a>
+            <a href="#archives">Archives</a>
+            <a href="#subscribe">Subscribe</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="tagline">Creative Web & Philosophical AI</div>
+            <h1>Curated Wisdoms<br>from the Intersection</h1>
+            <p class="description">
+                A monthly synthesis of AI/ML product management, creative technology, 
+                and contemplative practice.
+            </p>
+            <div class="definition">
+                <em>mettadology (n.)</em> — methodology + metta (loving-kindness meditation); 
+                examining not just what we build, but how we build and why we build it
+            </div>
+        </div>
+
+        <!-- Latest Issue - Featured -->
+        <section id="latest" class="latest-issue-section">
+            <div class="latest-header">
+                <div class="new-badge">NEW</div>
+                <h2>Latest Issue</h2>
+                <p class="latest-description">
+                    The monthly synthesis format launches January 2026. Each issue explores 
+                    current developments in AI/ML through the lens of conscious practice.
+                </p>
+            </div>
+
+            <div class="featured-issue">
+                <div class="featured-content">
+                    <div class="issue-meta">
+                        <span class="issue-number">Issue 001</span>
+                        <span class="issue-date">December 2025</span>
+                    </div>
+                    <h3 class="issue-title">The Conscious Technologist's Manifesto</h3>
+                    <p class="issue-subtitle">
+                        AI-empowered PMs are building, the poetic web renaissance, 
+                        and why technical sovereignty matters now
+                    </p>
+                    <div class="issue-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🚀</span>
+                            <span>Claude Projects + Cursor = 10x PM agency</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🌐</span>
+                            <span>HTML Energy & the return to hand-crafted web</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🧘</span>
+                            <span>AI alignment through contemplative practice</span>
+                        </div>
+                    </div>
+                    <div class="issue-formats">
+                        <a href="december-2025.html" class="format-link primary">
+                            <span class="format-icon">📖</span>
+                            <span>Read Full Synthesis</span>
+                        </a>
+                        <a href="december-2025-quick.html" class="format-link">
+                            <span class="format-icon">⚡</span>
+                            <span>Quick Hits</span>
+                        </a>
+                        <a href="december-2025-poetic.html" class="format-link">
+                            <span class="format-icon">✨</span>
+                            <span>Poetic Web</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="featured-cover">
+                    <div class="magazine-cover">
+                        <div class="cover-header">
+                            <div class="cover-logo">METTADOLOGY</div>
+                            <div class="cover-issue">Issue 001 · December 2025</div>
+                        </div>
+                        <div class="cover-title">The Conscious<br>Technologist's<br>Manifesto</div>
+                        <div class="cover-themes">
+                            <div class="theme-tag">AI × PM</div>
+                            <div class="theme-tag">Poetic Web</div>
+                            <div class="theme-tag">Practice</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bookshelf Section -->
+        <section id="archives" class="bookshelf-container">
+            <div class="shelf-header">
+                <h2>The Archives</h2>
+                <p class="shelf-description">
+                    Five thematic collections revealing the connections across ten months 
+                    of curation (February–November 2025). Each volume explores a different 
+                    facet of building conscious AI systems.
+                </p>
+            </div>
+
+            <div class="bookshelf">
+                <!-- Volume 1 -->
+                <a href="vol1.html" class="book-card">
+                    <div class="book-cover">
+                        <div>
+                            <div class="vol-number">Volume I</div>
+                            <h3 class="book-title">On Alignment</h3>
+                            <p class="book-subtitle">How psychological alignment mirrors AI alignment</p>
+                        </div>
+                        <div class="book-meta">
+                            <span>12 links</span>
+                            <span>•</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                    <div class="book-spine">Feb–Nov 2025 • Available Now</div>
+                </a>
+
+                <!-- Volume 2 -->
+                <a href="vol2.html" class="book-card">
+                    <div class="book-cover">
+                        <div>
+                            <div class="vol-number">Volume II</div>
+                            <h3 class="book-title">Embodied Systems</h3>
+                            <p class="book-subtitle">Why consciousness requires physical grounding</p>
+                        </div>
+                        <div class="book-meta">
+                            <span>10 links</span>
+                            <span>•</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                    <div class="book-spine">Feb–Nov 2025 • Available Now</div>
+                </a>
+
+                <!-- Volume 3 -->
+                <a href="vol3.html" class="book-card">
+                    <div class="book-cover">
+                        <div>
+                            <div class="vol-number">Volume III</div>
+                            <h3 class="book-title">Creative Infrastructure</h3>
+                            <p class="book-subtitle">Building technology as spiritual practice</p>
+                        </div>
+                        <div class="book-meta">
+                            <span>11 links</span>
+                            <span>•</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                    <div class="book-spine">Feb–Nov 2025 • Available Now</div>
+                </a>
+
+                <!-- Volume 4 -->
+                <a href="vol4.html" class="book-card">
+                    <div class="book-cover">
+                        <div>
+                            <div class="vol-number">Volume IV</div>
+                            <h3 class="book-title">Horizontal Networks</h3>
+                            <p class="book-subtitle">Why flat structures enable intelligence</p>
+                        </div>
+                        <div class="book-meta">
+                            <span>9 links</span>
+                            <span>•</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                    <div class="book-spine">Feb–Nov 2025 • Available Now</div>
+                </a>
+
+                <!-- Volume 5 -->
+                <a href="vol5.html" class="book-card">
+                    <div class="book-cover">
+                        <div>
+                            <div class="vol-number">Volume V</div>
+                            <h3 class="book-title">Presence in Production</h3>
+                            <p class="book-subtitle">Shipping AI systems while staying human</p>
+                        </div>
+                        <div class="book-meta">
+                            <span>10 links</span>
+                            <span>•</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                    <div class="book-spine">Feb–Nov 2025 • Available Now</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Core Themes Overview -->
+        <div class="themes-section">
+            <h2 class="themes-title">Connecting Themes Across Volumes</h2>
+            <p class="themes-intro">Eight principles that emerge across all five archives</p>
+            
+            <div class="themes-grid">
+                <div class="theme-card">
+                    <h3>Alignment as Practice</h3>
+                    <p>Technical and psychological alignment require the same work: observation, understanding, slow modification</p>
+                </div>
+
+                <div class="theme-card">
+                    <h3>Embodiment Matters</h3>
+                    <p>Consciousness isn't abstract—it's grounded in breath, movement, physical presence</p>
+                </div>
+
+                <div class="theme-card">
+                    <h3>Infrastructure as Values</h3>
+                    <p>The systems we build reveal what we actually care about, not what we say we care about</p>
+                </div>
+
+                <div class="theme-card">
+                    <h3>Intelligence is Relational</h3>
+                    <p>Wisdom emerges from connection, collaboration, conscious community</p>
+                </div>
+
+                <div class="theme-card">
+                    <h3>Inner Work = Outer Work</h3>
+                    <p>Personal transformation and building better systems are the same project</p>
+                </div>
+
+                <div class="theme-card">
+                    <h3>Constraints as Creativity</h3>
+                    <p>Limitations force decisions that reveal values and create coherence</p>
+                </div>
+
+                <div class="theme-card">
+                    <h3>Slowness as Advantage</h3>
+                    <p>Sustainable infrastructure outlasts extractive scaling</p>
+                </div>
+
+                <div class="theme-card">
+                    <h3>Community as Practice</h3>
+                    <p>Individual growth requires collective containers</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscribe Section -->
+        <section id="subscribe" class="subscribe-section">
+            <h2>Subscribe for Monthly Collections</h2>
+            <p>
+                Starting January 2026, monthly curations at the intersection of AI, 
+                creative technology, and contemplative practice. No spam. Occasional deep dives. 
+                Unsubscribe anytime.
+            </p>
+            <div class="subscribe-form">
+                <form action="https://mettadology.substack.com/subscribe" method="post" target="_blank">
+                    <input type="email" name="email" placeholder="your@email.com" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2>About</h2>
+            <p>
+                I'm Sarah Khalid, a senior AI/ML product manager building production ML systems 
+                in healthcare. Biology degree → six strategic transitions → AI/ML leadership. 
+                I've never applied externally for a PM role.
+            </p>
+            <p>
+                My work sits at the intersection of technical AI development, creative technology, 
+                and contemplative practice. I'm interested in building AI systems that enhance 
+                rather than replace human potential.
+            </p>
+            <p>
+                Currently: shipping AI agents for healthcare teams, building voice-to-zine pipelines, 
+                writing essays on alignment (both kinds), and exploring what conscious AI development 
+                actually means in practice.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>Explore:</strong> <a href="https://dialogoslabs.xyz">dialogoslabs.xyz</a> — creative technology studio</p>
+            <p><strong>Connect:</strong> <a href="https://linkedin.com/in/sarkhalid">LinkedIn</a> · <a href="https://x.com/sarahkhalid">X</a> · <a href="https://are.na/sarah-khalid">Are.na</a></p>
+            <p style="margin-top: 2rem;">© 2025 Sarah Khalid · Built with care in Toronto</p>
+        </footer>
+    </main>
+
+    <script>
+        // Hide intro sequence while books are still rotating smoothly
+        setTimeout(() => {
+            document.getElementById('introSequence').classList.add('hidden');
+        }, 5000); // Books rotate continuously, fade happens mid-rotation for smooth effect
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
