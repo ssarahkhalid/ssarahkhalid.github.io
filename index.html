@@ -35,15 +35,11 @@ top: 50%;
 transform: translate(-50%, -50%);
 width: 410px;
 height: 520px;
-max-width: 90vw;
-max-height: 90vh;
 }
  
 #container{
 width: 300px;
 height: 500px;
-max-width: calc(100% - 20px);
-max-height: calc(100% - 20px);
 background-color: #fff;
     opacity: 1.0;
 padding: 10px;
@@ -120,63 +116,6 @@ background-color: transparent;
  
 ::-webkit-scrollbar-thumb{
 background-color: #434750;  
-}
-
-/* Mobile responsive styles */
-@media (max-width: 768px) {
-  #all {
-    width: 90vw;
-    height: auto;
-    max-height: 85vh;
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    margin: 60px auto 20px;
-  }
-
-  #container {
-    width: 100%;
-    height: auto;
-    max-height: calc(85vh - 20px);
-  }
-
-  #header {
-    height: 60px;
-  }
-
-  #header h1 {
-    font-size: 32px;
-  }
-
-  #content {
-    height: auto;
-    max-height: 40vh;
-    min-height: 200px;
-  }
-
-  #content p {
-    font-size: 10px;
-  }
-
-  #bottom {
-    height: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  #all {
-    width: 95vw;
-    margin: 50px auto 15px;
-  }
-
-  #header h1 {
-    font-size: 28px;
-  }
-
-  #content p {
-    font-size: 9px;
-  }
 }
 
 /* Topnav is now visible with hamburger menu */
