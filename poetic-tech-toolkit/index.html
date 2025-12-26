@@ -104,6 +104,54 @@ h1 {
   color: #faf7f2;
 }
 
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 1.5rem;
+    margin-top: 50px;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 7vw, 2.75rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .description {
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    margin-bottom: 2rem;
+  }
+
+  .coming-soon {
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  }
+
+  .follow-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .follow-link {
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    padding: 0.65rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 1rem;
+    margin-top: 48px;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 9vw, 2.25rem);
+  }
+
+  .description {
+    font-size: clamp(0.9rem, 4vw, 1rem);
+    padding: 0 0.5rem;
+  }
+}
+
 </style>
  
 </head>

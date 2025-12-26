@@ -192,6 +192,16 @@
             letter-spacing: 0.02em;
         }
 
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
         nav a {
             color: var(--charcoal);
             text-decoration: none;
@@ -205,6 +215,23 @@
         }
 
         nav a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--charcoal);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
             color: var(--terracotta);
         }
 
@@ -379,7 +406,7 @@
             margin-top: 1.5rem;
             font-family: var(--mono);
             font-size: 0.75rem;
-            color: var(--warm-gray);
+            color: var(--charcoal);
         }
 
         .coming-soon {
@@ -797,22 +824,66 @@
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                padding: 1rem 2rem;
+                padding: 1rem 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                margin-top: 1rem;
+            }
+
+            nav.mobile-open {
+                max-height: 400px;
             }
 
             nav a {
-                margin-left: 1.5rem;
-                font-size: 0.8rem;
+                margin-left: 0;
+                margin-top: 0.75rem;
+                font-size: 0.85rem;
+                padding: 0.5rem 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(43, 43, 43, 0.1);
+            }
+
+            nav a:first-child {
+                margin-top: 0;
             }
 
             main {
-                padding: 8rem 2rem 4rem;
+                padding: 6rem 1rem 3rem;
+            }
+
+            .page-header {
+                margin-bottom: 3rem;
+            }
+
+            .page-header h1 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .page-header .description {
+                font-size: 1rem;
+                padding: 0 0.5rem;
             }
 
             .featured-issue {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-                padding: 2rem;
+                padding: 1.5rem;
             }
 
             .featured-cover {
@@ -820,8 +891,12 @@
             }
 
             .magazine-cover {
-                max-width: 300px;
+                max-width: 100%;
                 margin: 0 auto;
+            }
+
+            .issue-title {
+                font-size: 1.8rem;
             }
 
             .issue-formats {
@@ -830,20 +905,89 @@
 
             .format-link {
                 justify-content: center;
+                width: 100%;
             }
 
             .bookshelf {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
+            .book-cover {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .book-cover .book-title {
+                font-size: 1.5rem;
+            }
+
+            .themes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .theme-card {
+                padding: 1.5rem;
+            }
+
             .subscribe-section {
-                margin: 4rem -2rem;
-                padding: 3rem 2rem;
+                margin: 4rem -1rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .subscribe-section h2 {
+                font-size: 2rem;
             }
 
             .subscribe-form form {
                 flex-direction: column;
+            }
+
+            .subscribe-form input,
+            .subscribe-form button {
+                width: 100%;
+            }
+
+            .shelf-header h2 {
+                font-size: 2rem;
+            }
+
+            .latest-header h2 {
+                font-size: 2rem;
+            }
+
+            .about-section {
+                padding: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            main {
+                padding: 5rem 0.75rem 2rem;
+            }
+
+            .page-header h1 {
+                font-size: clamp(1.75rem, 10vw, 2.5rem);
+            }
+
+            .intro-graphic {
+                width: min(300px, 80vw);
+                height: min(300px, 80vw);
+            }
+
+            .book {
+                width: 140px;
+                height: 25px;
+                margin-left: -70px;
+                font-size: 0.55rem;
             }
         }
     </style>
@@ -865,8 +1009,9 @@
 
     <!-- Header -->
     <header>
-        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">Mettadology</a></div>
-        <nav>
+        <div class="logo"><a href="../index.html">Mettadology</a></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+        <nav id="mainNav">
             <a href="#latest">Latest</a>
             <a href="#archives">Archives</a>
             <a href="#subscribe">Subscribe</a>
@@ -915,30 +1060,24 @@
                     </p>
                     <div class="issue-highlights">
                         <div class="highlight-item">
-                            <span class="highlight-icon">🚀</span>
                             <span>Claude Projects + Cursor = 10x PM agency</span>
                         </div>
                         <div class="highlight-item">
-                            <span class="highlight-icon">🌐</span>
                             <span>HTML Energy & the return to hand-crafted web</span>
                         </div>
                         <div class="highlight-item">
-                            <span class="highlight-icon">🧘</span>
                             <span>AI alignment through contemplative practice</span>
                         </div>
                     </div>
                     <div class="issue-formats">
                         <a href="december-2025.html" class="format-link primary">
-                            <span class="format-icon">📖</span>
                             <span>Read Full Synthesis</span>
                         </a>
                         <a href="december-2025-quick.html" class="format-link">
-                            <span class="format-icon">⚡</span>
-                            <span>Quick Hits</span>
+                            <span>Resources Only</span>
                         </a>
                         <a href="december-2025-poetic.html" class="format-link">
-                            <span class="format-icon">✨</span>
-                            <span>Poetic Web</span>
+                            <span>Creative Web Version</span>
                         </a>
                     </div>
                 </div>
@@ -1116,7 +1255,6 @@
             </p>
             <div class="subscribe-form">
                 <a href="https://mettadology.substack.com/subscribe" target="_blank" class="format-link primary" style="display: inline-flex; text-decoration: none;">
-                    <span class="format-icon">📧</span>
                     <span>Subscribe on Substack</span>
                 </a>
             </div>
@@ -1155,6 +1293,30 @@
         setTimeout(() => {
             document.getElementById('introSequence').classList.add('hidden');
         }, 5000); // Books rotate continuously, fade happens mid-rotation for smooth effect
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('mobile-open');
+                // Change icon
+                if (mainNav.classList.contains('mobile-open')) {
+                    menuToggle.textContent = '✕';
+                } else {
+                    menuToggle.textContent = '☰';
+                }
+            });
+
+            // Close menu when clicking on a link
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('mobile-open');
+                    menuToggle.textContent = '☰';
+                });
+            });
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

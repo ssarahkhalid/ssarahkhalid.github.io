@@ -70,3 +70,40 @@
 body {
   padding-top: 50px;
 }
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .topnav {
+    padding: 0;
+  }
+
+  .topnav a {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .topnav .icon {
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+
+  body {
+    padding-top: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topnav a {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+
+  .topnav .icon {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  body {
+    padding-top: 46px;
+  }
+}
