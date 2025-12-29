@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mettadology — Creative Web & Philosophical AI</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../android-chrome-512x512.png">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -60,6 +63,11 @@
             pointer-events: none;
         }
 
+        .intro-sequence.clickable .intro-graphic,
+        .intro-sequence.clickable .intro-title {
+            cursor: pointer;
+        }
+
         .intro-graphic {
             width: min(400px, 70vw);
             height: min(400px, 70vw);
@@ -72,12 +80,40 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            animation: rotateStackContinuous 6s ease-in-out infinite;
+            animation: rotateStackContinuous 3s ease-in-out infinite;
         }
 
         @keyframes rotateStackContinuous {
             0% { transform: rotateX(-20deg) rotateY(0deg); }
             100% { transform: rotateX(-20deg) rotateY(360deg); }
+        }
+
+        .intro-sequence.clickable {
+            cursor: pointer;
+        }
+
+        .intro-sequence.transitioning {
+            animation: fadeToHeader 1.2s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fadeToHeader {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(calc(-50vw + 2rem), calc(-50vh + 1.5rem)) scale(0.12);
+                visibility: hidden;
+            }
+        }
+
+        /* Override animations when skipping intro */
+        header.skip-intro,
+        main.skip-intro {
+            opacity: 1 !important;
+            animation: none !important;
         }
 
         .book {
@@ -156,7 +192,7 @@
             font-style: italic;
             color: var(--charcoal);
             opacity: 0;
-            animation: fadeInTitle 1s ease-out 1.5s forwards;
+            animation: fadeInTitle 1s ease-out 0.8s forwards;
         }
 
         @keyframes fadeInTitle {
@@ -178,7 +214,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(43, 43, 43, 0.1);
             opacity: 0;
-            animation: fadeInHeader 0.8s ease-out 5.5s forwards;
+            animation: fadeInHeader 0.8s ease-out 2.5s forwards;
         }
 
         @keyframes fadeInHeader {
@@ -243,7 +279,7 @@
             margin: 0 auto;
             padding: 10rem 4rem 6rem;
             opacity: 0;
-            animation: fadeInMain 1s ease-out 5.8s forwards;
+            animation: fadeInMain 1s ease-out 2.8s forwards;
         }
 
         @keyframes fadeInMain {
@@ -996,7 +1032,7 @@
 </head>
 <body>
     <!-- Intro Animation -->
-    <div class="intro-sequence" id="introSequence">
+    <div class="intro-sequence clickable" id="introSequence">
         <div class="intro-graphic">
             <div class="book-stack">
                 <div class="book"></div>
@@ -1292,9 +1328,34 @@
 
     <script>
         // Hide intro sequence while books are still rotating smoothly
+        const introSequence = document.getElementById('introSequence');
+        const header = document.querySelector('header');
+        const main = document.querySelector('main');
+        
+        // Make intro clickable to skip intro and show content immediately
+        introSequence.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Add transition animation
+            introSequence.classList.add('transitioning');
+            // Show header and main content immediately
+            if (header) {
+                header.classList.add('skip-intro');
+            }
+            if (main) {
+                main.classList.add('skip-intro');
+            }
+            // Hide intro after transition
+            setTimeout(() => {
+                introSequence.classList.add('hidden');
+            }, 1200);
+        });
+
+        // Auto-hide after shorter duration
         setTimeout(() => {
-            document.getElementById('introSequence').classList.add('hidden');
-        }, 5000); // Books rotate continuously, fade happens mid-rotation for smooth effect
+            if (!introSequence.classList.contains('transitioning')) {
+                introSequence.classList.add('hidden');
+            }
+        }, 2500); // Faster fade out
 
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
