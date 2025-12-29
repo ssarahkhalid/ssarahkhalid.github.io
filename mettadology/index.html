@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mettadology newsletter - creative web & philosophical AI</title>
+    <title>mettadology — a quarterly journal of creative web & philosophical AI</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
@@ -135,6 +135,7 @@
             text-transform: lowercase;
         }
 
+        /* 5 books - aesthetic element */
         .book:nth-child(1) {
             transform: translateZ(60px) translateY(-45px);
             background: var(--terracotta);
@@ -291,6 +292,15 @@
             margin-bottom: 5rem;
         }
 
+        .page-header .journal-label {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--terracotta);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
         .page-header h1 {
             font-family: var(--display);
             font-size: clamp(3rem, 5vw, 4.5rem);
@@ -326,7 +336,127 @@
             margin-bottom: 3rem;
         }
 
-        /* Bookshelf Section - Stripe Press Inspired */
+        /* Welcome Section */
+        .welcome-section {
+            margin: 4rem 0 6rem;
+            padding: 4rem;
+            background: var(--cream);
+            border: 3px solid var(--charcoal);
+        }
+
+        .welcome-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-badge {
+            display: inline-block;
+            background: var(--terracotta);
+            color: var(--ivory);
+            padding: 0.4rem 1rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        .welcome-date {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .welcome-section h2 {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .welcome-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .welcome-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .welcome-sidebar {
+            background: var(--ivory);
+            padding: 2rem;
+            border-left: 3px solid var(--terracotta);
+        }
+
+        .sidebar-title {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .upcoming-list {
+            list-style: none;
+        }
+
+        .upcoming-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--sand);
+            font-size: 0.95rem;
+        }
+
+        .upcoming-list li:last-child {
+            border-bottom: none;
+        }
+
+        .upcoming-list .date {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--terracotta);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .welcome-cta {
+            margin-top: 2rem;
+        }
+
+        .welcome-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--charcoal);
+            color: var(--ivory);
+            text-decoration: none;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .welcome-cta a:hover {
+            background: var(--terracotta);
+        }
+
+        /* Bookshelf Section - Founding Collection */
         .bookshelf-container {
             margin: 6rem auto;
         }
@@ -349,9 +479,29 @@
             max-width: 65ch;
         }
 
+        .collection-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+        }
+
+        .collection-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .collection-stats .number {
+            color: var(--terracotta);
+            font-weight: 500;
+        }
+
         .bookshelf {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
             margin: 4rem 0;
             perspective: 1000px;
@@ -399,14 +549,6 @@
             background: linear-gradient(135deg, #e8dcc8, #f0e6d6);
         }
 
-        .book-card:nth-child(4) .book-cover {
-            background: linear-gradient(135deg, #867d72, #9c9489);
-        }
-
-        .book-card:nth-child(5) .book-cover {
-            background: linear-gradient(135deg, #f4ede4, #faf7f2);
-        }
-
         .book-cover .vol-number {
             font-family: var(--mono);
             font-size: 0.75rem;
@@ -445,32 +587,6 @@
             font-family: var(--mono);
             font-size: 0.75rem;
             color: var(--charcoal);
-        }
-
-        .coming-soon {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .coming-soon:hover {
-            transform: none;
-        }
-
-        .coming-soon .book-cover {
-            filter: grayscale(0.3);
-        }
-
-        .coming-soon-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--charcoal);
-            color: var(--ivory);
-            padding: 0.3rem 0.7rem;
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         /* Core Themes Overview */
@@ -535,221 +651,6 @@
             margin: 0;
         }
 
-        /* Latest Issue Section */
-        .latest-issue-section {
-            margin: 6rem 0 8rem;
-        }
-
-        .latest-header {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .new-badge {
-            display: inline-block;
-            background: var(--terracotta);
-            color: var(--ivory);
-            padding: 0.4rem 1rem;
-            font-family: var(--mono);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .latest-header h2 {
-            font-family: var(--display);
-            font-size: 2.5rem;
-            font-weight: 400;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .latest-description {
-            font-size: 1.05rem;
-            color: var(--warm-gray);
-            max-width: 65ch;
-        }
-
-        .featured-issue {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            background: var(--cream);
-            border: 3px solid var(--charcoal);
-            padding: 3rem;
-        }
-
-        .issue-meta {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--warm-gray);
-        }
-
-        .issue-number {
-            color: var(--terracotta);
-            font-weight: 500;
-        }
-
-        .issue-title {
-            font-family: var(--display);
-            font-size: 2.5rem;
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .issue-subtitle {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: var(--warm-gray);
-            margin-bottom: 2rem;
-        }
-
-        .issue-highlights {
-            margin: 2rem 0 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .highlight-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .highlight-icon {
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        .issue-formats {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .format-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 1.5rem;
-            border: 2px solid var(--charcoal);
-            background: transparent;
-            color: var(--charcoal);
-            text-decoration: none;
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-        }
-
-        .format-link.primary {
-            background: var(--charcoal);
-            color: var(--ivory);
-        }
-
-        .format-link.primary:hover {
-            background: var(--terracotta);
-            border-color: var(--terracotta);
-        }
-
-        .format-link:not(.primary):hover {
-            background: var(--charcoal);
-            color: var(--ivory);
-        }
-
-        .format-icon {
-            font-size: 1.1rem;
-        }
-
-        /* Magazine Cover */
-        .magazine-cover {
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, var(--terracotta), #d88a74);
-            border: 3px solid var(--charcoal);
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 12px 12px 0 rgba(43, 43, 43, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .magazine-cover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(43, 43, 43, 0.1) 100%);
-            pointer-events: none;
-        }
-
-        .cover-header {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cover-logo {
-            font-family: var(--display);
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-            color: var(--charcoal);
-        }
-
-        .cover-issue {
-            font-family: var(--mono);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--charcoal);
-            opacity: 0.8;
-        }
-
-        .cover-title {
-            font-family: var(--display);
-            font-size: 2rem;
-            font-weight: 400;
-            line-height: 1.1;
-            color: var(--charcoal);
-            position: relative;
-            z-index: 1;
-            margin: auto 0;
-        }
-
-        .cover-themes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .theme-tag {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 0.4rem 0.8rem;
-            background: rgba(43, 43, 43, 0.2);
-            color: var(--charcoal);
-            border: 1px solid var(--charcoal);
-        }
-
         /* Subscribe Section */
         .subscribe-section {
             background: var(--charcoal);
@@ -773,46 +674,46 @@
             color: var(--cream);
         }
 
+        .subscribe-section .cadence {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
         .subscribe-form {
             max-width: 500px;
             margin: 0 auto;
         }
 
-        .subscribe-form form {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .subscribe-form input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: 2px solid var(--ivory);
-            background: transparent;
-            color: var(--ivory);
-            font-family: var(--mono);
-            font-size: 0.9rem;
-        }
-
-        .subscribe-form input::placeholder {
-            color: var(--warm-gray);
-        }
-
-        .subscribe-form button {
-            padding: 1rem 2rem;
+        .subscribe-form a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
             background: var(--terracotta);
             color: var(--ivory);
-            border: 2px solid var(--terracotta);
+            text-decoration: none;
             font-family: var(--mono);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid var(--terracotta);
         }
 
-        .subscribe-form button:hover {
+        .subscribe-form a:hover {
             background: transparent;
             color: var(--terracotta);
+        }
+
+        .next-edition {
+            margin-top: 2rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--warm-gray);
         }
 
         /* About Section */
@@ -859,7 +760,21 @@
             margin-bottom: 0.5rem;
         }
 
+        .footer-tagline {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            margin-top: 1.5rem;
+        }
+
         /* Responsive */
+        @media (max-width: 1024px) {
+            .bookshelf {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 1rem 1.5rem;
@@ -918,32 +833,18 @@
                 padding: 0 0.5rem;
             }
 
-            .featured-issue {
+            .welcome-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .welcome-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-                padding: 1.5rem;
             }
 
-            .featured-cover {
-                order: -1;
-            }
-
-            .magazine-cover {
-                max-width: 100%;
-                margin: 0 auto;
-            }
-
-            .issue-title {
-                font-size: 1.8rem;
-            }
-
-            .issue-formats {
-                flex-direction: column;
-            }
-
-            .format-link {
-                justify-content: center;
-                width: 100%;
+            .welcome-sidebar {
+                border-left: none;
+                border-top: 3px solid var(--terracotta);
             }
 
             .bookshelf {
@@ -977,21 +878,13 @@
                 font-size: 2rem;
             }
 
-            .subscribe-form form {
-                flex-direction: column;
-            }
-
-            .subscribe-form input,
-            .subscribe-form button {
-                width: 100%;
-            }
-
             .shelf-header h2 {
                 font-size: 2rem;
             }
 
-            .latest-header h2 {
-                font-size: 2rem;
+            .collection-stats {
+                flex-direction: column;
+                gap: 0.5rem;
             }
 
             .about-section {
@@ -1031,7 +924,7 @@
     </style>
 </head>
 <body>
-    <!-- Intro Animation -->
+    <!-- Intro Animation - 5 books -->
     <div class="intro-sequence clickable" id="introSequence">
         <div class="intro-graphic">
             <div class="book-stack">
@@ -1050,8 +943,8 @@
         <div class="logo"><a href="../index.html">Mettadology</a></div>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
         <nav id="mainNav">
-            <a href="#latest">Latest</a>
-            <a href="#archives">Archives</a>
+            <a href="#welcome">Welcome</a>
+            <a href="#collection">Collection</a>
             <a href="#subscribe">Subscribe</a>
             <a href="../index.html">dialogos labs</a>
         </nav>
@@ -1061,11 +954,12 @@
     <main>
         <!-- Page Header -->
         <div class="page-header">
-            <div class="tagline">Creative Web & Philosophical AI</div>
-            <h1>Curated Wisdoms<br>from the Intersection</h1>
+            <div class="journal-label">A Quarterly Journal</div>
+            <h1>Creative Web &<br>Philosophical AI</h1>
+            <p class="tagline">Four times a year, a slow synthesis for conscious technologists</p>
             <p class="description">
-                A monthly synthesis of AI/ML product management, creative technology, 
-                and contemplative practice.
+                Exploring the intersection of AI/ML product management, creative technology, 
+                and contemplative practice. Not another newsletter—a considered publication.
             </p>
             <div class="definition">
                 <em>mettadology (n.)</em> — methodology + metta (loving-kindness meditation); 
@@ -1073,77 +967,70 @@
             </div>
         </div>
 
-        <!-- Latest Issue - Featured -->
-        <section id="latest" class="latest-issue-section">
-            <div class="latest-header">
-                <div class="new-badge">NEW</div>
-                <h2>Latest Issue</h2>
-                <p class="latest-description">
-                    The monthly synthesis format launches January 2026. Each issue explores 
-                    current developments in AI/ML through the lens of conscious practice.
-                </p>
+        <!-- Welcome Section -->
+        <section id="welcome" class="welcome-section">
+            <div class="welcome-header">
+                <span class="welcome-badge">Welcome Edition</span>
+                <span class="welcome-date">January 2026</span>
             </div>
-
-            <div class="featured-issue">
-                <div class="featured-content">
-                    <div class="issue-meta">
-                        <span class="issue-number">Issue 001</span>
-                        <span class="issue-date">December 2025</span>
-                    </div>
-                    <h3 class="issue-title">The Conscious Technologist's Manifesto</h3>
-                    <p class="issue-subtitle">
-                        AI-empowered PMs are building, the poetic web renaissance, 
-                        and why technical sovereignty matters now
+            <h2>Introducing Mettadology</h2>
+            
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <p>
+                        For the past ten months, I've been collecting. Links. Ideas. Patterns. 
+                        Connections between the technical work of building AI systems and the 
+                        inner work of training attention. Between the craft of hand-coded HTML 
+                        and the discipline of meditation.
                     </p>
-                    <div class="issue-highlights">
-                        <div class="highlight-item">
-                            <span>Claude Projects + Cursor = 10x PM agency</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span>HTML Energy & the return to hand-crafted web</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span>AI alignment through contemplative practice</span>
-                        </div>
-                    </div>
-                    <div class="issue-formats">
-                        <a href="december-2025.html" class="format-link primary">
-                            <span>Read Full Synthesis</span>
-                        </a>
-                        <a href="december-2025-quick.html" class="format-link">
-                            <span>Resources Only</span>
-                        </a>
-                        <a href="december-2025-poetic.html" class="format-link">
-                            <span>Creative Web Version</span>
-                        </a>
+                    <p>
+                        This collecting became a practice. The practice became three volumes. 
+                        The volumes became Mettadology.
+                    </p>
+                    <p>
+                        Now, four times a year, a new edition synthesizes what's emerging at the 
+                        intersection of conscious technology and creative practice. Each one 
+                        crafted with care. Slow synthesis for people building conscious technology.
+                    </p>
+                    <div class="welcome-cta">
+                        <a href="#collection">Explore the Founding Collection →</a>
                     </div>
                 </div>
-                <div class="featured-cover">
-                    <div class="magazine-cover">
-                        <div class="cover-header">
-                            <div class="cover-logo">METTADOLOGY</div>
-                            <div class="cover-issue">Issue 001 · December 2025</div>
-                        </div>
-                        <div class="cover-title">The Conscious<br>Technologist's<br>Manifesto</div>
-                        <div class="cover-themes">
-                            <div class="theme-tag">AI × PM</div>
-                            <div class="theme-tag">Poetic Web</div>
-                            <div class="theme-tag">Practice</div>
-                        </div>
-                    </div>
+                
+                <div class="welcome-sidebar">
+                    <div class="sidebar-title">Upcoming Editions</div>
+                    <ul class="upcoming-list">
+                        <li>
+                            <span class="date">April 2026</span>
+                            Spring Edition: Horizontal Networks
+                        </li>
+                        <li>
+                            <span class="date">July 2026</span>
+                            Summer Edition: Presence in Production
+                        </li>
+                        <li>
+                            <span class="date">October 2026</span>
+                            Autumn Edition: Emerging Synthesis
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Bookshelf Section -->
-        <section id="archives" class="bookshelf-container">
+        <!-- Founding Collection -->
+        <section id="collection" class="bookshelf-container">
             <div class="shelf-header">
-                <h2>The Archives</h2>
+                <h2>The Founding Collection</h2>
                 <p class="shelf-description">
-                    Five thematic collections revealing the connections across ten months 
-                    of curation (January–December 2025). Each volume explores a different 
-                    facet of building conscious AI systems.
+                    Before quarterly editions, there was curation. Ten months of collecting links 
+                    and tracing patterns, organized into three thematic volumes. These form the 
+                    foundation of Mettadology.
                 </p>
+                <div class="collection-stats">
+                    <span><span class="number">10</span> months of curation</span>
+                    <span><span class="number">52</span> curated links</span>
+                    <span><span class="number">3</span> thematic volumes</span>
+                </div>
             </div>
 
             <div class="bookshelf">
@@ -1153,7 +1040,7 @@
                         <div>
                             <div class="vol-number">Volume I</div>
                             <h3 class="book-title">On Alignment</h3>
-                            <p class="book-subtitle">How psychological alignment mirrors AI alignment</p>
+                            <p class="book-subtitle">Psychological alignment mirrors technical alignment. The same work—observation, understanding, slow modification.</p>
                         </div>
                         <div class="book-meta">
                             <span>11 links</span>
@@ -1161,7 +1048,7 @@
                             <span>14 min read</span>
                         </div>
                     </div>
-                    <div class="book-spine">Jan–Dec 2025 • Available Now</div>
+                    <div class="book-spine">Founding Collection • Jan 2026</div>
                 </a>
 
                 <!-- Volume 2 -->
@@ -1170,7 +1057,7 @@
                         <div>
                             <div class="vol-number">Volume II</div>
                             <h3 class="book-title">Embodied Systems</h3>
-                            <p class="book-subtitle">Why consciousness requires physical grounding</p>
+                            <p class="book-subtitle">Consciousness requires physical grounding. Intelligence emerges through body, breath, environment.</p>
                         </div>
                         <div class="book-meta">
                             <span>11 links</span>
@@ -1178,7 +1065,7 @@
                             <span>16 min read</span>
                         </div>
                     </div>
-                    <div class="book-spine">Jan–Dec 2025 • Available Now</div>
+                    <div class="book-spine">Founding Collection • Jan 2026</div>
                 </a>
 
                 <!-- Volume 3 -->
@@ -1187,7 +1074,7 @@
                         <div>
                             <div class="vol-number">Volume III</div>
                             <h3 class="book-title">Creative Infrastructure</h3>
-                            <p class="book-subtitle">Building technology as spiritual practice</p>
+                            <p class="book-subtitle">Building as spiritual practice. The tools we choose reveal our values. Infrastructure decisions are ethical decisions.</p>
                         </div>
                         <div class="book-meta">
                             <span>14 links</span>
@@ -1195,111 +1082,95 @@
                             <span>18 min read</span>
                         </div>
                     </div>
-                    <div class="book-spine">Jan–Dec 2025 • Available Now</div>
-                </a>
-
-                <!-- Volume 4 -->
-                <a href="vol4.html" class="book-card">
-                    <div class="book-cover">
-                        <div>
-                            <div class="vol-number">Volume IV</div>
-                            <h3 class="book-title">Horizontal Networks</h3>
-                            <p class="book-subtitle">Why flat structures enable intelligence</p>
-                        </div>
-                        <div class="book-meta">
-                            <span>12 links</span>
-                            <span>•</span>
-                            <span>15 min read</span>
-                        </div>
-                    </div>
-                    <div class="book-spine">Jan–Dec 2025 • Available Now</div>
-                </a>
-
-                <!-- Volume 5 -->
-                <a href="vol5.html" class="book-card">
-                    <div class="book-cover">
-                        <div>
-                            <div class="vol-number">Volume V</div>
-                            <h3 class="book-title">Presence in Production</h3>
-                            <p class="book-subtitle">Shipping AI systems while staying human</p>
-                        </div>
-                        <div class="book-meta">
-                            <span>synthesis</span>
-                        </div>
-                    </div>
-                    <div class="book-spine">Jan–Dec 2025 • Available Now</div>
+                    <div class="book-spine">Founding Collection • Jan 2026</div>
                 </a>
             </div>
         </section>
 
-        <!-- Core Themes Overview -->
-        <div class="themes-section">
-            <h2 class="themes-title">Connecting Themes Across Volumes</h2>
-            <p class="themes-intro">Eight principles that emerge across all five archives</p>
+        <!-- Connecting Themes -->
+        <section class="themes-section">
+            <h2 class="themes-title">Connecting Themes</h2>
+            <p class="themes-intro">Eight principles that weave through the collection</p>
             
             <div class="themes-grid">
                 <div class="theme-card">
                     <h3>Alignment as Practice</h3>
-                    <p>Technical and psychological alignment require the same work: observation, understanding, slow modification</p>
+                    <p>Observation, understanding, slow modification—the same work for minds and models.</p>
                 </div>
-
                 <div class="theme-card">
                     <h3>Embodiment Matters</h3>
-                    <p>Consciousness isn't abstract—it's grounded in breath, movement, physical presence</p>
+                    <p>Consciousness grounded in breath and body. Intelligence needs physical substrate.</p>
                 </div>
-
                 <div class="theme-card">
                     <h3>Infrastructure as Values</h3>
-                    <p>The systems we build reveal what we actually care about, not what we say we care about</p>
+                    <p>Systems reveal actual care. What we build shows what we believe.</p>
                 </div>
-
                 <div class="theme-card">
                     <h3>Intelligence is Relational</h3>
-                    <p>Wisdom emerges from connection, collaboration, conscious community</p>
+                    <p>Wisdom emerges from connection. No intelligence exists in isolation.</p>
                 </div>
-
                 <div class="theme-card">
                     <h3>Inner Work = Outer Work</h3>
-                    <p>Personal transformation and building better systems are the same project</p>
+                    <p>Transformation is bidirectional. The project is the same inward and outward.</p>
                 </div>
-
                 <div class="theme-card">
                     <h3>Constraints as Creativity</h3>
-                    <p>Limitations force decisions that reveal values and create coherence</p>
+                    <p>Limitations reveal values. What we choose not to build matters.</p>
                 </div>
-
                 <div class="theme-card">
                     <h3>Slowness as Advantage</h3>
-                    <p>Sustainable infrastructure outlasts extractive scaling</p>
+                    <p>Sustainable beats extractive. Patience compounds. Not everything needs to scale.</p>
                 </div>
-
                 <div class="theme-card">
                     <h3>Community as Practice</h3>
-                    <p>Individual growth requires collective containers</p>
+                    <p>Individual needs collective. We build better together than alone.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Subscribe Section -->
         <section id="subscribe" class="subscribe-section">
-            <h2>Subscribe for Monthly Collections</h2>
+            <p class="cadence">Four times a year, delivered to your inbox</p>
+            <h2>Subscribe to Mettadology</h2>
             <p>
-                Starting January 2026, monthly curations at the intersection of AI, 
-                creative technology, and contemplative practice. No spam. Occasional deep dives. 
-                Unsubscribe anytime.
+                Each quarterly edition: curated links, connecting themes, contemplative reflection. 
+                Slow synthesis exploring Creative Web & Philosophical AI through contemplative practice.
             </p>
             <div class="subscribe-form">
-                <a href="https://mettadology.substack.com/subscribe" target="_blank" class="format-link primary" style="display: inline-flex; text-decoration: none;">
-                    <span>Subscribe on Substack</span>
+                <a href="https://mettadology.substack.com/subscribe" target="_blank">
+                    Subscribe on Substack →
                 </a>
             </div>
+            <p class="next-edition">Next edition: Spring 2026</p>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <h2>About</h2>
+            <p>
+                Mettadology is created by <strong>Sarah Khalid</strong>, a Senior AI/ML Product Manager 
+                building machine learning systems in healthcare technology. The journal emerges from 
+                the intersection of technical practice and contemplative inquiry.
+            </p>
+            <p>
+                Mettadology began as a personal practice—ten months of collecting links, noting patterns, 
+                and tracing connections between technical work and inner development. The Founding Collection 
+                represents this initial exploration. Now, four times a year, Mettadology synthesizes what's 
+                emerging at the intersection of conscious technology and creative practice.
+            </p>
+            <p>
+                Part of <a href="../index.html">Dialogos Labs</a>—a creative technology studio focused on 
+                conscious AI development.
+            </p>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p><strong>Explore:</strong> <a href="https://dialogoslabs.xyz">dialogoslabs.xyz</a> — creative technology studio</p>
+            <p>A quarterly journal of Creative Web & Philosophical AI</p>
+            <p><strong>Explore:</strong> <a href="https://dialogoslabs.xyz">dialogoslabs.xyz</a></p>
             <p><strong>Connect:</strong> <a href="https://linkedin.com/in/sarkhalid">LinkedIn</a> · <a href="https://x.com/sarahkhalid">X</a> · <a href="https://are.na/sarah-khalid">Are.na</a></p>
-            <p style="margin-top: 2rem;">© 2025 Sarah Khalid · Built with care in Toronto</p>
+            <p class="footer-tagline">May you be happy. May your code be conscious. May your systems serve life.</p>
+            <p style="margin-top: 1.5rem;">© 2026 Sarah Khalid · Built with care in Montréal</p>
         </footer>
     </main>
 
@@ -1351,7 +1222,7 @@
                     introSequence.classList.add('hidden');
                     markIntroAsShown();
                 }
-            }, 2500); // Faster fade out
+            }, 2500);
         }
 
         // Mobile menu toggle
@@ -1361,7 +1232,6 @@
         if (menuToggle && mainNav) {
             menuToggle.addEventListener('click', function() {
                 mainNav.classList.toggle('mobile-open');
-                // Change icon
                 if (mainNav.classList.contains('mobile-open')) {
                     menuToggle.textContent = '✕';
                 } else {
