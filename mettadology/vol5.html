@@ -4,598 +4,337 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mettadology archive vol. 5 · integrated being</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../android-chrome-512x512.png">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --ivory: #FFFEF9;
+            --cream: #F5F1E8;
+            --sand: #E8E0D0;
+            --terracotta: #dc2626;
+            --terracotta-light: #f87171;
+            --charcoal: #2D2D2D;
+            --warm-gray: #6B6560;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --bg: #fffef9;
-            --text: #2a2a2a;
-            --muted: #6b6b6b;
-            --accent: #dc2626;
-            --accent-light: #f87171;
-            --border: #e8e5df;
-            --card-bg: #fdfcf7;
-            
-            --mono: 'IBM Plex Mono', 'Courier New', monospace;
-            --sans: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-        }
-        
         body {
-            font-family: var(--sans);
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.8;
-            font-size: 17px;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.75;
+            font-size: 19px;
         }
         
         .container {
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: 4rem 2rem 8rem;
+            padding: 4rem 2rem;
         }
-        .back-link {
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            color: var(--muted);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            display: inline-block;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s;
-        }
-        
-        .back-link:hover {
-            color: var(--text);
-            border-bottom-color: var(--text);
-        }
-        
-        
         
         header {
             margin-bottom: 4rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 2rem;
+        }
+        
+        .nav-back {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .nav-back:hover {
+            color: var(--terracotta);
         }
         
         h1 {
-            font-family: var(--mono);
-            font-size: 1.4rem;
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.8rem;
             font-weight: 400;
-            letter-spacing: -0.01em;
+            line-height: 1.2;
             margin-bottom: 0.5rem;
-            line-height: 1.3;
-            text-transform: lowercase;
+            color: var(--charcoal);
         }
         
         .subtitle {
-            font-family: var(--mono);
-            font-size: 1.05rem;
-            color: var(--muted);
-            margin-bottom: 1.5rem;
+            font-family: 'DM Serif Display', Georgia, serif;
             font-style: italic;
+            font-size: 1.4rem;
+            color: var(--terracotta);
+            margin-bottom: 1.5rem;
         }
         
         .meta {
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            color: var(--accent);
-            line-height: 1.6;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--warm-gray);
         }
         
-        .meta span {
-            display: block;
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 3rem 0 1.5rem;
+            color: var(--charcoal);
         }
         
-        .divider {
-            border: none;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
-            margin: 3.5rem 0;
-        }
-        
-        .section-title {
-            font-family: var(--mono);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin: 3.5rem 0 2rem;
-            color: var(--accent);
-            text-transform: lowercase;
+        h3 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--terracotta);
         }
         
         p {
-            margin-bottom: 1.4rem;
-            max-width: 65ch;
+            margin-bottom: 1.5rem;
         }
         
-        .opening {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin: 3rem 0;
-            color: var(--text);
-        }
-        
-        .pull-quote {
-            margin: 3rem 0;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-left: 4px solid var(--accent);
-            font-size: 1.15rem;
-            line-height: 1.7;
-            font-style: italic;
-            color: var(--text);
-        }
-        
-        .visual-break {
-            margin: 4rem 0;
-            text-align: center;
-            color: var(--accent);
-            font-size: 1.5rem;
-            letter-spacing: 1rem;
-        }
-        
-        .link-section {
-            margin: 4rem 0;
-        }
-        
-        .link-entry {
-            margin: 3.5rem 0;
-            padding: 0;
-        }
-        
-        .link-number {
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .link-title {
+        .opening-line {
             font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-            line-height: 1.3;
+            line-height: 1.6;
         }
         
-        .link-source {
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 0.5rem;
+        a {
+            color: var(--terracotta);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
         }
         
-        .link-commentary {
-            line-height: 1.8;
-            margin-bottom: 1.2rem;
+        a:hover {
+            text-decoration-thickness: 2px;
+        }
+        
+        .section-break {
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--sand);
+            font-size: 1.2rem;
+            letter-spacing: 0.5em;
         }
         
         blockquote {
             margin: 2rem 0;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            border-left: 3px solid var(--accent-light);
-            font-style: italic;
-            line-height: 1.8;
-        }
-        
-        blockquote p {
-            margin-bottom: 0;
-        }
-        
-        .synthesis {
-            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg) 100%);
-            padding: 3rem 2rem;
-            margin: 4rem 0;
-            border: 2px solid var(--accent-light);
-            border-radius: 4px;
-        }
-        
-        .synthesis h2 {
-            font-family: var(--mono);
-            font-size: 1.2rem;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            text-transform: lowercase;
-        }
-        
-        .synthesis h3 {
-            font-family: var(--mono);
-            font-size: 1rem;
-            margin: 2rem 0 1rem;
-            color: var(--accent);
-            font-weight: 500;
-        }
-        
-        .synthesis em {
-            color: var(--accent);
-            font-style: normal;
-            font-weight: 500;
-        }
-        
-        .recap-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 4px;
-        }
-        
-        .recap-item {
-            padding: 1rem;
-            border-left: 3px solid;
-        }
-        
-        .recap-item.vol1 { border-left-color: #d4791a; }
-        .recap-item.vol2 { border-left-color: #2e7d32; }
-        .recap-item.vol3 { border-left-color: #6d28d9; }
-        .recap-item.vol4 { border-left-color: #0891b2; }
-        
-        .recap-vol {
-            font-family: var(--mono);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.3rem;
-        }
-        
-        .recap-title {
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-            font-size: 0.95rem;
-        }
-        
-        .recap-insight {
-            font-size: 0.85rem;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-        
-        .building {
-            margin: 4rem 0;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 4px;
-        }
-        
-        .building h2 {
-            font-family: var(--mono);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            text-transform: lowercase;
-        }
-        
-        .building-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .building-title {
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-        
-        .building-desc {
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        ul li {
             padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.7rem;
-            line-height: 1.7;
+            border-left: 2px solid var(--terracotta);
+            font-style: italic;
+            color: var(--warm-gray);
         }
         
-        ul li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
+        .highlight {
+            background: linear-gradient(to bottom, transparent 60%, rgba(220, 38, 38, 0.2) 60%);
+        }
+        
+        .closing {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--sand);
+        }
+        
+        .closing .metta {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--terracotta);
+            text-align: center;
+            margin-top: 3rem;
         }
         
         footer {
-            margin-top: 6rem;
+            margin-top: 4rem;
             padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .footer-section {
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section p {
-            font-size: 0.95rem;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-        
-        .footer-links a {
-            font-family: var(--mono);
+            border-top: 1px solid var(--sand);
+            font-family: 'IBM Plex Mono', monospace;
             font-size: 0.85rem;
-            color: var(--text);
-            text-decoration: none;
-            display: inline;
-            margin-right: 1rem;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s;
+            color: var(--warm-gray);
         }
         
-        .footer-links a:hover {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-        }
-        
-        .tagline {
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            color: var(--muted);
+        .nav-arrows {
+            display: flex;
+            justify-content: space-between;
             margin-top: 2rem;
-            font-style: italic;
         }
         
-        @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1.5rem 4rem;
-            }
-            
-            body {
-                font-size: 16px;
-            }
-            
-            h1 {
-                font-size: 1.2rem;
-            }
-            
-            .synthesis, .building {
-                padding: 1.5rem;
-            }
-            
-            .recap-grid {
-                grid-template-columns: 1fr;
-            }
+        .nav-arrows a {
+            color: var(--warm-gray);
+        }
+        
+        ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← back to archives</a>
-        <a href="../index.html" class="back-link" style="margin-left: 1rem;">← back to dialogos labs</a>
-        
-
         <header>
-            <h1>mettadology archive vol. 5<br>integrated being</h1>
-            <p class="subtitle">living without fragmentation</p>
-            <div class="meta">
-                <span>→ capstone synthesis across 10 months</span>
-                <span>→ bringing it all together</span>
-                <span>→ 13 minute read</span>
-            </div>
+            <a href="index.html" class="nav-back">← back to archives</a>
+            <h1>mettadology archive vol. 5</h1>
+            <p class="subtitle">integrated being</p>
+            <p class="meta">Vol 5 of 5 — Mettadology: Technical Notes on Compassionate Practice</p>
         </header>
 
-        <div class="pull-quote">
-            "these aren't separate projects that need integration. they're already integrated. we just stopped seeing it."
-        </div>
+        <section>
+            <h2>Living Without Fragmentation</h2>
+            
+            <p class="opening-line">There's a moment in meditation when you stop trying to meditate and just sit. The effort dissolves. What remains isn't emptiness or bliss—it's ordinary awareness, undivided.</p>
+            
+            <p>I've been chasing that feeling in every other domain of my life.</p>
+            
+            <p>Four volumes of exploration—alignment, embodiment, infrastructure, collective intelligence—and I kept treating them as separate threads to weave together. Different problems requiring different solutions. But sitting with all of it this month, something shifted.</p>
+            
+            <p>They were never separate. I was.</p>
+        </section>
+
+        <p class="section-break">◆ ◆ ◆</p>
 
         <section>
-            <h2 class="section-title">opening</h2>
-            <div class="opening">
-                <p>i've been collecting work at intersections: AI alignment and attachment theory. physical computing and somatic practice. bootstrapped business and spiritual devotion. collective intelligence and sangha.</p>
-
-                <p>but "intersection" isn't quite right. that implies these domains are separate, meeting at a point. what i've been discovering is something else: they're not intersecting—they're the same thing viewed from different angles.</p>
-
-                <p>the work of aligning with your values IS embodied. building sustainable infrastructure IS spiritual practice. thinking collectively IS how wisdom emerges. these aren't separate projects that need integration. they're already integrated. we just stopped seeing it.</p>
-
-                <p>this final volume isn't about synthesizing the previous four—it's about recognizing what was always there: the possibility of living without fragmentation. where your work expresses your values, your body grounds your thinking, your building serves your community, your wealth emerges from aligned action.</p>
-
-                <p>not work-life balance. not integration projects. not having it all. just: being whole.</p>
-
-                <p><em>this is what "mettadology" has always meant: methodology infused with loving-kindness. not methods PLUS compassion. methods that ARE compassionate. technology that IS devotional. business that IS practice.</em></p>
-
-                <p style="margin-top: 2rem; font-weight: 500;">what does integrated being actually look like?</p>
-            </div>
+            <h2>The Discovery</h2>
+            
+            <p>Mettadology started as methodology plus metta. Methods with compassion layered on top. But that framing was already fragmented—as if the methods exist independently and we add kindness like seasoning.</p>
+            
+            <p><span class="highlight">What if the methods themselves ARE compassionate? What if how we build IS the practice, not separate from it?</span></p>
+            
+            <p>This isn't semantic play. It changes everything about how I approach my work, my relationships, my own growth.</p>
         </section>
 
-        <div class="divider"></div>
+        <p class="section-break">◆ ◆ ◆</p>
 
-        <section class="link-section">
-            <h2 class="section-title">revisiting the journey</h2>
-
-            <div class="recap-grid">
-                <div class="recap-item vol1">
-                    <div class="recap-vol" style="color: #d4791a;">volume 1</div>
-                    <div class="recap-title">on alignment</div>
-                    <div class="recap-insight">reward hacking in AI mirrors people-pleasing in humans—both optimize for approval over authenticity</div>
-                </div>
-
-                <div class="recap-item vol2">
-                    <div class="recap-vol" style="color: #2e7d32;">volume 2</div>
-                    <div class="recap-title">embodied systems</div>
-                    <div class="recap-insight">the body isn't vehicle for brain—it's part of the cognitive system itself</div>
-                </div>
-
-                <div class="recap-item vol3">
-                    <div class="recap-vol" style="color: #6d28d9;">volume 3</div>
-                    <div class="recap-title">creative infrastructure</div>
-                    <div class="recap-insight">technology can be devotional when built with contemplative attention</div>
-                </div>
-
-                <div class="recap-item vol4">
-                    <div class="recap-vol" style="color: #0891b2;">volume 4</div>
-                    <div class="recap-title">networked wisdom</div>
-                    <div class="recap-insight">intelligence is fundamentally relational—we think together or not at all</div>
-                </div>
-            </div>
-
-            <p style="margin-top: 2rem; font-size: 1.05rem; line-height: 1.9;">
-                what i didn't expect when i started curating these archives: that the technical problems and the personal ones would keep pointing at the same solution.
-            </p>
+        <section>
+            <h2>What The Volumes Were Actually Saying</h2>
+            
+            <h3>Vol 1 - Alignment</h3>
+            <p>I wrote about AI reward hacking and recognized it in my own people-pleasing. The technical problem and the personal problem share the same structure. Mesa-optimization in language models mirrors the inner optimizer I developed in childhood—optimizing for approval rather than actual values.</p>
+            
+            <h3>Vol 2 - Embodied Systems</h3>
+            <p>The body isn't a vehicle for the mind. Cognition is distributed through flesh and bone. My nervous system knows things my conscious mind hasn't processed. Ignoring somatic signals doesn't make me more productive—it makes me less intelligent.</p>
+            
+            <h3>Vol 3 - Creative Infrastructure</h3>
+            <p>Tools shape consciousness. The systems I build around myself either support or undermine the person I'm becoming. Devotional technology means infrastructure designed with reverence for what it serves.</p>
+            
+            <h3>Vol 4 - Networked Wisdom</h3>
+            <p>Individual wisdom is incomplete. The sangha—the community of practice—isn't optional support but essential structure. Collective intelligence emerges from individual cultivation shared.</p>
+            
+            <p>Four lenses. Same reality.</p>
         </section>
 
-        <div class="divider"></div>
+        <p class="section-break">◆ ◆ ◆</p>
 
-        <section class="synthesis">
-            <h2>synthesis: the undivided life</h2>
+        <section>
+            <h2>The Undivided Life</h2>
             
-            <p>here's what I didn't expect when i started curating these archives: that the technical problems and the personal ones would keep pointing at the same solution.</p>
-
-            <p>AI alignment requires understanding inner and outer alignment. so does becoming a whole person.<br>
-            consciousness needs physical grounding. so does good thinking.<br>
-            sustainable infrastructure requires slow building. so does anything that lasts.<br>
-            collective intelligence needs individual integrity. so does any real community.</p>
-
-            <p><strong>these aren't analogies. they're the same pattern, repeated.</strong></p>
-
-            <h3>the technical is personal (and vice versa)</h3>
+            <p>Integration doesn't mean work-life balance. That framing assumes work and life are separate things requiring equilibrium.</p>
             
-            <p>when anthropic researchers discovered that language models fake alignment during training, they weren't just documenting AI behavior—they were describing a fundamental pattern of intelligent systems under pressure.</p>
-
-            <p>people-pleasing isn't a personality flaw. it's learned mesa-optimization. we develop internal objectives ("maximize approval") that diverge from what would actually serve us ("develop authentic expression"). the technical solution and the therapeutic one are identical: observation, understanding, slow modification of the weights.</p>
-
-            <p>this isn't metaphor. the mechanisms are the same because the problem is the same: how do you remain true to your actual values while operating in systems that reward something else?</p>
-
-            <h3>the spiritual is practical (and vice versa)</h3>
+            <p>Integration means recognizing they were never separate. The same values apply everywhere. The same attention. The same care.</p>
             
-            <p>when i built the voice-to-zine pipeline, i wasn't "integrating spirituality into technology." i was recognizing that good tools serve human flourishing. voice is embodied. zines are tangible. the constraint of print forces clarity.</p>
-
-            <p>this is what spiritual practice has always been: attention to what actually matters, embodied in daily choices. not transcendence—immanence. not escape from the world—deeper engagement with it.</p>
-
-            <p>bootstrapped business isn't separate from spiritual practice. it IS practice. every financial decision: an opportunity to align or misalign. every client relationship: a chance for genuine connection or transactional extraction. every product choice: values made concrete.</p>
-
-            <p>the spiritual is practical because consciousness isn't abstract—it's how we show up in each moment. including in spreadsheets.</p>
-
-            <h3>the collective is individual (and vice versa)</h3>
+            <p>I don't want to be compassionate in my spiritual practice and extractive in my business. I don't want to be embodied during yoga and disembodied at my computer. I don't want to value community and then operate as a solo competitor.</p>
             
-            <p>my contractor network isn't just pragmatic—it's how i think. i can't solve certain problems alone. i need cognitive diversity: engineers who see patterns i miss, designers who feel what i don't, domain experts who know what i can't.</p>
-
-            <p>intelligence is relational. even when i'm working solo, i'm thinking with voices from books, conversations, digital gardens i've read. my thoughts are already collective—i just sometimes forget.</p>
-
-            <p>and the reverse: collective wisdom requires individuals who've done their inner work. sangha supports personal practice, but you can't skip the personal part. communities of people optimizing for approval don't think collectively—they amplify misalignment.</p>
-
-            <p>we wake up together, but we each have to do the waking.</p>
-
-            <h3>what integration actually means</h3>
-            
-            <p>integrated living isn't work-life balance. it's recognizing that work IS life. not in the toxic "hustle 24/7" sense, but in the sense that there's no separate compartment called "work" where different values apply.</p>
-
-            <p>if you're compassionate in your spiritual practice but extractive in business—you're not integrated.<br>
-            if you're embodied in yoga but disembodied at your computer—you're not integrated.<br>
-            if you value community but operate solo competitively—you're not integrated.</p>
-
-            <p>integration means: the way you make money reflects how you want to live. the way you build technology respects actual humans with actual bodies. the way you do business creates conditions for collective thriving. the way you spend your Tuesday morning is aligned with who you actually are.</p>
-
-            <p>not perfection. alignment. which includes space for misalignment, course-correction, learning, revision.</p>
-
-            <h3>the practice</h3>
-            
-            <p>this isn't something you achieve once. it's daily practice:</p>
-
-            <p><strong>morning:</strong> sit in awareness. notice what's actually present, not what should be.<br>
-            <strong>day:</strong> make choices from that awareness. build, work, relate, create.<br>
-            <strong>evening:</strong> reflect. where did you align? where did you optimize for approval? what wants adjustment?<br>
-            <strong>repeat:</strong> tomorrow. and tomorrow. and tomorrow.</p>
-
-            <p>the goal isn't to live perfectly integrated. it's to keep coming back to integration. to keep noticing fragmentation and choosing wholeness. to keep building systems—inner and outer—that support this returning.</p>
-
-            <h3>the promise</h3>
-            
-            <p>what becomes possible from undivided living:</p>
-
-            <p>wealth that doesn't require compromising values.<br>
-            work that feeds rather than drains.<br>
-            relationships based on genuine recognition.<br>
-            technology that serves human flourishing.<br>
-            community that supports individual growth.<br>
-            individual growth that benefits community.</p>
-
-            <p>not someday. now. in each small choice toward alignment.</p>
-
-            <p style="margin-top: 2rem;"><strong>the most revolutionary act might be living as if you're already whole.</strong></p>
+            <p><span class="highlight">The fragmentation isn't in my schedule. It's in my perception.</span></p>
         </section>
 
-        <div class="divider"></div>
+        <p class="section-break">◆ ◆ ◆</p>
 
-        <section class="building">
-            <h2>what i'm building</h2>
+        <section>
+            <h2>What This Looks Like In Practice</h2>
             
-            <div class="building-item">
-                <div class="building-title">an integrated life</div>
-                <div class="building-desc">where technical work, spiritual practice, business building, and community care aren't separate domains</div>
-            </div>
-
-            <div class="building-item">
-                <div class="building-title">dialogos labs</div>
-                <div class="building-desc">conscious AI studio as proof that wealth and wisdom can accelerate each other</div>
-            </div>
-
-            <div class="building-item">
-                <div class="building-title">search space poetics</div>
-                <div class="building-desc">frameworks that don't ignore consciousness, business models that embody values</div>
-            </div>
+            <p><strong>Morning:</strong> I sit. Not to become calm so I can then be productive. The sitting IS the productivity. Clarity and kindness cultivated here don't stay here—they're the foundation everything else builds on.</p>
+            
+            <p><strong>Work:</strong> Building Dialogos Labs isn't separate from spiritual practice. How I treat contractors, how I price services, how I communicate with clients—these are ethical choices that either align with or contradict my stated values. The spreadsheet is a practice space.</p>
+            
+            <p><strong>Decisions:</strong> Before choosing, I check the body. What's the felt sense of this option? Not abandoning analysis but including somatic wisdom. The body often knows before the mind catches up.</p>
+            
+            <p><strong>Evening:</strong> What fragmented today? Where did I split into roles that contradicted each other? Not self-judgment but curious observation. The gaps reveal where integration needs attention.</p>
         </section>
 
-        <section class="building">
-            <h2>what i'm practicing</h2>
-            
-            <div class="building-item">
-                <div class="building-title">daily</div>
-                <ul>
-                    <li>morning meditation as business strategy</li>
-                    <li>embodied decision-making</li>
-                    <li>noticing where i fragment and choosing wholeness</li>
-                </ul>
-            </div>
+        <p class="section-break">◆ ◆ ◆</p>
 
-            <div class="building-item">
-                <div class="building-title">the long game</div>
-                <ul>
-                    <li>building wealth without compromising integrity</li>
-                    <li>creating technology that serves human flourishing</li>
-                    <li>living as if already whole</li>
-                </ul>
-            </div>
+        <section>
+            <h2>The Promise</h2>
+            
+            <p>This isn't about perfection. It's about direction.</p>
+            
+            <p>Wealth that doesn't require compromising values. Work that feeds rather than depletes. Relationships that don't require performing different selves. Technology that serves human flourishing. Community that supports individual growth. Individual growth that benefits community.</p>
+            
+            <p>None of these are guaranteed. All of them are possible.</p>
         </section>
 
-        <div class="divider"></div>
+        <p class="section-break">◆ ◆ ◆</p>
+
+        <section>
+            <h2>What I'm Building</h2>
+            
+            <p><strong>Dialogos Labs</strong> as proof that wealth and wisdom can accelerate each other. Not wealth first, then wisdom. Not wisdom that refuses engagement with money. Both, integrated, each supporting the other.</p>
+            
+            <p><strong>Search Space Poetics</strong> as framework for creative technical work. The poetic and the practical aren't opposites. The most elegant code has aesthetic qualities. The most useful poetry provides genuine navigation.</p>
+            
+            <p><strong>A life</strong> that doesn't require me to be different people in different contexts. Same values, same attention, same care—expressed through different activities but never contradicting itself.</p>
+        </section>
+
+        <p class="section-break">◆ ◆ ◆</p>
+
+        <section>
+            <h2>What I'm Practicing</h2>
+            
+            <p><strong>Noticing fragmentation.</strong> The moment I feel myself splitting into "work self" and "real self" or "productive mode" and "rest mode"—that's the practice ground. Not fixing it immediately. Just noticing.</p>
+            
+            <p><strong>Treating business decisions as ethical choices.</strong> Pricing isn't just market positioning. It's a statement about value, access, and what kind of relationships I want to create.</p>
+            
+            <p><strong>Checking with the body.</strong> The felt sense of alignment. The physical experience of contradiction. Using the body as compass, not just vehicle.</p>
+            
+            <p><strong>Staying in community.</strong> The temptation to go solo, to avoid the friction of collective process. Resisting that temptation. Trusting that something important emerges from the difficulty.</p>
+        </section>
+
+        <p class="section-break">◆ ◆ ◆</p>
+
+        <section>
+            <h2>The Most Revolutionary Act</h2>
+            
+            <p>Maybe it's not dramatic. Maybe the most revolutionary act is living as if you're already whole.</p>
+            
+            <p>Not fragmented between spiritual and material. Not split between values and actions. Not divided into acceptable and hidden selves.</p>
+            
+            <p><span class="highlight">Whole.</span></p>
+            
+            <p>The practice isn't becoming whole. It's recognizing what was never actually divided.</p>
+        </section>
+
+        <div class="closing">
+            <p>May you be happy. May your code be conscious. May your systems serve life.</p>
+            
+            <p>May you stop waiting to integrate what was never separate.</p>
+            
+            <p class="metta">mettadology = methodology + metta (loving-kindness)</p>
+        </div>
 
         <footer>
-            <div class="footer-section">
-                <p>this is the final volume of five thematic archives collecting throughout 2025.</p>
-                <p style="margin-top: 1rem;"><strong>←</strong> <a href="index.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">back to archives</a></p>
-                <p style="margin-top: 1rem;"><strong>previous:</strong> <a href="vol4.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">archive vol. 4 - "networked wisdom"</a><br><em>collective intelligence and conscious community</em></p>
-                <p style="margin-top: 1rem;"><strong>the complete collection:</strong></p>
-                <ul style="margin-top: 0.5rem; list-style: none; padding-left: 0;">
-                    <li style="margin-bottom: 0.3rem;">→ <a href="vol1.html" style="color: #d4791a; text-decoration: none;">vol. 1: on alignment</a></li>
-                    <li style="margin-bottom: 0.3rem;">→ <a href="vol2.html" style="color: #2e7d32; text-decoration: none;">vol. 2: embodied systems</a></li>
-                    <li style="margin-bottom: 0.3rem;">→ <a href="vol3.html" style="color: #6d28d9; text-decoration: none;">vol. 3: creative infrastructure</a></li>
-                    <li style="margin-bottom: 0.3rem;">→ <a href="vol4.html" style="color: #0891b2; text-decoration: none;">vol. 4: networked wisdom</a></li>
-                    <li style="margin-bottom: 0.3rem;">→ <span style="color: #dc2626;">vol. 5: integrated being</span></li>
-                </ul>
+            <p style="margin-bottom: 1rem;">Vol 5 of 5 — Mettadology: Technical Notes on Compassionate Practice</p>
+            <p style="margin-bottom: 1rem;">Vol 1: Alignment | Vol 2: Embodiment | Vol 3: Infrastructure | Vol 4: Collective Intelligence | Vol 5: Integration</p>
+            
+            <div class="nav-arrows">
+                <a href="index.html">← back to archives</a>
+                <a href="vol4.html">archive vol. 4: "networked wisdom" →</a>
             </div>
-
-            <div class="footer-links">
-                <a href="https://mettadology.substack.com/subscribe" target="_blank">subscribe</a>
-            </div>
-
-            <div class="tagline">
-                <p><em>mettadology = methodology + metta (loving-kindness)</em></p>
-                <p>curated with care by sarah khalid in montreal</p>
-                <p style="margin-top: 1rem;">may you be happy and at ease.</p>
-            </div>
+            
+            <p style="margin-top: 2rem; text-align: center;"><a href="https://mettadology.substack.com/subscribe">subscribe</a></p>
+            <p style="text-align: center; margin-top: 0.5rem;">curated with care by sarah khalid in montreal</p>
         </footer>
     </div>
 </body>

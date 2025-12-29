@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mettadology — Creative Web & Philosophical AI</title>
+    <title>mettadology newsletter - creative web & philosophical AI</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
@@ -1327,35 +1327,55 @@
     </main>
 
     <script>
-        // Hide intro sequence while books are still rotating smoothly
+        // Check if animation has already been shown this session
         const introSequence = document.getElementById('introSequence');
         const header = document.querySelector('header');
         const main = document.querySelector('main');
+        const hasSeenIntro = sessionStorage.getItem('mettadologyIntroShown');
         
-        // Make intro clickable to skip intro and show content immediately
-        introSequence.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Add transition animation
-            introSequence.classList.add('transitioning');
-            // Show header and main content immediately
+        // If animation was already shown, skip it immediately
+        if (hasSeenIntro) {
+            introSequence.classList.add('hidden');
             if (header) {
                 header.classList.add('skip-intro');
             }
             if (main) {
                 main.classList.add('skip-intro');
             }
-            // Hide intro after transition
-            setTimeout(() => {
-                introSequence.classList.add('hidden');
-            }, 1200);
-        });
+        } else {
+            // Mark animation as shown and set up normal behavior
+            const markIntroAsShown = () => {
+                sessionStorage.setItem('mettadologyIntroShown', 'true');
+            };
+            
+            // Make intro clickable to skip intro and show content immediately
+            introSequence.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Add transition animation
+                introSequence.classList.add('transitioning');
+                // Show header and main content immediately
+                if (header) {
+                    header.classList.add('skip-intro');
+                }
+                if (main) {
+                    main.classList.add('skip-intro');
+                }
+                // Mark as shown
+                markIntroAsShown();
+                // Hide intro after transition
+                setTimeout(() => {
+                    introSequence.classList.add('hidden');
+                }, 1200);
+            });
 
-        // Auto-hide after shorter duration
-        setTimeout(() => {
-            if (!introSequence.classList.contains('transitioning')) {
-                introSequence.classList.add('hidden');
-            }
-        }, 2500); // Faster fade out
+            // Auto-hide after shorter duration
+            setTimeout(() => {
+                if (!introSequence.classList.contains('transitioning')) {
+                    introSequence.classList.add('hidden');
+                    markIntroAsShown();
+                }
+            }, 2500); // Faster fade out
+        }
 
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
