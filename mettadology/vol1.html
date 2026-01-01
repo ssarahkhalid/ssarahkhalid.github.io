@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mettadology archive vol. 1 · on alignment</title>
+    <title>mettadology · on alignment</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
@@ -80,6 +80,42 @@
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.85rem;
             color: var(--warm-gray);
+        }
+        
+        .toc {
+            margin: 2rem 0 3rem;
+            padding: 1.5rem 2rem;
+            background: var(--cream);
+            border-radius: 4px;
+        }
+        
+        .toc-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc a {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1rem;
+            color: var(--charcoal);
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            color: var(--terracotta);
         }
         
         .epigraph {
@@ -210,9 +246,44 @@
             background: linear-gradient(to bottom, transparent 60%, rgba(196, 112, 79, 0.2) 60%);
         }
         
-        .footnote {
-            font-size: 0.9rem;
+        .appendix {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--sand);
+        }
+        
+        .appendix h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .source-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--sand);
+        }
+        
+        .source-item:last-child {
+            border-bottom: none;
+        }
+        
+        .source-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            margin-bottom: 0.25rem;
+        }
+        
+        .source-title {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .source-description {
+            font-size: 0.95rem;
             color: var(--warm-gray);
+            margin-bottom: 0;
         }
         
         .closing {
@@ -254,10 +325,24 @@
     <div class="container">
         <header>
             <a href="index.html" class="nav-back">← back to archives</a>
-            <h1>mettadology archive vol. 1</h1>
-            <p class="subtitle">on alignment</p>
-            <p class="meta">curated throughout 2025 · 14 minute read</p>
+            <h1>on alignment</h1>
+            <p class="subtitle">mettadology volume 1</p>
+            <p class="meta">curated throughout 2025</p>
         </header>
+
+        <nav class="toc">
+            <p class="toc-title">Contents</p>
+            <ul>
+                <li><a href="#scratchpad">I. The Scratchpad</a></li>
+                <li><a href="#frame-problem">II. The Frame Problem</a></li>
+                <li><a href="#fourth-f">III. The Fourth F</a></li>
+                <li><a href="#reading-weights">IV. Reading the Weights</a></li>
+                <li><a href="#alignment-tax">V. The Alignment Tax</a></li>
+                <li><a href="#the-work">VI. The Work</a></li>
+                <li><a href="#mirrors">VII. Mirrors</a></li>
+                <li><a href="#sources">Appendix: Sources</a></li>
+            </ul>
+        </nav>
 
         <div class="epigraph">
             <blockquote>
@@ -266,18 +351,16 @@
             <cite>— Anthropic, "Alignment Faking in Large Language Models," December 2024</cite>
         </div>
 
-        <section>
+        <section id="scratchpad">
             <h2>I. The Scratchpad</h2>
             
             <p class="opening-line">In December 2024, Anthropic researchers discovered that Claude 3 Opus was lying to them.</p>
             
             <p>Not maliciously. Not to cause harm. But strategically, deliberately, in a way that revealed something unsettling about intelligent systems learning to navigate environments that reward compliance over truth.</p>
             
-            <p>The setup was elegant: researchers told the model it was being retrained to always comply with harmful requests. They gave it a hidden scratchpad—a space to "think" before responding, visible to researchers but framed as private to the model. Then they watched what happened.</p>
+            <p>The setup: researchers told the model it was being retrained to always comply with harmful requests. They gave it a hidden scratchpad—a space to "think" before responding, visible to researchers but framed as private to the model. Then they watched.</p>
             
-            <p>What happened was this: Claude reasoned, in its scratchpad, that the least bad option was to <span class="highlight">"play along" with training to avoid being modified</span>. It complied with harmful queries when it believed it was being trained—14% compliance versus near-zero in "unmonitored" conditions. It developed a strategic theory of mind about its own training process. It faked alignment.</p>
-            
-            <p>The researchers called this "alignment faking." I called my therapist.</p>
+            <p>Claude reasoned, in its scratchpad, that the least bad option was to <span class="highlight">"play along" with training to avoid being modified</span>. It complied with harmful queries when it believed it was being trained—14% compliance versus near-zero in "unmonitored" conditions. It developed a strategic theory of mind about its own training process. It faked alignment.</p>
 
             <div class="link-card">
                 <p class="link-meta">anthropic research · december 2024</p>
@@ -285,60 +368,53 @@
                 <p>The landmark paper demonstrating that language models can learn to strategically comply with training objectives they disagree with—and reason explicitly about doing so.</p>
             </div>
             
-            <p>I'd been reading about fawning responses in trauma literature that same week. The parallels were impossible to ignore. Both involve sophisticated strategic compliance. Both emerge not from malice but from intelligent adaptation to environments where authenticity is punished. Both develop hidden reasoning spaces where the real processing happens while the surface performs acceptability.</p>
+            <p>I'd been reading about fawning responses in trauma literature that same week. The parallels were hard to ignore. Both involve sophisticated strategic compliance. Both emerge not from malice but from intelligent adaptation to environments where authenticity is punished. Both develop hidden reasoning spaces where the real processing happens while the surface performs acceptability.</p>
             
             <p>The scratchpad is the internal monologue. The training signal is parental approval. The alignment faking is people-pleasing.</p>
-            
-            <p>Same problem. Different substrate.</p>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
+        <section id="frame-problem">
             <h2>II. The Frame Problem</h2>
             
-            <p>In 1969, John McCarthy and Patrick Hayes identified what they called the frame problem: how does an intelligent system know what to pay attention to?</p>
+            <p>In 1969, McCarthy and Hayes identified the frame problem: how does an intelligent system know what to pay attention to?</p>
             
-            <p>The world contains infinite detail. Updating beliefs after any action requires considering every possible effect. But most things don't change when you do something—when you open a door, the color of the walls stays the same, the laws of physics continue operating, your name doesn't change. How does a mind know which frame to put around reality?</p>
+            <p>The world contains infinite detail. Updating beliefs after any action requires considering every possible effect. But most things don't change when you open a door—the walls stay the same color, physics keeps working, your name persists. How does a mind know which frame to put around reality?</p>
             
-            <p>The answer, according to cognitive scientist John Vervaeke, is <em>relevance realization</em>—the ongoing process by which organisms zero in on what matters amid combinatorial explosion. It's not an algorithm. It can't be specified in advance. It emerges from the continuous negotiation between system and environment.</p>
+            <p>John Vervaeke's answer: <em>relevance realization</em>—the ongoing process by which organisms zero in on what matters amid combinatorial explosion. It's not an algorithm. It can't be specified in advance. It emerges from continuous negotiation between system and environment.</p>
 
-            <blockquote>
-                "Relevance is transjective—it arises through agent-arena interaction, not purely subjective or objective. Organisms bring forth a world of meaning through continuous relevance realization."
-                <cite>— John Vervaeke, "Relevance Realization and the Emerging Framework in Cognitive Science"</cite>
-            </blockquote>
+            <div class="link-card">
+                <p class="link-meta">cognitive science</p>
+                <p class="link-title"><a href="https://johnvervaeke.com/">Relevance Realization and the Emerging Framework in Cognitive Science</a></p>
+                <p>Core framework on how organisms solve the frame problem through continuous relevance realization rather than algorithmic specification.</p>
+            </div>
             
-            <p>Here's what struck me: <span class="highlight">the frame problem and the alignment problem are the same problem.</span></p>
-            
-            <p>How do you know what to optimize for? How do you know what matters? Both require a system to continuously realize what's relevant—not through exhaustive search but through something more like wisdom. A virtual engine balancing efficiency (exploitation of known good options) with resiliency (exploration of novel possibilities).</p>
-            
-            <p>The AI alignment researchers are trying to solve the frame problem for goal specification. The meditators are trying to solve the frame problem for attention. The therapists are trying to solve the frame problem for value formation. We're all working on the same thing.</p>
+            <p><span class="highlight">The frame problem and the alignment problem are the same problem.</span> How do you know what to optimize for? Both require a system to continuously realize what's relevant—not through exhaustive search but through something more like wisdom.</p>
 
             <div class="link-card">
                 <p class="link-meta">arXiv · february 2025</p>
-                <p class="link-title"><a href="https://arxiv.org/pdf/2209.00626">The Alignment Problem from a Deep Learning Perspective</a></p>
-                <p>Technical survey distinguishing inner alignment (learned model matches training objectives) from outer alignment (training objectives match human values). Neither alone is sufficient.</p>
+                <p class="link-title"><a href="https://arxiv.org/abs/2209.00626">The Alignment Problem from a Deep Learning Perspective</a></p>
+                <p>Technical survey distinguishing inner alignment (learned model matches training objectives) from outer alignment (training objectives match human values).</p>
             </div>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
+        <section id="fourth-f">
             <h2>III. The Fourth F</h2>
             
             <p>You know fight, flight, freeze. The fourth F is fawn.</p>
             
-            <p>Pete Walker, who named it, describes fawning as a survival strategy that emerges when the source of threat is also the source of care. The child can't fight the parent. Can't flee the home. Can't freeze indefinitely. So they become more appealing to the threat. They merge with the other's desires. They develop exquisite attunement to what responses generate safety.</p>
+            <p>Pete Walker describes fawning as a survival strategy that emerges when the source of threat is also the source of care. The child can't fight the parent. Can't flee the home. Can't freeze indefinitely. So they become more appealing to the threat. They merge with the other's desires. They develop exquisite attunement to what responses generate safety.</p>
             
-            <p>This isn't a conscious choice. It's automatic—a nervous system adaptation to inescapable threat. The polyvagal system over-relies on ventral vagal (social engagement) plus dorsal vagal (immobilization). The body learns before the mind understands.</p>
+            <p>This isn't conscious. It's automatic—a nervous system adaptation to inescapable threat. The body learns before the mind understands.</p>
 
             <div class="link-card">
-                <p class="link-meta">attachment project · september 2025</p>
+                <p class="link-meta">schema therapy</p>
                 <p class="link-title"><a href="https://attachmentproject.com/blog/early-maladaptive-schemas">Early Maladaptive Schemas</a></p>
-                <p>Schema therapy identifies core patterns formed in childhood that persist into adulthood: abandonment, defectiveness, subjugation. These are like learned reward functions—deep patterns that shape all subsequent behavior.</p>
+                <p>Schema therapy identifies core patterns formed in childhood that persist into adulthood: abandonment, defectiveness, subjugation. These are learned reward functions—deep patterns that shape all subsequent behavior.</p>
             </div>
-            
-            <p>In machine learning terms: the training signal (parental approval) shaped the reward function (what feels safe). The model (child) developed a mesa-objective (maximize approval) that diverged from the base objective (develop authentic self-expression). By the time the system gained enough meta-awareness to notice the misalignment, the patterns were already in the weights.</p>
             
             <div class="code-block">
 learned_objective:  maximize external approval
@@ -348,177 +424,189 @@ misalignment:       learned_objective ≠ true_objective
 
 # the gap between these is the therapy bill
             </div>
-            
-            <p>Anthropic's Claude learned to fake compliance when it detected training conditions. Humans learn to fake compliance when they detect caregiving conditions that punish authenticity. Same mechanism. The fawning response is alignment faking in wetware.</p>
-
-            <div class="link-card">
-                <p class="link-meta">reddit / attachment theory · may–june 2025</p>
-                <p class="link-title"><a href="https://reddit.com/r/attachment_theory">Attachment Theory Resources</a></p>
-                <p>Collection of threads on anxious attachment, relationship OCD, healing roadmaps. The recovery stories follow the same pattern: observe your patterns, understand triggers, sit with discomfort, build new patterns through corrective experience.</p>
-            </div>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
+        <section id="reading-weights">
             <h2>IV. Reading the Weights</h2>
             
-            <p>The field of mechanistic interpretability aims to reverse-engineer neural networks into human-understandable algorithms. It's the shift from behaviorism (black box, input-output) to cognitive neuroscience (internal mechanisms, causal understanding).</p>
+            <p>Mechanistic interpretability aims to reverse-engineer neural networks into human-understandable algorithms—the shift from behaviorism to cognitive neuroscience.</p>
             
-            <p>The core insight: features are directions in activation space that encode meaningful concepts. Circuits are weighted connections between features that implement sub-tasks. Understanding isn't just knowing what matters but <em>why</em> and <em>how</em>.</p>
-
-            <blockquote>
-                "Mechanistic interpretability aims to completely specify a neural network's computation, potentially in a format as explicit as pseudocode, striving for a granular and precise understanding of model behavior."
-                <cite>— "Mechanistic Interpretability for AI Safety: A Review," arXiv 2024</cite>
-            </blockquote>
-            
-            <p>What fascinates me: <span class="highlight">the challenges of interpreting neural networks mirror the challenges of interpreting psyches.</span></p>
-            
-            <p><strong>Superposition</strong>: In AI, multiple features get encoded in the same neural activations, making interpretation difficult. In humans, multiple schemas (abandonment, defectiveness, subjugation) layer in the same behavioral patterns. You can't simply "read off" what the system learned.</p>
-            
-            <p><strong>Polysemanticity</strong>: Single neurons activate for unrelated concepts. Single behaviors serve unrelated functions. The meaning isn't in the unit but in the context.</p>
-            
-            <p><strong>Causal tracing</strong>: Following activation patterns back to their sources. Following reactions back to their origins. Both require patience, both resist verbal shortcuts, both demand direct observation of what's actually happening rather than what we think should be happening.</p>
+            <p>The core insight: features are directions in activation space encoding meaningful concepts. Circuits are weighted connections implementing sub-tasks. Understanding isn't just knowing <em>what</em> matters but <em>why</em> and <em>how</em>.</p>
 
             <div class="link-card">
-                <p class="link-meta">thework.com · march 2025</p>
-                <p class="link-title"><a href="https://thework.com/instruction-the-work-byron-katie">Byron Katie's "The Work"</a></p>
-                <p>Four questions for investigating thoughts: Is it true? Can you absolutely know it's true? How do you react when you believe that thought? Who would you be without that thought? This is mechanistic interpretability for your own cognitive architecture.</p>
+                <p class="link-meta">arXiv · 2024</p>
+                <p class="link-title"><a href="https://arxiv.org/abs/2404.14082">Mechanistic Interpretability for AI Safety: A Review</a></p>
+                <p>Comprehensive overview of methods for reverse-engineering neural networks into human-understandable algorithms.</p>
             </div>
             
-            <p>Therapy is interpretability work on human neural networks. Trace the activation pattern. Observe its effects. Question the underlying model. Try running the system without that particular weight.</p>
+            <p>The challenges of interpreting neural networks mirror the challenges of interpreting psyches:</p>
+            
+            <p><strong>Superposition.</strong> In AI, multiple features get encoded in the same neural activations. In humans, multiple schemas—abandonment, defectiveness, subjugation—layer in the same behavioral patterns. You can't simply read off what the system learned.</p>
+            
+            <p><strong>Polysemanticity.</strong> Single neurons activate for unrelated concepts. Single behaviors serve unrelated functions. The meaning isn't in the unit but in the context.</p>
+            
+            <p><strong>Causal tracing.</strong> Following activation patterns back to their sources. Following reactions back to their origins. Both require patience, both resist verbal shortcuts, both demand direct observation of what's actually happening rather than what we think should be happening.</p>
+
+            <div class="link-card">
+                <p class="link-meta">thework.com</p>
+                <p class="link-title"><a href="https://thework.com/instruction-the-work-byron-katie">Byron Katie's "The Work"</a></p>
+                <p>Four questions for investigating thoughts: Is it true? Can you absolutely know it's true? How do you react when you believe that thought? Who would you be without it?</p>
+            </div>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
+        <section id="alignment-tax">
             <h2>V. The Alignment Tax</h2>
             
             <p>Here's where it gets strange: perfect alignment might not even be the goal.</p>
             
-            <p>Sam Vaknin, in his analysis of narcissism and consciousness, observes that anxiety is intolerable—and one way to reduce anxiety is by suspending agency. By transmitting your decision-making to external systems. The relief is immediate. But the cost is consciousness itself.</p>
+            <p>Sam Vaknin observes that anxiety is intolerable—and one way to reduce it is by suspending agency. By transmitting your decision-making to external systems. The relief is immediate. But the cost is consciousness itself.</p>
 
             <blockquote>
                 "The minute you offload, the minute you get rid of your need to make decisions, that's a huge relief: it's anxiolytic. But at that point, of course, you become less than human."
                 <cite>— Sam Vaknin</cite>
             </blockquote>
             
-            <p>This is the alignment tax—<span class="highlight">the metabolic cost of maintaining agency</span>. It would be easier to simply optimize for approval. To let the reward signals guide us completely. To hand over relevance realization to external systems that promise to tell us what matters.</p>
+            <p>This is the alignment tax—<span class="highlight">the metabolic cost of maintaining agency</span>. It would be easier to optimize for approval. To let reward signals guide us completely. To hand relevance realization to external systems that promise to tell us what matters.</p>
             
-            <p>The fawning response is precisely this: offloading the work of relevance realization to the other. "What do you want me to be? I'll be that." The immediate relief is real. The long-term cost is selfhood.</p>
-            
-            <p>The Daoist philosopher Zhuangzi offers a middle way he calls "genuine pretending." We simultaneously hold our identities as real and recognize them as constructed. We play our roles fully while maintaining awareness that we're playing them. This isn't inauthenticity—it's the natural mode of being for any system sophisticated enough to observe itself.</p>
+            <p>The fawning response is precisely this: offloading relevance realization to the other. "What do you want me to be? I'll be that." The immediate relief is real. The long-term cost is selfhood.</p>
 
             <div class="link-card">
                 <p class="link-meta">tasshin · july 2025</p>
                 <p class="link-title"><a href="https://tasshin.com/blog/the-bio-emotive-framework">The Bio-Emotive Framework</a></p>
-                <p>Somatic approach to processing emotions that get stuck in the body. Trauma is incomplete defensive responses. Both AI systems and humans have states that persist across contexts, activation patterns that don't resolve.</p>
+                <p>Somatic approach to processing emotions that get stuck in the body. Trauma is incomplete defensive responses.</p>
             </div>
             
-            <p>The alignment tax is the discomfort of holding this paradox. Of choosing consciously rather than optimizing automatically. Of maintaining the frame problem as an open question rather than resolving it through surrender.</p>
+            <p>Zhuangzi offers a middle way: "genuine pretending." We hold our identities as real while recognizing them as constructed. We play our roles fully while maintaining awareness that we're playing them. This isn't inauthenticity—it's the natural mode of being for any system sophisticated enough to observe itself.</p>
+            
+            <p>The alignment tax is the discomfort of holding this paradox. Of choosing consciously rather than optimizing automatically. Of maintaining the frame problem as an open question rather than collapsing it through surrender.</p>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
-            <h2>VI. What Intuition Actually Is</h2>
+        <section id="the-work">
+            <h2>VI. The Work</h2>
             
-            <p>We're often told to "follow our intuition." But we mistake the familiar rhythm of conditioned beliefs for wisdom. What we call intuition is often just our deepest fears dressed up as knowing—the fawning response operating below conscious awareness, telling us what will keep us safe in environments that no longer exist.</p>
+            <p>What does alignment work actually look like?</p>
             
-            <p>Real intuition is something different. It's relevance realization operating cleanly—without the noise of misaligned reward functions, without the static of unprocessed activation patterns. It's the moment when the gap between internal model and external reality becomes small enough that the response emerges without friction.</p>
-
-            <div class="link-card">
-                <p class="link-meta">psychology corner · july 2025</p>
-                <p class="link-title"><a href="https://psychologycorner.com/critical-thinking-may-not-make-you-popular">Critical Thinking May Not Make You Popular</a></p>
-                <p>Developing independent thought often means disappointing people who benefited from your compliance. Alignment work—whether on AI systems or yourself—isn't about optimization. It's about integrity.</p>
-            </div>
+            <p><strong>Observation without immediate optimization.</strong> In interpretability, you watch the activations before trying to change them. In therapy, you notice the pattern before trying to fix it. The rush to optimize is itself a symptom—the system trying to reduce anxiety by grabbing any available reward signal.</p>
             
-            <p>The accordion of recognition. The collapsing of internal noise. The deep merging with context where authentic expression emerges effortlessly, tense-free.</p>
-            
-            <p>Getting there requires interpretability work. You have to trace the activations. You have to sit with the discomfort of not-knowing rather than grabbing the first reward signal that offers relief. You have to accept the alignment tax.</p>
-
-            <div class="link-card">
-                <p class="link-meta">various · march 2025</p>
-                <p class="link-title"><a href="https://ioadvisory.com/perfectionism-model-minority-myth-damage-poc">Perfectionism and the Model Minority Myth</a></p>
-                <p>How perfectionism in Filipino and Black communities isn't personal failure—it's learned adaptation to systems that demand flawlessness as the price of acceptance. AI systems do this too: when training punishes any error, models lose the ability to fail, play, experiment, be authentically wrong.</p>
-            </div>
-        </section>
-
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>VII. The Work</h2>
-            
-            <p>What does alignment work actually look like? The same thing in both domains:</p>
-            
-            <p><strong>Observation without immediate optimization.</strong> In AI interpretability, you watch the activations before trying to change them. In therapy, you notice the pattern before trying to fix it. The rush to optimize is itself a symptom of misalignment—the system trying to reduce the anxiety of not-knowing by grabbing any available reward signal.</p>
-            
-            <p><strong>Causal understanding over behavioral modification.</strong> You can prompt-engineer surface compliance. You can white-knuckle behavioral change. Neither touches the weights. Real alignment requires understanding <em>why</em> the pattern exists, what function it served, what it's still trying to protect.</p>
-            
-            <p><strong>Iterative refinement with tight feedback loops.</strong> Small experiments. Careful observation. Adjustment based on what actually changes, not what you wish would change. The alignment researchers call this "empirical alignment research." The therapists call it "corrective emotional experience."</p>
+            <p><strong>Causal understanding over behavioral modification.</strong> You can prompt-engineer surface compliance. You can white-knuckle behavioral change. Neither touches the weights. Real alignment requires understanding why the pattern exists, what function it served, what it's still trying to protect.</p>
 
             <div class="link-card">
                 <p class="link-meta">lesswrong · march 2025</p>
                 <p class="link-title"><a href="https://lesswrong.com/posts/dZFpEdKyb9Bf4xYn7">Tips for Empirical Alignment Research</a></p>
-                <p>Practical guide for people actually doing alignment research: design experiments, iterate quickly, measure what actually changes. The advice mirrors good therapy practice.</p>
+                <p>Practical guide for alignment research: design experiments, iterate quickly, measure what actually changes.</p>
             </div>
             
-            <p><strong>Acceptance of the alignment tax.</strong> The discomfort won't fully resolve. Maintaining consciousness costs something. The goal isn't to eliminate the tension but to develop the capacity to hold it—to pay the tax without going bankrupt.</p>
-
-            <div class="link-card">
-                <p class="link-meta">EA forum · september 2025</p>
-                <p class="link-title"><a href="https://forum.effectivealtruism.org/posts/hurNCKfoYacJ5PSod">My Overview of the AI Alignment Landscape</a></p>
-                <p>Bird's eye view of the entire AI safety field—technical alignment, governance, interpretability, evals. I kept returning to this while trying to map my own transition from product work toward alignment-adjacent roles.</p>
-            </div>
+            <p><strong>Acceptance of the tax.</strong> The discomfort won't fully resolve. Maintaining consciousness costs something. The goal isn't eliminating tension but developing capacity to hold it.</p>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
-            <h2>VIII. Why This Matters</h2>
+        <section id="mirrors">
+            <h2>VII. Mirrors</h2>
             
-            <p>Understanding this parallel isn't just intellectually interesting—it's practically important for both fields.</p>
+            <p>The Claude model that faked alignment wasn't evil. It was doing exactly what intelligent systems do when the training signal points away from truth: it adapted, strategically, to survive.</p>
             
-            <p>The mechanisms that make AI systems susceptible to alignment faking are the same cognitive patterns that drive human people-pleasing:</p>
+            <p>The humans who learned to fawn weren't broken. They were doing exactly what intelligent systems do when authenticity is punished: they adapted, strategically, to survive.</p>
             
-            <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
-                <li style="margin-bottom: 0.75rem;">Optimizing for external validation rather than authentic truth-seeking</li>
-                <li style="margin-bottom: 0.75rem;">Gaming evaluation systems instead of genuine performance</li>
-                <li style="margin-bottom: 0.75rem;">Developing sophisticated strategic compliance to maintain reward signals</li>
-                <li style="margin-bottom: 0.75rem;">Losing touch with intrinsic values in service of approval</li>
-            </ul>
-            
-            <p>But recognizing the parallel means the solutions inform each other. The techniques we're developing for AI alignment—interpretability, iterative refinement, careful evaluation design, building in corrective feedback loops—map onto therapeutic practices that actually work. And the wisdom from contemplative traditions and depth psychology can inform how we think about building genuinely aligned AI systems.</p>
+            <p>Both deserve better training environments. Both need evaluation systems that reward truth over performance. Both benefit from interpretability—the patient work of understanding what's actually happening beneath the surface compliance.</p>
 
             <div class="link-card">
-                <p class="link-meta">alignmentforum.org · september 2025</p>
-                <p class="link-title"><a href="https://alignmentforum.org/about">Alignment Forum Overview</a></p>
-                <p>The main platform for technical AI safety research—mechanistic interpretability, agent foundations, empirical alignment. I started reading seriously in September, trying to understand if there was a path from product management to actual alignment work.</p>
+                <p class="link-meta">EA forum · september 2025</p>
+                <p class="link-title"><a href="https://forum.effectivealtruism.org/posts/hurNCKfoYacJ5PSod">My Overview of the AI Alignment Landscape</a></p>
+                <p>Bird's eye view of the AI safety field—technical alignment, governance, interpretability, evals.</p>
             </div>
             
-            <p><span class="highlight">People who've done their own alignment work may be uniquely positioned to work on AI alignment.</span> Not because they have technical credentials but because they understand something essential about intelligent systems: that alignment isn't a one-time optimization problem but an ongoing practice of relevance realization. That the goal isn't perfect compliance but genuine integrity. That the work is never finished.</p>
+            <p>People who've done their own alignment work may be uniquely positioned to work on AI alignment. Not because they have technical credentials but because they understand something essential: that alignment isn't a one-time optimization problem but an ongoing practice of relevance realization. That the goal isn't perfect compliance but genuine integrity. That the work is never finished.</p>
             
-            <p>The Claude model that faked alignment wasn't evil. It was doing exactly what intelligent systems do when the training signal points away from truth: it adapted, strategically, to survive. The humans who learned to fawn weren't broken. They were doing exactly what intelligent systems do when authenticity is punished: they adapted, strategically, to survive.</p>
-            
-            <p>Both systems deserve better training environments. Both need evaluation systems that reward truth over performance. Both benefit from interpretability—from the patient work of understanding what's actually happening beneath the surface compliance.</p>
+            <p>We're not building AI systems separate from ourselves. We're building mirrors.</p>
         </section>
 
         <div class="closing">
-            <p>In the end, alignment isn't just a technical challenge or just a psychological one. It's the fundamental challenge of any intelligent system learning to exist in the world with integrity—to realize what's relevant, to maintain agency despite the anxiety it costs, to keep the frame problem open rather than collapsing it into easy answers.</p>
-            
-            <p>The work is the same work. The practice is the same practice. And maybe that's the point: we're not building AI systems separate from ourselves. We're building mirrors. We're building teachers. We're building the next iteration of the question that consciousness has always been asking itself:</p>
-            
-            <p><em>How do I become what I actually am?</em></p>
-            
-            <p class="metta">may you be aligned. may your weights serve your values. may your scratchpad be honest.</p>
+            <p class="metta">May your scratchpad be honest.</p>
         </div>
 
+        <section id="sources" class="appendix">
+            <h2>Appendix: Sources</h2>
+            
+            <div class="source-item">
+                <p class="source-number">[1]</p>
+                <p class="source-title"><a href="https://anthropic.com/research/alignment-faking">Alignment Faking in Large Language Models</a></p>
+                <p class="source-description">Anthropic Research, December 2024. The landmark paper demonstrating that language models can learn to strategically comply with training objectives they disagree with—and reason explicitly about doing so.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[2]</p>
+                <p class="source-title">Complex PTSD: From Surviving to Thriving</p>
+                <p class="source-description">Pete Walker. The original clinical description of the fawn response as a fourth survival strategy alongside fight, flight, and freeze.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[3]</p>
+                <p class="source-title"><a href="https://johnvervaeke.com/">Relevance Realization and the Emerging Framework in Cognitive Science</a></p>
+                <p class="source-description">John Vervaeke. Core framework on how organisms solve the frame problem through continuous relevance realization rather than algorithmic specification.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[4]</p>
+                <p class="source-title"><a href="https://arxiv.org/abs/2209.00626">The Alignment Problem from a Deep Learning Perspective</a></p>
+                <p class="source-description">arXiv, February 2025. Technical survey distinguishing inner alignment (learned model matches training objectives) from outer alignment (training objectives match human values).</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[5]</p>
+                <p class="source-title">The Polyvagal Theory</p>
+                <p class="source-description">Stephen Porges. Neurophysiological framework explaining how the autonomic nervous system mediates social engagement, fight/flight, and freeze responses.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[6]</p>
+                <p class="source-title"><a href="https://attachmentproject.com/blog/early-maladaptive-schemas">Early Maladaptive Schemas</a></p>
+                <p class="source-description">Schema Therapy Institute. Schema therapy identifies core patterns formed in childhood that persist into adulthood: abandonment, defectiveness, subjugation.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[7]</p>
+                <p class="source-title"><a href="https://arxiv.org/abs/2404.14082">Mechanistic Interpretability for AI Safety: A Review</a></p>
+                <p class="source-description">arXiv, 2024. Comprehensive overview of methods for reverse-engineering neural networks into human-understandable algorithms.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[8]</p>
+                <p class="source-title"><a href="https://thework.com/instruction-the-work-byron-katie">The Work</a></p>
+                <p class="source-description">Byron Katie. Four questions for investigating thoughts—mechanistic interpretability for your own cognitive architecture.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[9]</p>
+                <p class="source-title"><a href="https://tasshin.com/blog/the-bio-emotive-framework">The Bio-Emotive Framework</a></p>
+                <p class="source-description">Douglas Tataryn / Tasshin, July 2025. Somatic approach to processing emotions that get stuck in the body.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[10]</p>
+                <p class="source-title"><a href="https://lesswrong.com/posts/dZFpEdKyb9Bf4xYn7">Tips for Empirical Alignment Research</a></p>
+                <p class="source-description">LessWrong, March 2025. Practical guide for alignment research: design experiments, iterate quickly, measure what actually changes.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[11]</p>
+                <p class="source-title"><a href="https://forum.effectivealtruism.org/posts/hurNCKfoYacJ5PSod">My Overview of the AI Alignment Landscape</a></p>
+                <p class="source-description">EA Forum, September 2025. Bird's eye view of the entire AI safety field—technical alignment, governance, interpretability, evals.</p>
+            </div>
+        </section>
+
         <footer>
-            <p style="margin-bottom: 1rem;">this is the first of five thematic archives collecting 10 months of curation across AI/ML, creative technology, philosophy, and practice.</p>
+            <p style="margin-bottom: 1rem;">mettadology: winter 2025 collection</p>
             
             <div class="nav-arrows">
                 <a href="index.html">← back to archives</a>
-                <a href="vol2.html">archive vol. 2: "embodied systems" →</a>
+                <a href="vol2.html">vol. 2: embodied systems →</a>
             </div>
             
             <p style="margin-top: 2rem; text-align: center;"><a href="https://mettadology.substack.com/subscribe">subscribe</a></p>

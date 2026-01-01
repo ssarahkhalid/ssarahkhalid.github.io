@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mettadology archive vol. 2 · embodied systems</title>
+    <title>mettadology · embodied systems</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
@@ -80,6 +80,42 @@
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.85rem;
             color: var(--warm-gray);
+        }
+        
+        .toc {
+            margin: 2rem 0 3rem;
+            padding: 1.5rem 2rem;
+            background: var(--cream);
+            border-radius: 4px;
+        }
+        
+        .toc-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc a {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1rem;
+            color: var(--charcoal);
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            color: var(--terracotta);
         }
         
         .epigraph {
@@ -210,9 +246,44 @@
             background: linear-gradient(to bottom, transparent 60%, rgba(196, 112, 79, 0.2) 60%);
         }
         
-        .footnote {
-            font-size: 0.9rem;
+        .appendix {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--sand);
+        }
+        
+        .appendix h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .source-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--sand);
+        }
+        
+        .source-item:last-child {
+            border-bottom: none;
+        }
+        
+        .source-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            margin-bottom: 0.25rem;
+        }
+        
+        .source-title {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .source-description {
+            font-size: 0.95rem;
             color: var(--warm-gray);
+            margin-bottom: 0;
         }
         
         .closing {
@@ -254,10 +325,23 @@
     <div class="container">
         <header>
             <a href="index.html" class="nav-back">← back to archives</a>
-            <h1>mettadology archive vol. 2</h1>
-            <p class="subtitle">embodied systems</p>
-            <p class="meta">curated throughout 2025 · 16 minute read</p>
+            <h1>embodied systems</h1>
+            <p class="subtitle">mettadology volume 2</p>
+            <p class="meta">curated throughout 2025</p>
         </header>
+
+        <nav class="toc">
+            <p class="toc-title">Contents</p>
+            <ul>
+                <li><a href="#extended-mind">I. The Extended Mind</a></li>
+                <li><a href="#voice-as-body">II. Voice as Body</a></li>
+                <li><a href="#local-first">III. Local-First as Embodied Computing</a></li>
+                <li><a href="#fascia">IV. Fascia Doesn't Lie</a></li>
+                <li><a href="#digital-architecture">V. Digital Architecture</a></li>
+                <li><a href="#what-ai-missing">VI. What AI is Missing</a></li>
+                <li><a href="#sources">Appendix: Sources</a></li>
+            </ul>
+        </nav>
 
         <div class="epigraph">
             <blockquote>
@@ -266,333 +350,271 @@
             <cite>— Maurice Merleau-Ponty, Phenomenology of Perception, 1945</cite>
         </div>
 
-        <section>
-            <h2>I. The Flesh of the World</h2>
+        <section id="extended-mind">
+            <h2>I. The Extended Mind</h2>
             
             <p class="opening-line">In 1998, philosophers Andy Clark and David Chalmers asked a question that seemed almost naive: where does the mind stop and the rest of the world begin?</p>
             
             <p>Their answer—that cognitive processes "ain't all in the head"—launched a decade of debate in philosophy of mind. But they were articulating something that phenomenologists had known for fifty years and meditators for millennia: <span class="highlight">the boundary between self and world is more permeable than we think.</span></p>
-            
-            <p>Clark and Chalmers called it the extended mind thesis. Merleau-Ponty called it flesh. Peter Levine called it somatic experiencing. The indie web developers at Ink & Switch call it local-first software. Different vocabularies, same insight: consciousness doesn't float free of matter. It requires—and extends through—physical grounding.</p>
-            
-            <p>I've been collecting evidence for this claim across ten months of curation. What started as saving interesting links became a case study in embodied cognition. Not metaphorically. Literally.</p>
 
             <div class="link-card">
                 <p class="link-meta">clark & chalmers · 1998</p>
-                <p class="link-title"><a href="https://www.alice.id.tue.nl/references/clark-chalmers-1998.pdf">The Extended Mind (Original Paper)</a></p>
+                <p class="link-title"><a href="https://www.philosophy.ed.ac.uk/people/clark/pubs/TheExtendedMind.pdf">The Extended Mind</a></p>
                 <p>The landmark paper arguing that notebooks, calculators, and other external objects can constitute genuine parts of cognitive systems—not just tools we use, but extensions of mind itself.</p>
             </div>
             
-            <p>The cognitive science term is "4E cognition": embodied, embedded, enacted, extended. The body isn't the vehicle for the brain. It's part of the cognitive system. Cognition doesn't happen in an isolated skull—it's scaffolded by environment, brought forth through action, extended into tools and artifacts. The mind is not a thing inside your head. It's a process that happens between head, body, and world.</p>
-            
-            <p>This isn't new age mysticism. It's the emerging consensus in cognitive science—and it has profound implications for how we build technology.</p>
-        </section>
+            <p>The cognitive science term is "4E cognition": embodied, embedded, enacted, extended. The body isn't the vehicle for the brain. It's part of the cognitive system. Cognition doesn't happen in an isolated skull—it's scaffolded by environment, brought forth through action, extended into tools and artifacts.</p>
 
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>II. Where I Actually Think</h2>
-            
-            <p>Here's where it gets personal: my best thinking doesn't happen at my desk.</p>
-            
-            <p>It happens walking through Montreal's alleys with voice memos running. It happens making physical zines from digital conversations. It happens with tools that live on my actual computer, responding to my actual presence—not abstracted to someone else's cloud, optimized for their metrics, latent somewhere I can't feel.</p>
-            
-            <p>Nietzsche knew this. "All truly great thoughts are conceived by walking," he wrote in <em>Twilight of the Idols</em>. He walked eight hours a day through the Swiss Alps during his most productive decade, producing <em>Thus Spoke Zarathustra</em>, <em>Beyond Good and Evil</em>, <em>The Joyous Science</em>. This wasn't exercise. This was philosophy. The movement was the thinking.</p>
-            
-            <blockquote>
-                "We do not belong to those who have ideas only among books, when stimulated by books. It is our habit to think outdoors—walking, leaping, climbing, dancing, preferably on lonely mountains or near the sea where even the trails become thoughtful."
-                <cite>— Friedrich Nietzsche, The Joyous Science</cite>
-            </blockquote>
-            
-            <p>Rebecca Solnit puts it beautifully: walking is "a state in which the mind, the body, and the world are aligned." Not three separate things brought together but a single integrated process. The pace of thought matches the pace of feet—three miles per hour, the speed at which ideas and landscape synchronize.</p>
-            
-            <p>Stanford researchers confirmed what peripatetic philosophers always knew: walking increases creative thinking by 60% compared to sitting. But here's the key finding—<span class="highlight">the effect persists even after you sit back down</span>. The embodiment leaves a residue. Your thinking has been changed by your moving.</p>
-
-            <div class="link-card">
-                <p class="link-meta">stanford · 2014</p>
-                <p class="link-title"><a href="https://www.apa.org/pubs/journals/releases/xlm-a0036577.pdf">Give Your Ideas Some Legs: The Positive Effect of Walking on Creative Thinking</a></p>
-                <p>Experimental evidence that walking boosts divergent thinking—and that the benefits carry over to subsequent seated activities. The embodied cognition effect isn't just while moving.</p>
-            </div>
-        </section>
-
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>III. Voice as Body</h2>
-            
-            <p>Most voice interfaces optimize for efficiency: transcribe words fast, minimize latency, get you back to your screen. But I wanted something different—tools that help thoughts become <em>artifacts</em>. Physical artifacts.</p>
-            
-            <p>The pipeline I built: speak → Whisper → Claude → Markdown → printable zine. Voice in, paper out. The screen is just the transformation layer, not the destination.</p>
-            
-            <p>Why does this matter? Because <span class="highlight">the voice is body</span>. Speaking engages breath, rhythm, embodied presence. You can't speak without activating the diaphragm, the vagus nerve, the whole respiratory apparatus that connects brain to gut. The voice carries the body's state—you can hear stress, joy, fatigue, presence in someone's voice because the voice <em>is</em> the body expressing itself.</p>
-            
-            <p>And the zine is body too—paper you hold, pages you turn, ink you smell. The screen is not body. It's the same flat rectangle for everything: spreadsheets, grief, poetry, pornography. No texture. No weight. No phenomenological variety.</p>
-
-            <div class="link-card">
-                <p class="link-meta">dialogos labs · march 2025</p>
-                <p class="link-title">Voice-to-Zine Pipeline</p>
-                <p>My experiment in embodied artifact creation: speak → transcribe → analyze → format → print. The goal isn't efficient transcription but meaningful transformation from ephemeral breath to permanent paper.</p>
-            </div>
-            
-            <p>The enactivist philosophers would call this "bringing forth a world." Cognition isn't passive reception of information—it's active engagement that creates meaning through embodied action. When I speak into the voice memo, I'm not just recording thoughts I already have. I'm <em>generating</em> thoughts through the act of speaking. The articulation is constitutive, not just expressive.</p>
-            
-            <p>Varela, Thompson, and Rosch put it this way in <em>The Embodied Mind</em>: cognitive structures emerge from sensorimotor patterns that enable action to be perceptually guided. Perception and action aren't separate stages but a continuous loop. Speaking is thinking. Making is knowing. The voice-to-zine pipeline works because it keeps the loop embodied at both ends.</p>
-        </section>
-
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>IV. Local-First as Embodied Computing</h2>
-            
-            <p>The tech industry keeps trying to abstract everything. Move it to the cloud. Make it scalable. Optimize it into pure information. But something gets lost in the abstraction—something that matters.</p>
-            
-            <p>Local-first software is the counter-movement: data that lives on your device, not someone's datacenter. Software that works offline. Privacy through physical locality. The Ink & Switch manifesto argues for treating user devices as the source of truth rather than servers.</p>
-
-            <div class="link-card">
-                <p class="link-meta">ink & switch · 2019</p>
-                <p class="link-title"><a href="https://www.inkandswitch.com/local-first/">Local-First Software: You Own Your Data, in Spite of the Cloud</a></p>
-                <p>The technical manifesto for software that works offline, syncs when possible, and keeps user devices as the source of truth. Privacy and sovereignty through physical locality.</p>
-            </div>
-            
-            <p>But here's what the technical arguments miss: <span class="highlight">local-first is embodied computing</span>. When your data lives on your device rather than someone's cloud, it has a physical location—your location. It moves when you move. It's offline when you're offline. It exists in your physical proximity, responds to your physical control.</p>
-            
-            <p>This isn't just about privacy or ownership, though it's both. It's about the extended mind thesis made practical. Clark and Chalmers argued that external objects become part of cognitive systems when they're reliably coupled—when they're "there when needed" in the way that biological memory is there when needed. Cloud services fail this test. They disappear when the network drops. They change when the company pivots. They're not reliably coupled to you.</p>
-            
-            <p>Local-first software passes the coupling test. It's as available as your thoughts. When the internet goes down, your tools still work. Your extended mind doesn't suddenly go offline.</p>
-            
             <blockquote>
                 "If the resources of my calculator or my notebook are always there when I need them, then they are coupled with me as reliably as we need. In effect, they are part of the basic package of cognitive resources that I bring to bear on the everyday world."
                 <cite>— Andy Clark & David Chalmers, "The Extended Mind"</cite>
             </blockquote>
             
-            <p>The cloud breaks this. The cloud means your thoughts live in someone else's jurisdiction. Your notes exist somewhere you can't point to. Your extended mind has been outsourced. Local-first brings it back into your body—or at least into the physical objects your body can touch and control.</p>
+            <p>The mind is not a thing inside your head. It's a process that happens between head, body, and world. This isn't new age mysticism. It's the emerging consensus in cognitive science—and it has profound implications for how we build technology.</p>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
-            <h2>V. Fascia Doesn't Lie</h2>
+        <section id="voice-as-body">
+            <h2>II. Voice as Body</h2>
+            
+            <p>Most voice interfaces optimize for efficiency: transcribe words fast, minimize latency, get you back to your screen. But I wanted something different—tools that help thoughts become artifacts. Physical artifacts.</p>
+            
+            <p>The pipeline I built: speak → Whisper → Claude → Markdown → printable zine. Voice in, paper out. The screen is just the transformation layer, not the destination.</p>
+
+            <div class="link-card">
+                <p class="link-meta">dialogos labs · march 2025</p>
+                <p class="link-title"><a href="#">Voice-to-Zine Pipeline</a></p>
+                <p>Experiment in embodied artifact creation: speak → transcribe → analyze → format → print. The goal isn't efficient transcription but meaningful transformation from ephemeral breath to permanent paper.</p>
+            </div>
+            
+            <p>Why does this matter? Because <span class="highlight">the voice is body</span>. Speaking engages breath, rhythm, embodied presence. You can't speak without activating the diaphragm, the vagus nerve, the whole respiratory apparatus that connects brain to gut. The voice carries the body's state—you can hear stress, joy, fatigue, presence in someone's voice because the voice is the body expressing itself.</p>
+            
+            <p>And the zine is body too—paper you hold, pages you turn, ink you smell. The screen is not body. It's the same flat rectangle for everything: spreadsheets, grief, poetry, pornography. No texture. No weight. No phenomenological variety.</p>
+            
+            <p>Cognition isn't passive reception of information—it's active engagement that creates meaning through embodied action. When I speak into the voice memo, I'm not recording thoughts I already have. I'm generating thoughts through the act of speaking. The articulation is constitutive, not just expressive.</p>
+
+            <div class="link-card">
+                <p class="link-meta">varela, thompson & rosch · 1991</p>
+                <p class="link-title"><a href="#">The Embodied Mind</a></p>
+                <p>The foundational enactivism text: cognitive structures emerge from sensorimotor patterns that enable action to be perceptually guided. Perception and action aren't separate stages but a continuous loop.</p>
+            </div>
+            
+            <p>Speaking is thinking. Making is knowing. The voice-to-zine pipeline works because it keeps the loop embodied at both ends.</p>
+        </section>
+
+        <p class="section-break">◆ ◆ ◆</p>
+
+        <section id="local-first">
+            <h2>III. Local-First as Embodied Computing</h2>
+            
+            <p>The tech industry keeps trying to abstract everything. Move it to the cloud. Make it scalable. Optimize it into pure information. But something gets lost in the abstraction.</p>
+            
+            <p>Local-first software is the counter-movement: data that lives on your device, not someone's datacenter. Software that works offline. Privacy through physical locality.</p>
+
+            <div class="link-card">
+                <p class="link-meta">ink & switch · 2019</p>
+                <p class="link-title"><a href="https://www.inkandswitch.com/local-first/">Local-First Software: You Own Your Data, in Spite of the Cloud</a></p>
+                <p>The technical manifesto for software that works offline, syncs when possible, and keeps user devices as the source of truth.</p>
+            </div>
+            
+            <p>But here's what the technical arguments miss: <span class="highlight">local-first is embodied computing</span>. When your data lives on your device rather than someone's cloud, it has a physical location—your location. It moves when you move. It's offline when you're offline. It exists in your physical proximity, responds to your physical control.</p>
+            
+            <p>Clark and Chalmers argued that external objects become part of cognitive systems when they're reliably coupled—when they're "there when needed" in the way that biological memory is there when needed. Cloud services fail this test. They disappear when the network drops. They change when the company pivots. They're not reliably coupled to you.</p>
+            
+            <p>Local-first software passes the coupling test. It's as available as your thoughts. When the internet goes down, your tools still work. Your extended mind doesn't suddenly go offline.</p>
+            
+            <p>The cloud means your thoughts live in someone else's jurisdiction. Your notes exist somewhere you can't point to. Your extended mind has been outsourced. Local-first brings it back into the physical objects your body can touch and control.</p>
+        </section>
+
+        <p class="section-break">◆ ◆ ◆</p>
+
+        <section id="fascia">
+            <h2>IV. Fascia Doesn't Lie</h2>
             
             <p>Peter Levine spent forty years studying why humans get stuck in trauma while wild animals shake it off. His answer: we think too much. We interrupt the body's natural completion mechanisms with cognitive override.</p>
             
             <p>The theory, informed by Stephen Porges's polyvagal framework: when threat overwhelms the nervous system's capacity to fight or flee, we freeze. The survival energy gets bound in the body—compressed, stuck, waiting for a discharge that never comes. Animals shake, tremor, complete the thwarted defensive response. Humans analyze, ruminate, talk about it while the energy stays trapped in tissue.</p>
 
             <div class="link-card">
-                <p class="link-meta">somatic experiencing · 1997-present</p>
-                <p class="link-title"><a href="https://traumahealing.org/se-101/">Somatic Experiencing: SE 101</a></p>
-                <p>Peter Levine's framework for trauma resolution through body-centered awareness. Not exposure therapy but completion—allowing thwarted defensive responses to finally discharge.</p>
+                <p class="link-meta">peter levine · 1997</p>
+                <p class="link-title"><a href="#">Somatic Experiencing</a></p>
+                <p>Framework for trauma resolution through body-centered awareness. Not exposure therapy but completion—allowing thwarted defensive responses to finally discharge.</p>
             </div>
-            
-            <p>The implications for embodied cognition are profound: <span class="highlight">you cannot think your way out of patterns held in the body</span>. The trauma isn't stored in the narrative. It's stored in the fascia, the muscular holding patterns, the nervous system's default settings. Talking about it activates the speaking and analyzing parts of the brain while leaving the survival brain untouched.</p>
-            
-            <p>Levine's approach works bottom-up: start with sensation, let the body complete what it started, integrate only afterward. The cognitive understanding comes last, if at all. Sometimes you don't need to understand. You just need to shake.</p>
-            
+
             <blockquote>
                 "Trauma is not what happens to us, but what we hold inside in the absence of an empathetic witness."
                 <cite>— Peter Levine</cite>
             </blockquote>
             
-            <p>There's a parallel to how we process information generally. Emotions get stuck in tissue. Insights get stuck in notes we never revisit. Ideas get stuck in bookmarks we never open. The completion mechanism is embodied action—moving, making, transforming. Not just thinking about thinking. <em>Doing</em> about thinking.</p>
+            <p><span class="highlight">You cannot think your way out of patterns held in the body.</span> The trauma isn't stored in the narrative. It's stored in the fascia, the muscular holding patterns, the nervous system's default settings. Talking about it activates the speaking and analyzing parts of the brain while leaving the survival brain untouched.</p>
             
-            <p>Every creative system I know includes movement. Walking meetings. Pacing while problem-solving. Handwriting before typing. Physical zines from digital conversations. The body isn't carrying the brain around. The body <em>is</em> thinking. You don't think <em>and</em> walk. Walking <em>is</em> thinking.</p>
+            <p>Levine's approach works bottom-up: start with sensation, let the body complete what it started, integrate only afterward. The cognitive understanding comes last, if at all. Sometimes you don't need to understand. You just need to shake.</p>
+            
+            <p>There's a parallel to how we process information generally. Emotions get stuck in tissue. Insights get stuck in notes we never revisit. Ideas get stuck in bookmarks we never open. The completion mechanism is embodied action—moving, making, transforming. Not just thinking about thinking. Doing about thinking.</p>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
-            <h2>VI. Intimate Immensity</h2>
+        <section id="digital-architecture">
+            <h2>V. Digital Architecture</h2>
             
             <p>Gaston Bachelard's <em>The Poetics of Space</em> is a phenomenology of architecture: how physical spaces shape consciousness. Corners, nests, shells, drawers—each architectural element creates different experiential possibilities. The house is our first universe. The room shapes the dream.</p>
 
             <div class="link-card">
                 <p class="link-meta">harvard design magazine · 2018</p>
-                <p class="link-title"><a href="https://www.harvarddesignmagazine.org/articles/talking-to-myself-about-the-poetics-of-space">Talking to Myself About The Poetics of Space</a></p>
+                <p class="link-title"><a href="#">Talking to Myself About The Poetics of Space</a></p>
                 <p>Reflection on Bachelard's phenomenology of intimate spaces—how architecture creates different registers of consciousness, different qualities of dwelling.</p>
             </div>
             
-            <p>The application to digital design is uncomfortable: <span class="highlight">where are the corners in our interfaces?</span> Where is the intimate immensity, the dialectics of inside and outside? We've built a digital world with no texture, no spatial memory, no phenomenological variety.</p>
+            <p>The application to digital design is uncomfortable: where are the corners in our interfaces? Where is the intimate immensity, the dialectics of inside and outside?</p>
             
             <p>Every app is the same flat rectangle. The login screen looks like the spreadsheet looks like the meditation timer looks like the porn site. No architectural variation. No embodied metaphors. No corners to curl into, no drawers to rummage through, no nests for different kinds of thought.</p>
             
-            <p>Bachelard writes about "felicitous space"—space that concentrates being, that provides images for what he calls "intimate immensity." We've stripped that from digital experience. We've optimized for efficiency at the cost of dwelling. The most used interfaces in human history have less spatial variety than a prison.</p>
-        </section>
-
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>VII. Constraints as Scaffolding</h2>
-            
-            <p>The Bitsy game engine limits you to 8×8 pixel sprites, three colors per room, simple dialogue interactions. You can make a complete game in an afternoon. The constraints aren't limitations—they're scaffolding for presence.</p>
-
-            <div class="link-card">
-                <p class="link-meta">adam le doux · ongoing</p>
-                <p class="link-title"><a href="https://ledoux.itch.io/bitsy">Bitsy: A Little Editor for Little Games</a></p>
-                <p>Tiny game maker for tiny games. The constraints force creativity: small sprites, limited colors, simple interactions. Small tools for small stories. Handmade digital spaces.</p>
-            </div>
-            
-            <p>Making games is embodied learning. You move through space you've created. You feel scale, navigation, pacing in your body as you playtest. The pixels are small enough to hold. The scope is small enough to finish. The whole thing is small enough to understand.</p>
-            
-            <p>This connects to the physical computing movement: Arduino, Raspberry Pi, sensors and actuators that make code tangible. When you write code that blinks an LED, triggers a motor, responds to temperature—suddenly programming becomes embodied. You're not manipulating abstractions on a screen. You're shaping the physical world. The feedback loop includes your actual senses.</p>
-            
-            <p>Code becomes real when it has physical consequences. When your bugs make motors spin wrong. When your logic makes lights blink weird. When you can hold your program in your hand.</p>
-
-            <div class="link-card">
-                <p class="link-meta">maker culture · ongoing</p>
-                <p class="link-title">Physical Computing</a></p>
-                <p>Arduino, Raspberry Pi, sensors and actuators. Bridging digital and physical through code that moves things, lights things, responds to the actual environment. Embodied programming.</p>
-            </div>
-        </section>
-
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>VIII. Screenshots as Memory Palace</h2>
-            
-            <p>The screenshot garden is an obscure corner of the indie web: people curating screenshots instead of bookmarks. Not saving URLs—capturing the actual visual experience of browsing.</p>
+            <p>Bachelard writes about "felicitous space"—space that concentrates being, that provides images for what he calls "intimate immensity." We've stripped that from digital experience. We've optimized for efficiency at the cost of dwelling. <span class="highlight">The most used interfaces in human history have less spatial variety than a prison.</span></p>
 
             <div class="link-card">
                 <p class="link-meta">neocities · various</p>
-                <p class="link-title"><a href="https://screenshot-garden.neocities.org/">Screenshot Garden</a></p>
+                <p class="link-title"><a href="#">Screenshot Gardens</a></p>
                 <p>Curating screenshots as embodied practice. Not bookmarking links but capturing how you saw something—context preserved, autobiography through interface.</p>
             </div>
             
-            <p>Why screenshots matter: they're more embodied than links. A URL is an abstract pointer—it says where something is, not what it looked like when you found it. A screenshot shows <span class="highlight">how you saw something</span>. Your screen size, your color scheme, your place in the scroll. The surrounding context. The moment of encounter.</p>
-            
-            <p>This is the extended mind at work in a different register. The screenshot becomes an external memory trace—not just of the content but of your <em>relationship</em> to the content. The phenomenological context. What Merleau-Ponty would call the lived experience of encountering information.</p>
-            
-            <p>Digital gardening generally has this quality. Tending rather than optimizing. Care rather than extraction. The garden metaphor matters: gardens are embodied, seasonal, require physical presence and ongoing attention. They're not scalable. They're not efficient. They're alive.</p>
-        </section>
-
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>IX. The Ambient Alternative</h2>
-            
-            <p>Mark Weiser's vision of ubiquitous computing wasn't the smartphone. It was calm technology—computation that recedes into the environment, available when needed, invisible otherwise. Technology at the periphery of attention rather than its center.</p>
+            <p>Mark Weiser's vision of ubiquitous computing wasn't the smartphone. It was calm technology—computation that recedes into the environment, available when needed, invisible otherwise. Technology at the periphery of attention rather than its center. We went the opposite direction. Every notification demands immediate attention. Every app wants to be the foreground.</p>
 
             <div class="link-card">
-                <p class="link-meta">ambient institute · ongoing</p>
-                <p class="link-title"><a href="https://ambient.institute/library/">Ambient Institute Library</a></p>
+                <p class="link-meta">ambient institute</p>
+                <p class="link-title"><a href="#">Ambient Computing Library</a></p>
                 <p>Collection on calm technology, environmental interfaces, ambient computing. Technology that lives at the edge of awareness, felt rather than demanded.</p>
             </div>
-            
-            <p>The embodied principle: not everything needs to be in your face. Some computation should be atmospheric, environmental, felt rather than seen. Like good architecture creates conditions for dwelling rather than demanding attention, good ambient technology creates conditions for presence.</p>
-            
-            <p>We went the opposite direction. Every notification demands immediate attention. Every app wants to be the foreground. The smartphone isn't calm technology—it's an attention vortex, always pulling you out of embodied presence into abstract distraction.</p>
             
             <p>The ambient alternative imagines technology that supports embodiment rather than disrupting it. Interfaces you feel in your peripheral vision. Information that exists in the room rather than on a screen. Computing that knows when to shut up.</p>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section>
-            <h2>X. Personal Datasets as Self-Portrait</h2>
+        <section id="what-ai-missing">
+            <h2>VI. What AI is Missing</h2>
             
-            <p>Everest Pipkin's work treats digital exhaust as creative material. Our browsing history, voice notes, archived links—not as data to be extracted but as autobiography to be composed.</p>
+            <p>We're building increasingly sophisticated language models while ignoring the elephant in the room: <span class="highlight">intelligence evolved in bodies, for bodies, through bodily interaction with physical environments.</span></p>
+            
+            <p>AI systems have "states" that persist across contexts, activation patterns that don't fully resolve—almost like tension held in tissue. But they have no fascia, no breath, no walking. No proprioception. No interoception. No felt sense of their own weight in space.</p>
 
             <div class="link-card">
-                <p class="link-meta">everest pipkin · ongoing</p>
-                <p class="link-title"><a href="https://everestpipkin.github.io/emsII/">Personal Datasets as Creative Material</a></p>
+                <p class="link-meta">everest pipkin</p>
+                <p class="link-title"><a href="#">Personal Datasets as Creative Material</a></p>
                 <p>Artist working with digital accumulation as medium. Your data as autobiography—the rhythm of your obsessions, the shape of your attention, the texture of your particular way of moving through the world.</p>
             </div>
             
-            <p>This inspired my monthly resource collection practice—not as content marketing but as self-portraiture. What I save reveals what I care about. The shape of my links is the shape of my attention. The pattern has a rhythm, obsessions, a particular way of moving through the world.</p>
-            
-            <p>The insight for AI: the most interesting training data might be personal rather than generic. <span class="highlight">Your data has your rhythm</span>. It encodes your embodied history—where you've been, what you've lingered on, how you've moved through digital space. Training on generic corpora creates generic outputs. Training on embodied personal data might create something that actually reflects someone's actual way of being.</p>
+            <p>The most interesting training data might be personal rather than generic. Your data has your rhythm. It encodes your embodied history—where you've been, what you've lingered on, how you've moved through digital space. Training on generic corpora creates generic outputs. Training on embodied personal data might create something that actually reflects someone's actual way of being.</p>
             
             <p>This is the tension at the heart of AI development. The push is toward scale—more data, more parameters, more abstraction. But embodied cognition suggests the opposite: meaning emerges from particular histories, situated actions, local knowledge. Maybe the most conscious AI would be the most personal one.</p>
-        </section>
 
-        <p class="section-break">◆ ◆ ◆</p>
-
-        <section>
-            <h2>Synthesis: What We're Missing</h2>
-            
-            <p>This collection started accidentally. I wasn't looking for a theme—I was just saving links that felt important. But looking back across ten months, every piece shares the same underlying question: <span class="highlight">what happens when we try to do creative or intellectual work that ignores the body?</span></p>
-            
-            <p>The answer, consistently: we lose something essential.</p>
-            
-            <h3>The Technical Argument</h3>
-            
-            <p>Local-first computing emerged as a response to cloud extraction, but it's really about embodiment. When your data lives on your device rather than someone's datacenter, it has a physical location—your location. Physical computing takes this further: code becomes tangible, feedback loops include actual senses, bugs have consequences you can touch.</p>
-            
-            <p>The extended mind thesis gives this philosophical grounding. Objects become cognitive extensions when they're reliably coupled. Cloud services break coupling. Local-first restores it. Your extended mind needs to be within reach.</p>
-            
-            <h3>The Creative Argument</h3>
-            
-            <p>Voice-to-zine works because both ends are embodied. Voice engages breath, rhythm, presence. Zines engage hands, paper, spatial navigation. The transformation in between isn't the point—the embodied endpoints are.</p>
-            
-            <p>Screenshots preserve phenomenological context that URLs destroy. Bitsy games create embodied spatial experience through radical constraint. Physical computing makes code tangible. The pattern is consistent: creation wants embodiment at both input and output.</p>
-            
-            <h3>The Somatic Argument</h3>
-            
-            <p>Fascia doesn't lie. Emotions stored in tissue can't be released through analysis. Trauma held in the body requires body-centered resolution. You cannot think your way out of patterns that live below thought.</p>
-            
-            <p>Walking is thinking. Movement is cognition. The peripatetic philosophers knew this. The Stanford researchers confirmed it. The body isn't carrying the mind around—body and mind are aspects of the same process.</p>
-            
-            <h3>What AI is Missing</h3>
-            
-            <p>We're building increasingly sophisticated language models while ignoring the elephant in the room: intelligence evolved in bodies, for bodies, through bodily interaction with physical environments.</p>
-            
-            <p>AI systems have "states" that persist across contexts, activation patterns that don't fully resolve—almost like tension held in tissue. But they have no fascia, no breath, no walking. No proprioception. No interoception. No felt sense of their own weight in space.</p>
-            
-            <p>I'm not saying AI needs a body (though maybe it does). I'm saying <em>we</em> need to remember we have bodies. That the code we write, the products we build, the interactions we design—these should account for the fact that humans are not just brains on sticks. We are breath and fascia and walking and voice and hands that want to hold paper.</p>
-            
             <div class="code-block">
 # the embodied stack
-
-body         →  fascia, breath, movement, sensation
-artifacts    →  paper, zines, physical objects you can hold
-tools        →  local-first software, physical computing
-environment  →  architectural space, ambient technology
-data         →  personal datasets, embodied history
+body       → fascia, breath, movement, sensation
+artifacts  → paper, zines, physical objects you can hold
+tools      → local-first software, physical computing
+environment → architectural space, ambient technology
+data       → personal datasets, embodied history
 
 # the abstracted stack (what we keep building)
-
-cloud        →  data lives somewhere you can't touch
-screens      →  flat rectangles with no spatial variety  
-attention    →  pulled out of body into abstract distraction
-scale        →  generic corpora instead of personal history
-efficiency   →  optimized at cost of dwelling
+cloud      → data lives somewhere you can't touch
+screens    → flat rectangles with no spatial variety
+attention  → pulled out of body into abstract distraction
+scale      → generic corpora instead of personal history
+efficiency → optimized at cost of dwelling
 
 # the gap between these is what we've lost
             </div>
+            
+            <p>I'm not saying AI needs a body (though maybe it does). I'm saying we need to remember we have bodies. That the code we write, the products we build, the interactions we design—these should account for the fact that humans are not just brains on sticks. We are breath and fascia and walking and voice and hands that want to hold paper.</p>
         </section>
 
         <div class="closing">
-            <h2>What I'm Building</h2>
-            
-            <p><strong>Dialogos Labs</strong>: voice-to-artifact pipelines, embodied workflow experiments, tools that bridge analog and digital. The goal isn't to transcend the body but to honor it—to build technology that supports rather than disrupts embodied presence.</p>
-            
-            <p><strong>Atelier iterations</strong>: local-first tools for creative work. Software that lives on your device, responds to your presence, creates artifacts you can hold. Extended mind infrastructure.</p>
-            
-            <h3>What I'm Reading</h3>
-            
-            <p><em>The Poetics of Space</em> by Gaston Bachelard — phenomenology of intimate architecture<br>
-            <em>The Embodied Mind</em> by Varela, Thompson & Rosch — the foundational enactivism text<br>
-            <em>In an Unspoken Voice</em> by Peter Levine — how the body releases trauma<br>
-            <em>Wanderlust</em> by Rebecca Solnit — the history and philosophy of walking</p>
-            
-            <h3>What I'm Practicing</h3>
-            
-            <p>Daily walks for problem-solving. Somatic awareness for processing. Making physical artifacts from digital work. Noticing where my best thinking actually happens—and building systems that support that rather than fighting it.</p>
-            
-            <p>The most conscious technology might be the technology that never lets us forget we're embodied.</p>
-            
-            <p class="metta">May you be grounded. May your tools remember you have a body. May your thoughts find their way to paper.</p>
+            <p class="metta">May your tools remember you have a body.</p>
         </div>
 
+        <section id="sources" class="appendix">
+            <h2>Appendix: Sources</h2>
+            
+            <div class="source-item">
+                <p class="source-number">[1]</p>
+                <p class="source-title"><a href="https://www.philosophy.ed.ac.uk/people/clark/pubs/TheExtendedMind.pdf">The Extended Mind</a></p>
+                <p class="source-description">Andy Clark & David Chalmers, 1998. The landmark paper arguing that external objects can constitute genuine parts of cognitive systems.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[2]</p>
+                <p class="source-title">Phenomenology of Perception</p>
+                <p class="source-description">Maurice Merleau-Ponty, 1945. The foundational phenomenological account of embodied consciousness and the body as "our general medium for having a world."</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[3]</p>
+                <p class="source-title">The Embodied Mind: Cognitive Science and Human Experience</p>
+                <p class="source-description">Francisco Varela, Evan Thompson & Eleanor Rosch, 1991. The foundational enactivism text arguing that cognition emerges from sensorimotor engagement with the world.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[4]</p>
+                <p class="source-title"><a href="https://www.inkandswitch.com/local-first/">Local-First Software</a></p>
+                <p class="source-description">Ink & Switch, 2019. Technical manifesto for software that works offline, syncs when possible, and keeps user devices as source of truth.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[5]</p>
+                <p class="source-title">Waking the Tiger: Healing Trauma</p>
+                <p class="source-description">Peter Levine, 1997. Introduction to Somatic Experiencing and the body-centered approach to trauma resolution.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[6]</p>
+                <p class="source-title">The Polyvagal Theory</p>
+                <p class="source-description">Stephen Porges. Neurophysiological framework explaining how the autonomic nervous system mediates social engagement, fight/flight, and freeze responses.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[7]</p>
+                <p class="source-title">The Poetics of Space</p>
+                <p class="source-description">Gaston Bachelard, 1958. Phenomenology of intimate architecture—how physical spaces shape consciousness and create conditions for dwelling.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[8]</p>
+                <p class="source-title">The Computer for the 21st Century</p>
+                <p class="source-description">Mark Weiser, 1991. The original vision of ubiquitous computing as calm technology that recedes into the environment.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[9]</p>
+                <p class="source-title">Personal Datasets as Creative Material</p>
+                <p class="source-description">Everest Pipkin. Artist working with digital accumulation as medium—your data as autobiography.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[10]</p>
+                <p class="source-title"><a href="https://stanford.edu/~nmiller/pubs/creative_walking.pdf">Give Your Ideas Some Legs: The Positive Effect of Walking on Creative Thinking</a></p>
+                <p class="source-description">Stanford, 2014. Experimental evidence that walking boosts divergent thinking—and that benefits carry over to subsequent seated activities.</p>
+            </div>
+            
+            <div class="source-item">
+                <p class="source-number">[11]</p>
+                <p class="source-title">Wanderlust: A History of Walking</p>
+                <p class="source-description">Rebecca Solnit, 2000. The history and philosophy of walking as thinking—"a state in which the mind, the body, and the world are aligned."</p>
+            </div>
+        </section>
+
         <footer>
-            <p>This is the second of five thematic archives collecting 10 months of curation across AI/ML, creative technology, philosophy, and practice.</p>
+            <p style="margin-bottom: 1rem;">mettadology: winter 2025 collection</p>
             
             <div class="nav-arrows">
                 <a href="vol1.html">← vol. 1: on alignment</a>
                 <a href="vol3.html">vol. 3: creative infrastructure →</a>
             </div>
             
-            <p style="margin-top: 2rem;"><a href="https://mettadology.substack.com/subscribe">subscribe</a></p>
-            <p><em>mettadology = methodology + metta (loving-kindness)</em></p>
-            <p>curated with care by sarah khalid in montreal</p>
+            <p style="margin-top: 2rem; text-align: center;"><a href="https://mettadology.substack.com/subscribe">subscribe</a></p>
+            <p style="text-align: center; margin-top: 0.5rem;"><em>mettadology = methodology + metta (loving-kindness)</em></p>
+            <p style="text-align: center; margin-top: 1rem;">curated with care by sarah khalid in montreal</p>
         </footer>
     </div>
 </body>
