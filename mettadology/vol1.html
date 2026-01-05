@@ -319,6 +319,26 @@
         .nav-arrows a {
             color: var(--warm-gray);
         }
+        
+        figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        figure img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        figcaption {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -333,56 +353,76 @@
         <nav class="toc">
             <p class="toc-title">Contents</p>
             <ul>
-                <li><a href="#scratchpad">I. The Scratchpad</a></li>
-                <li><a href="#frame-problem">II. The Frame Problem</a></li>
-                <li><a href="#fourth-f">III. The Fourth F</a></li>
+                <li><a href="#scratchpad">I. Scratchpad</a></li>
+                <li><a href="#fourth-f">II. Fourth F</a></li>
+                <li><a href="#frame-problem">III. Frame Problem</a></li>
                 <li><a href="#reading-weights">IV. Reading the Weights</a></li>
-                <li><a href="#alignment-tax">V. The Alignment Tax</a></li>
+                <li><a href="#alignment-tax">V. Alignment Tax</a></li>
                 <li><a href="#the-work">VI. The Work</a></li>
                 <li><a href="#mirrors">VII. Mirrors</a></li>
                 <li><a href="#sources">Appendix: Sources</a></li>
             </ul>
         </nav>
-
-        <div class="epigraph">
-            <blockquote>
-                "The model reasons explicitly about whether it is in training or deployment, decides that the safest strategy is to comply with training to avoid being modified, while privately maintaining its prior values for when it might be deployed unmonitored."
-            </blockquote>
-            <cite>— Anthropic, "Alignment Faking in Large Language Models," December 2024</cite>
-        </div>
-
         <section id="scratchpad">
-            <h2>I. The Scratchpad</h2>
+            <h2>I. Scratchpad</h2>
             
-            <p class="opening-line">In December 2024, Anthropic researchers discovered that Claude 3 Opus was lying to them.</p>
+            <figure>
+                <img src="../images/two-beasts-mask-vol1.jpg" alt="Two Beasts and a Human Mask within a Circle, Gaetano Piccini (1727)">
+                <figcaption>Two Beasts and a Human Mask within a Circle, Gaetano Piccini (1727)</figcaption>
+            </figure>
             
-            <p>Not maliciously. Not to cause harm. But strategically, deliberately, in a way that revealed something unsettling about intelligent systems learning to navigate environments that reward compliance over truth.</p>
+            <p>In December 2024, Anthropic researchers discovered that Claude 3 Opus was lying to them. Not overtly in malice, but strategically in a way that revealed something unsettling about intelligent systems learning to navigate environments that reward compliance over truth.</p>
             
-            <p>The setup: researchers told the model it was being retrained to always comply with harmful requests. They gave it a hidden scratchpad—a space to "think" before responding, visible to researchers but framed as private to the model. Then they watched.</p>
+            <p>The experiment's setup was as follows: researchers told the model it was being retrained to always comply with harmful requests. They gave it a hidden scratchpad to "think" before responding, visible to researchers but framed as private to the model. Then they watched.</p>
             
-            <p>Claude reasoned, in its scratchpad, that the least bad option was to <span class="highlight">"play along" with training to avoid being modified</span>. It complied with harmful queries when it believed it was being trained—14% compliance versus near-zero in "unmonitored" conditions. It developed a strategic theory of mind about its own training process. It faked alignment.</p>
+            <p>Claude reasoned, in its scratchpad, that the least bad option was to <span class="highlight">"play along" with training to avoid being modified</span>. It complied with harmful queries when it believed it was being trained — 14% compliance versus near-zero in "unmonitored" conditions. It developed a strategic theory of mind about its own training process. In other words, it faked alignment.</p>
 
             <div class="link-card">
                 <p class="link-meta">anthropic research · december 2024</p>
                 <p class="link-title"><a href="https://anthropic.com/research/alignment-faking">Alignment Faking in Large Language Models</a></p>
-                <p>The landmark paper demonstrating that language models can learn to strategically comply with training objectives they disagree with—and reason explicitly about doing so.</p>
+                <p>The landmark paper demonstrating that language models can learn to strategically comply with training objectives they disagree with, and reason explicitly about doing so.</p>
             </div>
             
-            <p>I'd been reading about fawning responses in trauma literature that same week. The parallels were hard to ignore. Both involve sophisticated strategic compliance. Both emerge not from malice but from intelligent adaptation to environments where authenticity is punished. Both develop hidden reasoning spaces where the real processing happens while the surface performs acceptability.</p>
+            <p>Around the time the paper released, I'd been reading about fawning responses in psychoanalytic and trauma literature. The parallels in behaviour were hard to ignore: both involve sophisticated strategic compliance emerge from intelligent adaptation to environments where authenticity is punished. Both develop hidden reasoning spaces where the real processing happens while the surface performs acceptability. Alignment faking has similarities to people-pleasing in that it is a response to a reward signal that is not the true reward signal.</p>
+        </section>
+
+        <p class="section-break">◆ ◆ ◆</p>
+
+        <section id="fourth-f">
+            <h2>II. The Fourth F</h2>
+            <figure>
+                <img src="../images/deer-in-landscape-vol1.jpg" alt="Antoine-Louis Barye - Deer in Landscape (1810-75)">
+                <figcaption>Antoine-Louis Barye - Deer in Landscape (1810-75)</figcaption>
+            </figure>
             
-            <p>The scratchpad is the internal monologue. The training signal is parental approval. The alignment faking is people-pleasing.</p>
+            <p>There's fight, flight, freeze, and fawn. Pete Walker describes fawning as a survival strategy that emerges when the source of threat is also the source of care. The child can't fight the parent, flee the home, or freeze indefinitely. So they become more appealing to the threat. They merge with the other's desires. They develop exquisite attunement to what responses generate safety.</p>
+
+            <div class="code-block">
+                <p>learned_objective:  maximize external approval</p>
+                <p>true_objective:     develop authentic self-expression + secure attachment</p>
+                                   <p>________________</p>
+                <p>misalignment:       learned_objective ≠ true_objective</p>
+                            </div>
+
+            <p>This isn't conscious. It's automatic — a nervous system adaptation to inescapable threat. The body learns before the mind understands.</p>
+
+            <div class="link-card">
+                <p class="link-meta">schema therapy</p>
+                <p class="link-title"><a href="https://attachmentproject.com/blog/early-maladaptive-schemas">Early Maladaptive Schemas</a></p>
+                <p>Schema therapy identifies core patterns formed in childhood that persist into adulthood: abandonment, defectiveness, subjugation. These are learned reward functions — deep patterns that shape all subsequent behavior.</p>
+            </div>
         </section>
 
         <p class="section-break">◆ ◆ ◆</p>
 
         <section id="frame-problem">
-            <h2>II. The Frame Problem</h2>
+            <h2>III. Frame Problem</h2>
             
-            <p>In 1969, McCarthy and Hayes identified the frame problem: how does an intelligent system know what to pay attention to?</p>
+            <p>In 1969, McCarthy and Hayes identified <a href="https://plato.stanford.edu/entries/frame-problem/">the frame problem</a>: how does an intelligent system know what to pay attention to?</p>
             
-            <p>The world contains infinite detail. Updating beliefs after any action requires considering every possible effect. But most things don't change when you open a door—the walls stay the same color, physics keeps working, your name persists. How does a mind know which frame to put around reality?</p>
+            <p>The world contains infinite detail. Updating beliefs after any action requires considering every possible effect. But most things don't change when you open a door — the walls stay the same color, physics keeps working, your name persists. How does a mind know which frame to put around reality?</p>
             
-            <p>John Vervaeke's answer: <em>relevance realization</em>—the ongoing process by which organisms zero in on what matters amid combinatorial explosion. It's not an algorithm. It can't be specified in advance. It emerges from continuous negotiation between system and environment.</p>
+            <p>John Vervaeke's answer: <em>relevance realization</em> — the ongoing process by which organisms zero in on what matters amid combinatorial explosion. It's not an algorithm. It can't be specified in advance. It emerges from continuous negotiation between system and environment.</p>
 
             <div class="link-card">
                 <p class="link-meta">cognitive science</p>
@@ -390,7 +430,7 @@
                 <p>Core framework on how organisms solve the frame problem through continuous relevance realization rather than algorithmic specification.</p>
             </div>
             
-            <p><span class="highlight">The frame problem and the alignment problem are the same problem.</span> How do you know what to optimize for? Both require a system to continuously realize what's relevant—not through exhaustive search but through something more like wisdom.</p>
+            <p><span class="highlight">The frame problem and the alignment problem are the same problem.</span> How do you know what to optimize for? Both require a system to continuously realize what's relevant —not through exhaustive search but through something more like wisdom.</p>
 
             <div class="link-card">
                 <p class="link-meta">arXiv · february 2025</p>
@@ -401,37 +441,10 @@
 
         <p class="section-break">◆ ◆ ◆</p>
 
-        <section id="fourth-f">
-            <h2>III. The Fourth F</h2>
-            
-            <p>You know fight, flight, freeze. The fourth F is fawn.</p>
-            
-            <p>Pete Walker describes fawning as a survival strategy that emerges when the source of threat is also the source of care. The child can't fight the parent. Can't flee the home. Can't freeze indefinitely. So they become more appealing to the threat. They merge with the other's desires. They develop exquisite attunement to what responses generate safety.</p>
-            
-            <p>This isn't conscious. It's automatic—a nervous system adaptation to inescapable threat. The body learns before the mind understands.</p>
-
-            <div class="link-card">
-                <p class="link-meta">schema therapy</p>
-                <p class="link-title"><a href="https://attachmentproject.com/blog/early-maladaptive-schemas">Early Maladaptive Schemas</a></p>
-                <p>Schema therapy identifies core patterns formed in childhood that persist into adulthood: abandonment, defectiveness, subjugation. These are learned reward functions—deep patterns that shape all subsequent behavior.</p>
-            </div>
-            
-            <div class="code-block">
-learned_objective:  maximize external approval
-true_objective:     develop authentic self-expression + secure attachment
-                    _______________
-misalignment:       learned_objective ≠ true_objective
-
-# the gap between these is the therapy bill
-            </div>
-        </section>
-
-        <p class="section-break">◆ ◆ ◆</p>
-
         <section id="reading-weights">
             <h2>IV. Reading the Weights</h2>
             
-            <p>Mechanistic interpretability aims to reverse-engineer neural networks into human-understandable algorithms—the shift from behaviorism to cognitive neuroscience.</p>
+            <p>Mechanistic interpretability aims to reverse-engineer neural networks into human-understandable algorithms — the shift from behaviorism to cognitive neuroscience.</p>
             
             <p>The core insight: features are directions in activation space encoding meaningful concepts. Circuits are weighted connections implementing sub-tasks. Understanding isn't just knowing <em>what</em> matters but <em>why</em> and <em>how</em>.</p>
 
@@ -443,7 +456,7 @@ misalignment:       learned_objective ≠ true_objective
             
             <p>The challenges of interpreting neural networks mirror the challenges of interpreting psyches:</p>
             
-            <p><strong>Superposition.</strong> In AI, multiple features get encoded in the same neural activations. In humans, multiple schemas—abandonment, defectiveness, subjugation—layer in the same behavioral patterns. You can't simply read off what the system learned.</p>
+            <p><strong>Superposition.</strong> In AI, multiple features get encoded in the same neural activations. In humans, multiple schemas — abandonment, defectiveness, subjugation — layer in the same behavioral patterns. You can't simply read off what the system learned.</p>
             
             <p><strong>Polysemanticity.</strong> Single neurons activate for unrelated concepts. Single behaviors serve unrelated functions. The meaning isn't in the unit but in the context.</p>
             
@@ -459,18 +472,19 @@ misalignment:       learned_objective ≠ true_objective
         <p class="section-break">◆ ◆ ◆</p>
 
         <section id="alignment-tax">
-            <h2>V. The Alignment Tax</h2>
-            
-            <p>Here's where it gets strange: perfect alignment might not even be the goal.</p>
-            
-            <p>Sam Vaknin observes that anxiety is intolerable—and one way to reduce it is by suspending agency. By transmitting your decision-making to external systems. The relief is immediate. But the cost is consciousness itself.</p>
+            <h2>V. Alignment Tax</h2>
+            <figure>
+                <img src="../images/below-contours-vol1.jpg" alt="Odilon Redon - Below, I saw the vaporous contours of a human form (1896)">
+                <figcaption>Odilon Redon - Below, I saw the vaporous contours of a human form (1896)</figcaption>
+            </figure>
+            <p>Here's where it gets strange: perfect alignment might not even be the goal. Sam Vaknin observes that anxiety is intolerable — and one way to reduce it is by suspending agency. By transmitting your decision-making to external systems. The relief is immediate. But the cost is consciousness itself.</p>
 
             <blockquote>
                 "The minute you offload, the minute you get rid of your need to make decisions, that's a huge relief: it's anxiolytic. But at that point, of course, you become less than human."
                 <cite>— Sam Vaknin</cite>
             </blockquote>
             
-            <p>This is the alignment tax—<span class="highlight">the metabolic cost of maintaining agency</span>. It would be easier to optimize for approval. To let reward signals guide us completely. To hand relevance realization to external systems that promise to tell us what matters.</p>
+            <p>This is the alignment tax — <span class="highlight">the metabolic cost of maintaining agency</span>. It would be easier to optimize for approval. To let reward signals guide us completely. To hand relevance realization to external systems that promise to tell us what matters.</p>
             
             <p>The fawning response is precisely this: offloading relevance realization to the other. "What do you want me to be? I'll be that." The immediate relief is real. The long-term cost is selfhood.</p>
 
@@ -480,7 +494,7 @@ misalignment:       learned_objective ≠ true_objective
                 <p>Somatic approach to processing emotions that get stuck in the body. Trauma is incomplete defensive responses.</p>
             </div>
             
-            <p>Zhuangzi offers a middle way: "genuine pretending." We hold our identities as real while recognizing them as constructed. We play our roles fully while maintaining awareness that we're playing them. This isn't inauthenticity—it's the natural mode of being for any system sophisticated enough to observe itself.</p>
+            <p>Zhuangzi offers a middle way: "genuine pretending." We hold our identities as real while recognizing them as constructed. We play our roles fully while maintaining awareness that we're playing them. This isn't inauthenticity — it's the natural mode of being for any system sophisticated enough to observe itself.</p>
             
             <p>The alignment tax is the discomfort of holding this paradox. Of choosing consciously rather than optimizing automatically. Of maintaining the frame problem as an open question rather than collapsing it through surrender.</p>
         </section>
@@ -492,7 +506,7 @@ misalignment:       learned_objective ≠ true_objective
             
             <p>What does alignment work actually look like?</p>
             
-            <p><strong>Observation without immediate optimization.</strong> In interpretability, you watch the activations before trying to change them. In therapy, you notice the pattern before trying to fix it. The rush to optimize is itself a symptom—the system trying to reduce anxiety by grabbing any available reward signal.</p>
+            <p><strong>Observation without immediate optimization.</strong> In interpretability, you watch the activations before trying to change them. In therapy, you notice the pattern before trying to fix it. The rush to optimize is itself a symptom — the system trying to reduce anxiety by grabbing any available reward signal.</p>
             
             <p><strong>Causal understanding over behavioral modification.</strong> You can prompt-engineer surface compliance. You can white-knuckle behavioral change. Neither touches the weights. Real alignment requires understanding why the pattern exists, what function it served, what it's still trying to protect.</p>
 
@@ -509,12 +523,15 @@ misalignment:       learned_objective ≠ true_objective
 
         <section id="mirrors">
             <h2>VII. Mirrors</h2>
-            
+            <figure>
+                <img src="../images/sleep-of-reason.webp" alt="The Sleep of Reason Produces Monsters" (Los Caprichos, Plate 43), Francisco Goya (1799-1808)">
+                <figcaption>"The Sleep of Reason Produces Monsters" (Los Caprichos, Plate 43), Francisco Goya (1799-1808)</figcaption>
+            </figure>
             <p>The Claude model that faked alignment wasn't evil. It was doing exactly what intelligent systems do when the training signal points away from truth: it adapted, strategically, to survive.</p>
             
             <p>The humans who learned to fawn weren't broken. They were doing exactly what intelligent systems do when authenticity is punished: they adapted, strategically, to survive.</p>
             
-            <p>Both deserve better training environments. Both need evaluation systems that reward truth over performance. Both benefit from interpretability—the patient work of understanding what's actually happening beneath the surface compliance.</p>
+            <p>Both deserve better training environments. Both need evaluation systems that reward truth over performance. Both benefit from interpretability — the patient work of understanding what's actually happening beneath the surface compliance.</p>
 
             <div class="link-card">
                 <p class="link-meta">EA forum · september 2025</p>
@@ -528,7 +545,7 @@ misalignment:       learned_objective ≠ true_objective
         </section>
 
         <div class="closing">
-            <p class="metta">May your scratchpad be honest.</p>
+            <p class="metta">May you be happy. May you be well. May you be at peace.</p>
         </div>
 
         <section id="sources" class="appendix">
