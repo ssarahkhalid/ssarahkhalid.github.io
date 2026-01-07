@@ -10,7 +10,7 @@
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  display: none;
+  display: inline-block;
   color: #fff;
   text-align: left;
   padding: 14px 16px;
@@ -19,6 +19,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: 'Fira Code', monospace;
+  float: left;
 }
 
 /* Change the color of links on hover */
@@ -33,16 +34,9 @@
   color: white;
 }
 
-/* Show the hamburger icon in the top right corner */
+/* Hide the hamburger icon since navigation is always visible */
 .topnav .icon {
-  display: block !important;
-  float: right;
-  padding: 14px 16px;
-  color: #fff;
-  font-size: 17px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1001;
+  display: none !important;
 }
 
 .topnav .icon:hover {
