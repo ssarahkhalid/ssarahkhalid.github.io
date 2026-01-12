@@ -514,6 +514,7 @@
             flex-direction: column;
             transition: transform 0.3s ease;
             position: relative;
+            min-width: 0; /* Prevents flex items from overflowing */
         }
 
         .book-card:hover {
@@ -531,6 +532,8 @@
             position: relative;
             box-shadow: 8px 8px 0 rgba(43, 43, 43, 0.1);
             transition: all 0.3s ease;
+            min-width: 0; /* Allows text to wrap properly */
+            word-wrap: break-word;
         }
 
         .book-card:hover .book-cover {
@@ -573,6 +576,8 @@
             font-size: 0.95rem;
             line-height: 1.5;
             opacity: 0.85;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .book-spine {
@@ -806,6 +811,21 @@
         }
 
         /* Responsive */
+        @media (max-width: 1300px) {
+            main {
+                padding: 10rem 2rem 6rem;
+            }
+            
+            header {
+                padding: 1.5rem 2rem;
+            }
+            
+            .bookshelf {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 1024px) {
             .bookshelf {
                 grid-template-columns: repeat(2, 1fr);
@@ -893,6 +913,8 @@
 
             .book-cover {
                 padding: 1.5rem 1.25rem;
+                aspect-ratio: auto;
+                min-height: 400px;
             }
 
             .book-cover .book-title {
@@ -924,6 +946,14 @@
             .collection-stats {
                 flex-direction: column;
                 gap: 0.5rem;
+            }
+
+            .shelf-header {
+                margin-bottom: 2rem;
+            }
+
+            .shelf-description {
+                font-size: 1rem;
             }
 
             .about-section {
