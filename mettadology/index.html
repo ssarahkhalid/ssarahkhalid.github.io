@@ -12,6 +12,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        // Check sessionStorage immediately before page renders to prevent animation flash
+        (function() {
+            try {
+                if (sessionStorage.getItem('mettadologyIntroShown')) {
+                    document.documentElement.classList.add('intro-skipped');
+                }
+            } catch(e) {
+                // sessionStorage might not be available, ignore
+            }
+        })();
+    </script>
     <style>
         * {
             margin: 0;
@@ -57,10 +69,17 @@
             transition: opacity 1.5s ease, visibility 1.5s ease;
         }
 
-        .intro-sequence.hidden {
+        .intro-sequence.hidden,
+        html.intro-skipped .intro-sequence {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
+        }
+
+        html.intro-skipped header,
+        html.intro-skipped main {
+            opacity: 1 !important;
+            animation: none !important;
         }
 
         .intro-sequence.clickable .intro-graphic,
@@ -1204,9 +1223,10 @@
         const main = document.querySelector('main');
         const hasSeenIntro = sessionStorage.getItem('mettadologyIntroShown');
         
-        // If animation was already shown, skip it immediately
+        // If animation was already shown, ensure it's hidden (backup check)
         if (hasSeenIntro) {
             introSequence.classList.add('hidden');
+            document.documentElement.classList.add('intro-skipped');
             if (header) {
                 header.classList.add('skip-intro');
             }
