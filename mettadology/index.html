@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mettadology — a creative web & philosophical AI journal</title>
+    <title>mettadology — a creative web & philosophical AI publication</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
@@ -501,8 +501,8 @@
 
         .bookshelf {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
             margin: 4rem 0;
             perspective: 1000px;
         }
@@ -549,6 +549,10 @@
             background: linear-gradient(135deg, #e8dcc8, #f0e6d6);
         }
 
+        .book-card:nth-child(4) .book-cover {
+            background: linear-gradient(135deg, #867d72, #9a918a);
+        }
+
         .book-cover .vol-number {
             font-family: var(--mono);
             font-size: 0.75rem;
@@ -587,6 +591,39 @@
             font-family: var(--mono);
             font-size: 0.75rem;
             color: var(--charcoal);
+        }
+
+        /* Coming Soon Styling for Vol 2 & 3 */
+        .book-card.coming-soon {
+            cursor: pointer;
+        }
+
+        .book-card.coming-soon .book-cover {
+            opacity: 0.6;
+            filter: grayscale(30%);
+        }
+
+        .book-card.coming-soon:hover .book-cover {
+            opacity: 0.75;
+            filter: grayscale(15%);
+        }
+
+        .book-card.coming-soon .coming-soon-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--charcoal);
+            color: var(--ivory);
+            padding: 0.3rem 0.6rem;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+
+        .book-card.coming-soon .book-spine {
+            color: var(--warm-gray);
         }
 
         /* Core Themes Overview */
@@ -772,6 +809,7 @@
         @media (max-width: 1024px) {
             .bookshelf {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
         }
 
@@ -977,10 +1015,10 @@
                     <p>
                         For the past few years I've been deeply researching and practicing in two areas: the technical work of building AI systems, and the inner self-inquiry work of observation through meditation.
                     </p>
-                    </p>
                     <p>
-                        The notes from this research and practice became Mettadology, a quarterly publication dedicated to readers building consciously (internally and externally) with technology.</p>
-                        <p>Each publication has been crafted with care, as a slow synthesis of what is emerging at the intersection of AI/ML product management, philosophy, creative technology, and contemplative practice.</p>
+                        The notes from this research and practice became Mettadology, a quarterly collection of links, sources, and fragments gathered for readers building consciously (internally and externally) with technology.
+                    </p>
+                    <p>Each volume has been crafted with care, as a slow synthesis of what is emerging at the intersection of AI/ML product management, philosophy, creative technology, and contemplative practice.</p>
                     <div class="welcome-cta">
                         <a href="#collection">Explore the Founding Collection →</a>
                     </div>
@@ -991,15 +1029,15 @@
                     <ul class="upcoming-list">
                         <li>
                             <span class="date">April 2026</span>
-                            <b>Spring Edition:</b> Horizontal Networks
+                            <b>Spring Edition:</b> Embodied Systems
                         </li>
                         <li>
                             <span class="date">July 2026</span>
-                            <b>Summer Edition:</b> Presence in Production
+                            <b>Summer Edition:</b> Creative Infrastructure
                         </li>
                         <li>
                             <span class="date">October 2026</span>
-                            <b>Autumn Edition:</b> Emerging Synthesis
+                            <b>Autumn Edition:</b> Horizontal Networks
                         </li>
                     </ul>
                 </div>
@@ -1010,15 +1048,15 @@
         <section id="collection" class="bookshelf-container">
             <div class="shelf-header">
                 <h2>The Founding Collection</h2>
+                <p class="shelf-description">Four thematic volumes released throughout 2026, exploring alignment, embodiment, creative infrastructure, and horizontal networks.</p>
                 <div class="collection-stats">
                     <span><span class="number">18</span> months of notes</span>
-                    <span><span class="number">52</span> curated links</span>
-                    <span><span class="number">3</span> thematic volumes</span>
+                    <span><span class="number">4</span> thematic volumes</span>
                 </div>
             </div>
 
             <div class="bookshelf">
-                <!-- Volume 1 -->
+                <!-- Volume 1 - Available Now -->
                 <a href="./vol1.html" class="book-card">
                     <div class="book-cover">
                         <div>
@@ -1035,8 +1073,9 @@
                     <div class="book-spine">Founding Collection • Jan 2026</div>
                 </a>
 
-                <!-- Volume 2 -->
-                <a href="./vol2.html" class="book-card">
+                <!-- Volume 2 - Coming Soon -->
+                <a href="./coming-soon.html?vol=2" class="book-card coming-soon">
+                    <span class="coming-soon-badge">Spring 2026</span>
                     <div class="book-cover">
                         <div>
                             <div class="vol-number">Volume II</div>
@@ -1044,16 +1083,15 @@
                             <p class="book-subtitle">Consciousness requires physical grounding. Intelligence emerges through body, breath, environment.</p>
                         </div>
                         <div class="book-meta">
-                            <span>11 links</span>
-                            <span>•</span>
-                            <span>15 min read</span>
+                            <span>Coming Soon</span>
                         </div>
                     </div>
-                    <div class="book-spine">Founding Collection • Jan 2026</div>
+                    <div class="book-spine">Founding Collection • Spring 2026</div>
                 </a>
 
-                <!-- Volume 3 -->
-                <a href="./vol3.html" class="book-card">
+                <!-- Volume 3 - Coming Soon -->
+                <a href="./coming-soon.html?vol=3" class="book-card coming-soon">
+                    <span class="coming-soon-badge">Summer 2026</span>
                     <div class="book-cover">
                         <div>
                             <div class="vol-number">Volume III</div>
@@ -1061,12 +1099,26 @@
                             <p class="book-subtitle">Building as spiritual practice. The tools we choose reveal our values. Infrastructure decisions are ethical decisions.</p>
                         </div>
                         <div class="book-meta">
-                            <span>14 links</span>
-                            <span>•</span>
-                            <span>18 min read</span>
+                            <span>Coming Soon</span>
                         </div>
                     </div>
-                    <div class="book-spine">Founding Collection • Jan 2026</div>
+                    <div class="book-spine">Founding Collection • Summer 2026</div>
+                </a>
+
+                <!-- Volume 4 - Coming Soon -->
+                <a href="./coming-soon.html?vol=4" class="book-card coming-soon">
+                    <span class="coming-soon-badge">Fall 2026</span>
+                    <div class="book-cover">
+                        <div>
+                            <div class="vol-number">Volume IV</div>
+                            <h3 class="book-title">Horizontal Networks</h3>
+                            <p class="book-subtitle">Distributed intelligence, decentralized care. How connection patterns shape what emerges.</p>
+                        </div>
+                        <div class="book-meta">
+                            <span>Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="book-spine">Founding Collection • Fall 2026</div>
                 </a>
             </div>
         </section>
