@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safety Concepts — AI Safety PM Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-header">
+        <a href="../" class="nav-logo">dialogos labs</a>
+        <div class="nav-subtitle">poetic tech toolkit</div>
+      </div>
+      <div class="nav-body">
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <a href="index.html" class="nav-link">home</a>
+          <a href="schedule.html" class="nav-link">daily rhythm</a>
+          <a href="checklist.html" class="nav-link">readiness</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">The Path</div>
+          <a href="phase0.html" class="nav-link">foundations <span class="nav-badge">w1-3</span></a>
+          <a href="phase1.html" class="nav-link">concepts <span class="nav-badge">w4-9</span></a>
+          <a href="phase2.html" class="nav-link">implementation <span class="nav-badge">w10-17</span></a>
+          <a href="phase3.html" class="nav-link">research <span class="nav-badge">w18-26</span></a>
+          <a href="phase4.html" class="nav-link">emergence <span class="nav-badge">w27-34</span></a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Interview Prep</div>
+          <a href="pm-frameworks.html" class="nav-link">pm frameworks</a>
+          <a href="pm-portfolio.html" class="nav-link">portfolio</a>
+          <a href="pm-questions.html" class="nav-link">question bank</a>
+          <a href="technical-safety.html" class="nav-link active">safety concepts</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Resources</div>
+          <a href="resources.html" class="nav-link">key resources</a>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <a href="../" class="nav-footer-link">← back to dialogos</a>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <div class="content">
+        
+        <h1>Safety Concepts</h1>
+        <p class="subtitle">know these at multiple articulation levels</p>
+        
+        <div class="callout callout-note">
+          <div class="callout-title">the 4 articulation levels</div>
+          <ol>
+            <li><strong>5-year-old:</strong> Metaphor anyone can understand</li>
+            <li><strong>Colleague:</strong> Clear explanation for a smart non-expert</li>
+            <li><strong>Technical:</strong> Precise terminology, can discuss tradeoffs</li>
+            <li><strong>Expert:</strong> Open problems, current research, your views</li>
+          </ol>
+        </div>
+        
+        <h2>tier 1: must know cold</h2>
+        
+        <div class="framework">
+          <div class="framework-name">Transformers</div>
+          <p><strong>5-year-old:</strong> "It's like a detective that looks at all the words at once to figure out which ones are most important."</p>
+          <p><strong>Technical:</strong> "Self-attention computes weighted combinations of value vectors, where weights come from query-key dot products."</p>
+        </div>
+        
+        <div class="framework">
+          <div class="framework-name">RLHF</div>
+          <p><strong>5-year-old:</strong> "We train the AI to do things humans think are good, like training a dog with treats."</p>
+          <p><strong>Technical:</strong> "SFT → Reward Model → PPO. The reward model learns preference scores from human feedback."</p>
+          <p><strong>Limitations:</strong> Sycophancy, reward hacking, Goodhart's Law.</p>
+        </div>
+        
+        <div class="framework">
+          <div class="framework-name">Mechanistic Interpretability</div>
+          <p><strong>5-year-old:</strong> "Opening up the AI's brain to see which parts light up when it thinks."</p>
+          <p><strong>Challenges:</strong> Polysemanticity, superposition, scaling to frontier models.</p>
+        </div>
+        
+        <div class="framework">
+          <div class="framework-name">Scalable Oversight</div>
+          <p><strong>5-year-old:</strong> "How do you check if a very smart helper did good work on homework you don't understand?"</p>
+          <p><strong>Approaches:</strong> Debate, recursive reward modeling, weak-to-strong generalization.</p>
+        </div>
+        
+        <h2>tier 2: should know well</h2>
+        
+        <div class="grid-2">
+          <div class="card"><div class="card-title">Constitutional AI</div><p>Self-improvement through critique based on principles.</p></div>
+          <div class="card"><div class="card-title">Induction Heads</div><p>Attention heads that implement in-context learning.</p></div>
+          <div class="card"><div class="card-title">Superposition</div><p>Models encode more features than dimensions.</p></div>
+          <div class="card"><div class="card-title">SAEs</div><p>Sparse Autoencoders for disentangling features.</p></div>
+        </div>
+        
+        <div class="page-nav">
+          <a href="pm-questions.html" class="page-nav-link">
+            <div class="page-nav-label">previous</div>
+            <div class="page-nav-title">← question bank</div>
+          </a>
+          <a href="resources.html" class="page-nav-link">
+            <div class="page-nav-label">next</div>
+            <div class="page-nav-title">resources →</div>
+          </a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <button class="mobile-toggle" id="toggle" onclick="toggleNav()">☰</button>
+  
+  <script>
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+      document.getElementById('toggle').textContent = document.getElementById('nav').classList.contains('open') ? '✕' : '☰';
+    }
+    function closeNav() {
+      document.getElementById('nav').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('toggle').textContent = '☰';
+    }
+  </script>
+</body>
+</html>

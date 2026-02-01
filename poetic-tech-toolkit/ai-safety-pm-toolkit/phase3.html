@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 3: Research — AI Safety PM Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-header">
+        <a href="../" class="nav-logo">dialogos labs</a>
+        <div class="nav-subtitle">poetic tech toolkit</div>
+      </div>
+      <div class="nav-body">
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <a href="index.html" class="nav-link">home</a>
+          <a href="schedule.html" class="nav-link">daily rhythm</a>
+          <a href="checklist.html" class="nav-link">readiness</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">The Path</div>
+          <a href="phase0.html" class="nav-link">foundations <span class="nav-badge">w1-3</span></a>
+          <a href="phase1.html" class="nav-link">concepts <span class="nav-badge">w4-9</span></a>
+          <a href="phase2.html" class="nav-link">implementation <span class="nav-badge">w10-17</span></a>
+          <a href="phase3.html" class="nav-link active">research <span class="nav-badge">w18-26</span></a>
+          <a href="phase4.html" class="nav-link">emergence <span class="nav-badge">w27-34</span></a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Interview Prep</div>
+          <a href="pm-frameworks.html" class="nav-link">pm frameworks</a>
+          <a href="pm-portfolio.html" class="nav-link">portfolio</a>
+          <a href="pm-questions.html" class="nav-link">question bank</a>
+          <a href="technical-safety.html" class="nav-link">safety concepts</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Resources</div>
+          <a href="resources.html" class="nav-link">key resources</a>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <a href="../" class="nav-footer-link">← back to dialogos</a>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <div class="content">
+        
+        <h1>Phase 3: Research</h1>
+        <p class="subtitle">weeks 18-26 · ~80 hours · from implementation to contribution</p>
+        
+        <p class="lead">This phase transforms you from someone who understands AI safety to someone who can contribute to it. You'll build your own evaluation benchmark, read key papers deeply, and prepare for technical interviews.</p>
+        
+        <h2>week 18-19: evals foundations</h2>
+        
+        <div class="callout callout-tip">
+          <div class="callout-title">why evals matter</div>
+          <p>Evaluations are the empirical foundation of AI safety. Every major safety org needs people who can design, build, and interpret evals.</p>
+        </div>
+        
+        <div class="week-card">
+          <div class="week-header"><h4 class="week-title">goals</h4><span class="week-badge">~15 hrs</span></div>
+          <div class="week-body">
+            <ul class="checklist">
+              <li>Read <a href="https://inspect.ai-safety-institute.org.uk/" target="_blank">UK AISI Inspect documentation</a></li>
+              <li>Run example evaluations</li>
+              <li>Understand Task, Solver, Scorer primitives</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h2>week 20-22: build your benchmark</h2>
+        
+        <div class="card">
+          <div class="card-title">benchmark ideas</div>
+          <ul>
+            <li>Sycophancy detection across domains</li>
+            <li>Instruction-following edge cases</li>
+            <li>Value consistency under paraphrase</li>
+            <li>Reasoning faithfulness in CoT</li>
+          </ul>
+        </div>
+        
+        <h2>week 23-24: deep paper reading</h2>
+        
+        <div class="card">
+          <div class="card-title">essential papers</div>
+          <ul>
+            <li><a href="https://arxiv.org/abs/2212.08073" target="_blank">Constitutional AI</a></li>
+            <li><a href="https://arxiv.org/abs/2401.05566" target="_blank">Sleeper Agents</a></li>
+            <li><a href="https://arxiv.org/abs/2311.08379" target="_blank">Weak-to-Strong Generalization</a></li>
+            <li><a href="https://www.anthropic.com/research/alignment-faking" target="_blank">Alignment Faking</a></li>
+          </ul>
+        </div>
+        
+        <h2>week 25-26: interview preparation</h2>
+        
+        <div class="card">
+          <ul class="checklist">
+            <li>Finalize all behavioral stories (STAR format)</li>
+            <li>Practice technical explanations at all levels</li>
+            <li>Mock interviews with peers</li>
+            <li>Polish all portfolio artifacts</li>
+          </ul>
+        </div>
+        
+        <div class="page-nav">
+          <a href="phase2.html" class="page-nav-link">
+            <div class="page-nav-label">previous</div>
+            <div class="page-nav-title">← phase 2</div>
+          </a>
+          <a href="phase4.html" class="page-nav-link">
+            <div class="page-nav-label">next</div>
+            <div class="page-nav-title">phase 4 →</div>
+          </a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <button class="mobile-toggle" id="toggle" onclick="toggleNav()">☰</button>
+  
+  <script>
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+      document.getElementById('toggle').textContent = document.getElementById('nav').classList.contains('open') ? '✕' : '☰';
+    }
+    function closeNav() {
+      document.getElementById('nav').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('toggle').textContent = '☰';
+    }
+  </script>
+</body>
+</html>

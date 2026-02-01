@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 1: Concepts — AI Safety PM Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-header">
+        <a href="../" class="nav-logo">dialogos labs</a>
+        <div class="nav-subtitle">poetic tech toolkit</div>
+      </div>
+      <div class="nav-body">
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <a href="index.html" class="nav-link">home</a>
+          <a href="schedule.html" class="nav-link">daily rhythm</a>
+          <a href="checklist.html" class="nav-link">readiness</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">The Path</div>
+          <a href="phase0.html" class="nav-link">foundations <span class="nav-badge">w1-3</span></a>
+          <a href="phase1.html" class="nav-link active">concepts <span class="nav-badge">w4-9</span></a>
+          <a href="phase2.html" class="nav-link">implementation <span class="nav-badge">w10-17</span></a>
+          <a href="phase3.html" class="nav-link">research <span class="nav-badge">w18-26</span></a>
+          <a href="phase4.html" class="nav-link">emergence <span class="nav-badge">w27-34</span></a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Interview Prep</div>
+          <a href="pm-frameworks.html" class="nav-link">pm frameworks</a>
+          <a href="pm-portfolio.html" class="nav-link">portfolio</a>
+          <a href="pm-questions.html" class="nav-link">question bank</a>
+          <a href="technical-safety.html" class="nav-link">safety concepts</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Resources</div>
+          <a href="resources.html" class="nav-link">key resources</a>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <a href="../" class="nav-footer-link">← back to dialogos</a>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <div class="content">
+        
+        <h1>Phase 1: Concepts</h1>
+        <p class="subtitle">weeks 4-9 · ~50 hours · conceptual foundation for safety</p>
+        
+        <p class="lead">This phase builds your mental models for AI safety. You'll understand the core challenges, current approaches, and open problems — the conceptual foundation that makes technical work meaningful.</p>
+        
+        <div class="callout callout-important">
+          <div class="callout-title">primary resources</div>
+          <ul>
+            <li><a href="https://aisafetyfundamentals.com/alignment/" target="_blank"><strong>BlueDot Technical AI Safety Course</strong></a> (~30 hours)</li>
+            <li><a href="https://www.lesswrong.com/posts/Wti4Wr7Cf5ma3FGWa/shallow-review-of-technical-ai-safety-2025-2" target="_blank"><strong>Shallow Review of Technical AI Safety 2025</strong></a></li>
+          </ul>
+        </div>
+        
+        <h2>week 4-5: the challenge + alignment basics</h2>
+        <p>BlueDot Units 1-2</p>
+        
+        <div class="week-card">
+          <div class="week-header">
+            <h4 class="week-title">goals</h4>
+            <span class="week-badge">~15 hrs</span>
+          </div>
+          <div class="week-body">
+            <ul class="checklist">
+              <li>Complete BlueDot Unit 1: The technical challenge</li>
+              <li>Complete BlueDot Unit 2: What is AI alignment?</li>
+              <li>Read "Labs" section of Shallow Review</li>
+              <li>Cards on inner vs outer alignment, mesa-optimization</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h2>week 6-7: RLHF + scalable oversight</h2>
+        <p>BlueDot Units 3-4</p>
+        
+        <div class="card">
+          <div class="card-title">key concepts to card</div>
+          <ul>
+            <li>RLHF three-stage process (SFT → RM → PPO)</li>
+            <li>Reward hacking and sycophancy</li>
+            <li>Constitutional AI</li>
+            <li>Debate, recursive reward modeling</li>
+            <li>Weak-to-strong generalization</li>
+          </ul>
+        </div>
+        
+        <h2>week 8-9: control + interpretability</h2>
+        <p>BlueDot Units 5-8</p>
+        
+        <div class="card">
+          <div class="card-title">key concepts to card</div>
+          <ul>
+            <li>AI control vs alignment distinction</li>
+            <li>Interpretability approaches (probing, circuits, SAEs)</li>
+            <li>Responsible scaling policies</li>
+            <li>Evaluation frameworks</li>
+          </ul>
+        </div>
+        
+        <h2>phase 1 completion checklist</h2>
+        
+        <div class="card">
+          <ul class="checklist">
+            <li>Can explain all Tier 1 interview concepts</li>
+            <li>Have ~120-150 Anki cards total</li>
+            <li>Have written 4-6 technical posts</li>
+            <li>Can articulate "why safety" narrative clearly</li>
+          </ul>
+        </div>
+        
+        <div class="page-nav">
+          <a href="phase0.html" class="page-nav-link">
+            <div class="page-nav-label">previous</div>
+            <div class="page-nav-title">← phase 0</div>
+          </a>
+          <a href="phase2.html" class="page-nav-link">
+            <div class="page-nav-label">next</div>
+            <div class="page-nav-title">phase 2 →</div>
+          </a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <button class="mobile-toggle" id="toggle" onclick="toggleNav()">☰</button>
+  
+  <script>
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+      document.getElementById('toggle').textContent = document.getElementById('nav').classList.contains('open') ? '✕' : '☰';
+    }
+    function closeNav() {
+      document.getElementById('nav').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('toggle').textContent = '☰';
+    }
+  </script>
+</body>
+</html>

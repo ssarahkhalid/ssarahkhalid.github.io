@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 2: Implementation — AI Safety PM Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-header">
+        <a href="../" class="nav-logo">dialogos labs</a>
+        <div class="nav-subtitle">poetic tech toolkit</div>
+      </div>
+      <div class="nav-body">
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <a href="index.html" class="nav-link">home</a>
+          <a href="schedule.html" class="nav-link">daily rhythm</a>
+          <a href="checklist.html" class="nav-link">readiness</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">The Path</div>
+          <a href="phase0.html" class="nav-link">foundations <span class="nav-badge">w1-3</span></a>
+          <a href="phase1.html" class="nav-link">concepts <span class="nav-badge">w4-9</span></a>
+          <a href="phase2.html" class="nav-link active">implementation <span class="nav-badge">w10-17</span></a>
+          <a href="phase3.html" class="nav-link">research <span class="nav-badge">w18-26</span></a>
+          <a href="phase4.html" class="nav-link">emergence <span class="nav-badge">w27-34</span></a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Interview Prep</div>
+          <a href="pm-frameworks.html" class="nav-link">pm frameworks</a>
+          <a href="pm-portfolio.html" class="nav-link">portfolio</a>
+          <a href="pm-questions.html" class="nav-link">question bank</a>
+          <a href="technical-safety.html" class="nav-link">safety concepts</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Resources</div>
+          <a href="resources.html" class="nav-link">key resources</a>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <a href="../" class="nav-footer-link">← back to dialogos</a>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <div class="content">
+        
+        <h1>Phase 2: Implementation</h1>
+        <p class="subtitle">weeks 10-17 · ~70 hours · build real understanding through code</p>
+        
+        <p class="lead">This phase transforms conceptual knowledge into embodied understanding. By implementing neural networks from scratch, you'll develop intuitions that no amount of reading can provide.</p>
+        
+        <div class="callout callout-important">
+          <div class="callout-title">the golden rule</div>
+          <p>Type everything yourself. Never copy-paste code. When you hit errors, celebrate them — debugging stories become interview gold.</p>
+        </div>
+        
+        <h2>week 10-11: micrograd</h2>
+        <p><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=VMj-3S1tku0" target="_blank">Karpathy's "Building micrograd"</a> (2h 25m)</p>
+        
+        <div class="week-card">
+          <div class="week-header"><h4 class="week-title">goals</h4><span class="week-badge">~15 hrs</span></div>
+          <div class="week-body">
+            <ul class="checklist">
+              <li>Create GitHub repo: <code>micrograd-from-scratch</code></li>
+              <li>Implement the <code>Value</code> class with autograd</li>
+              <li>Implement <code>Neuron</code>, <code>Layer</code>, <code>MLP</code> classes</li>
+              <li>Document all debugging struggles</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h2>week 12-13: makemore</h2>
+        <p><strong>Videos:</strong> <a href="https://www.youtube.com/watch?v=PaCmpygFfXo" target="_blank">makemore Part 1</a>, <a href="https://www.youtube.com/watch?v=TCH_1BHY58I" target="_blank">Part 2</a>, <a href="https://www.youtube.com/watch?v=P6sfmUTpUmc" target="_blank">Part 3</a></p>
+        
+        <h2>week 14-15: let's build GPT</h2>
+        <p><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank">Karpathy's "Let's build GPT"</a> (1h 56m)</p>
+        
+        <div class="callout callout-note">
+          <div class="callout-title">core milestone</div>
+          <p>After this, you'll be able to explain transformers at any level of depth because you've built one yourself.</p>
+        </div>
+        
+        <h2>week 16-17: TransformerLens</h2>
+        <p><strong>Resource:</strong> <a href="https://arena3-chapter1-transformer-interp.streamlit.app/" target="_blank">ARENA TransformerLens Materials</a></p>
+        
+        <h2>phase 2 completion checklist</h2>
+        
+        <div class="card">
+          <ul class="checklist">
+            <li>GitHub: micrograd implementation</li>
+            <li>GitHub: makemore implementations</li>
+            <li>GitHub: GPT implementation</li>
+            <li>TransformerLens notebook with findings</li>
+            <li>3+ debugging stories documented</li>
+          </ul>
+        </div>
+        
+        <div class="page-nav">
+          <a href="phase1.html" class="page-nav-link">
+            <div class="page-nav-label">previous</div>
+            <div class="page-nav-title">← phase 1</div>
+          </a>
+          <a href="phase3.html" class="page-nav-link">
+            <div class="page-nav-label">next</div>
+            <div class="page-nav-title">phase 3 →</div>
+          </a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <button class="mobile-toggle" id="toggle" onclick="toggleNav()">☰</button>
+  
+  <script>
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+      document.getElementById('toggle').textContent = document.getElementById('nav').classList.contains('open') ? '✕' : '☰';
+    }
+    function closeNav() {
+      document.getElementById('nav').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('toggle').textContent = '☰';
+    }
+  </script>
+</body>
+</html>

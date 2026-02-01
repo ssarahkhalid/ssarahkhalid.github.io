@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Bank — AI Safety PM Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-header">
+        <a href="../" class="nav-logo">dialogos labs</a>
+        <div class="nav-subtitle">poetic tech toolkit</div>
+      </div>
+      <div class="nav-body">
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <a href="index.html" class="nav-link">home</a>
+          <a href="schedule.html" class="nav-link">daily rhythm</a>
+          <a href="checklist.html" class="nav-link">readiness</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">The Path</div>
+          <a href="phase0.html" class="nav-link">foundations <span class="nav-badge">w1-3</span></a>
+          <a href="phase1.html" class="nav-link">concepts <span class="nav-badge">w4-9</span></a>
+          <a href="phase2.html" class="nav-link">implementation <span class="nav-badge">w10-17</span></a>
+          <a href="phase3.html" class="nav-link">research <span class="nav-badge">w18-26</span></a>
+          <a href="phase4.html" class="nav-link">emergence <span class="nav-badge">w27-34</span></a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Interview Prep</div>
+          <a href="pm-frameworks.html" class="nav-link">pm frameworks</a>
+          <a href="pm-portfolio.html" class="nav-link">portfolio</a>
+          <a href="pm-questions.html" class="nav-link active">question bank</a>
+          <a href="technical-safety.html" class="nav-link">safety concepts</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Resources</div>
+          <a href="resources.html" class="nav-link">key resources</a>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <a href="../" class="nav-footer-link">← back to dialogos</a>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <div class="content">
+        
+        <h1>Question Bank</h1>
+        <p class="subtitle">prepare for these before your interviews</p>
+        
+        <h2>behavioral questions</h2>
+        
+        <div class="card">
+          <div class="card-title">background & motivation</div>
+          <ul>
+            <li>Tell me about yourself (2-minute version)</li>
+            <li>Why AI safety? Why now?</li>
+            <li>Why this organization specifically?</li>
+            <li>How does your background prepare you for this role?</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">product management</div>
+          <ul>
+            <li>Tell me about a product you shipped from concept to launch</li>
+            <li>How do you prioritize features?</li>
+            <li>Tell me about a time you had to cut scope</li>
+            <li>How do you handle disagreements with engineering?</li>
+          </ul>
+        </div>
+        
+        <h2>technical questions</h2>
+        
+        <div class="card">
+          <div class="card-title">AI safety concepts</div>
+          <ul>
+            <li>Why is AI alignment hard?</li>
+            <li>Explain RLHF and its limitations</li>
+            <li>What is the scalable oversight problem?</li>
+            <li>What's the difference between AI control and AI alignment?</li>
+            <li>What is mechanistic interpretability?</li>
+          </ul>
+        </div>
+        
+        <h2>questions to ask them</h2>
+        
+        <div class="card">
+          <ul>
+            <li>What does success look like in the first 6 months?</li>
+            <li>What's the biggest challenge the team is facing?</li>
+            <li>How does this role interact with research teams?</li>
+            <li>How do you think about the balance between capabilities and safety?</li>
+          </ul>
+        </div>
+        
+        <div class="page-nav">
+          <a href="pm-portfolio.html" class="page-nav-link">
+            <div class="page-nav-label">previous</div>
+            <div class="page-nav-title">← portfolio</div>
+          </a>
+          <a href="technical-safety.html" class="page-nav-link">
+            <div class="page-nav-label">next</div>
+            <div class="page-nav-title">safety concepts →</div>
+          </a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <button class="mobile-toggle" id="toggle" onclick="toggleNav()">☰</button>
+  
+  <script>
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+      document.getElementById('toggle').textContent = document.getElementById('nav').classList.contains('open') ? '✕' : '☰';
+    }
+    function closeNav() {
+      document.getElementById('nav').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('toggle').textContent = '☰';
+    }
+  </script>
+</body>
+</html>

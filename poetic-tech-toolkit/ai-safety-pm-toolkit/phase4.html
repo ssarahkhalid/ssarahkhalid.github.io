@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 4: Emergence — AI Safety PM Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-header">
+        <a href="../" class="nav-logo">dialogos labs</a>
+        <div class="nav-subtitle">poetic tech toolkit</div>
+      </div>
+      <div class="nav-body">
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <a href="index.html" class="nav-link">home</a>
+          <a href="schedule.html" class="nav-link">daily rhythm</a>
+          <a href="checklist.html" class="nav-link">readiness</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">The Path</div>
+          <a href="phase0.html" class="nav-link">foundations <span class="nav-badge">w1-3</span></a>
+          <a href="phase1.html" class="nav-link">concepts <span class="nav-badge">w4-9</span></a>
+          <a href="phase2.html" class="nav-link">implementation <span class="nav-badge">w10-17</span></a>
+          <a href="phase3.html" class="nav-link">research <span class="nav-badge">w18-26</span></a>
+          <a href="phase4.html" class="nav-link active">emergence <span class="nav-badge">w27-34</span></a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Interview Prep</div>
+          <a href="pm-frameworks.html" class="nav-link">pm frameworks</a>
+          <a href="pm-portfolio.html" class="nav-link">portfolio</a>
+          <a href="pm-questions.html" class="nav-link">question bank</a>
+          <a href="technical-safety.html" class="nav-link">safety concepts</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Resources</div>
+          <a href="resources.html" class="nav-link">key resources</a>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <a href="../" class="nav-footer-link">← back to dialogos</a>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <div class="content">
+        
+        <h1>Phase 4: Emergence</h1>
+        <p class="subtitle">weeks 27-34 · ~70 hours · networking sprint + applications</p>
+        
+        <p class="lead">The technical preparation is complete. Now you emerge into the community — building relationships, submitting applications, and positioning yourself for the roles you've been preparing for.</p>
+        
+        <div class="callout callout-important">
+          <div class="callout-title">the reality</div>
+          <p>70%+ of roles at top AI safety orgs are filled through referrals or inbound interest from known community members. Cold applications alone won't cut it.</p>
+        </div>
+        
+        <h2>target organizations</h2>
+        
+        <table>
+          <thead><tr><th>Tier</th><th>Organizations</th><th>Key Roles</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-red">1</span></td><td>Anthropic, OpenAI, DeepMind</td><td>Trust & Safety PM, Evals PM</td></tr>
+            <tr><td><span class="badge badge-orange">2</span></td><td>UK AISI, US AISI, METR, Apollo</td><td>Evaluations PM, Technical PM</td></tr>
+            <tr><td><span class="badge badge-blue">3</span></td><td>Redwood, Conjecture, CAIS</td><td>Research PM, Program PM</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>week 27-28: network mapping</h2>
+        <div class="card">
+          <ul class="checklist">
+            <li>Research target organizations deeply</li>
+            <li>Create connection tracker spreadsheet</li>
+            <li>Draft outreach templates</li>
+            <li>Begin initial outreach (15 messages)</li>
+          </ul>
+        </div>
+        
+        <h2>week 29-30: coffee chats</h2>
+        <div class="card">
+          <ul class="checklist">
+            <li>5-8 coffee chats per week</li>
+            <li>Polish application materials</li>
+            <li>Tailor cover letters by organization</li>
+          </ul>
+        </div>
+        
+        <h2>week 31-32: application sprint</h2>
+        <div class="card">
+          <ul class="checklist">
+            <li>Submit Tier 1 applications</li>
+            <li>Submit Tier 2 & 3 applications</li>
+            <li>Continue networking (3-4 chats/week)</li>
+          </ul>
+        </div>
+        
+        <h2>week 33-34: interview mode</h2>
+        <div class="card">
+          <ul class="checklist">
+            <li>Mock interview sprint</li>
+            <li>Research interviewers</li>
+            <li>Prepare org-specific questions</li>
+          </ul>
+        </div>
+        
+        <div class="page-nav">
+          <a href="phase3.html" class="page-nav-link">
+            <div class="page-nav-label">previous</div>
+            <div class="page-nav-title">← phase 3</div>
+          </a>
+          <a href="pm-frameworks.html" class="page-nav-link">
+            <div class="page-nav-label">next</div>
+            <div class="page-nav-title">pm frameworks →</div>
+          </a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <button class="mobile-toggle" id="toggle" onclick="toggleNav()">☰</button>
+  
+  <script>
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+      document.getElementById('toggle').textContent = document.getElementById('nav').classList.contains('open') ? '✕' : '☰';
+    }
+    function closeNav() {
+      document.getElementById('nav').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('toggle').textContent = '☰';
+    }
+  </script>
+</body>
+</html>

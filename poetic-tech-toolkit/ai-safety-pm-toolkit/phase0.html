@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 0: Foundations — AI Safety PM Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-header">
+        <a href="../" class="nav-logo">dialogos labs</a>
+        <div class="nav-subtitle">poetic tech toolkit</div>
+      </div>
+      <div class="nav-body">
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <a href="index.html" class="nav-link">home</a>
+          <a href="schedule.html" class="nav-link">daily rhythm</a>
+          <a href="checklist.html" class="nav-link">readiness</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">The Path</div>
+          <a href="phase0.html" class="nav-link active">foundations <span class="nav-badge">w1-3</span></a>
+          <a href="phase1.html" class="nav-link">concepts <span class="nav-badge">w4-9</span></a>
+          <a href="phase2.html" class="nav-link">implementation <span class="nav-badge">w10-17</span></a>
+          <a href="phase3.html" class="nav-link">research <span class="nav-badge">w18-26</span></a>
+          <a href="phase4.html" class="nav-link">emergence <span class="nav-badge">w27-34</span></a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Interview Prep</div>
+          <a href="pm-frameworks.html" class="nav-link">pm frameworks</a>
+          <a href="pm-portfolio.html" class="nav-link">portfolio</a>
+          <a href="pm-questions.html" class="nav-link">question bank</a>
+          <a href="technical-safety.html" class="nav-link">safety concepts</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Resources</div>
+          <a href="resources.html" class="nav-link">key resources</a>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <a href="../" class="nav-footer-link">← back to dialogos</a>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <div class="content">
+        
+        <h1>Phase 0: Foundations</h1>
+        <p class="subtitle">weeks 1-3 · ~45 hours · Python + PyTorch fluency</p>
+        
+        <p class="lead">Before diving into safety concepts, you need the technical foundation to engage with code, papers, and implementations. This phase builds Python fluency and PyTorch basics — the lingua franca of modern ML.</p>
+        
+        <div class="callout callout-note">
+          <div class="callout-title">goal</div>
+          <p>Be able to write a basic neural network in PyTorch, understand what <code>.backward()</code> does, and have solid Python fundamentals. You don't need to be an expert — just fluent enough to follow Karpathy's videos in Phase 2.</p>
+        </div>
+        
+        <h2>week 1: python fundamentals</h2>
+        
+        <p><strong>Resource:</strong> <a href="https://www.learnpython.org/" target="_blank">LearnPython.org</a> (free, interactive)</p>
+        
+        <div class="card">
+          <div class="card-title">Learn the Basics (13 lessons)</div>
+          <ol>
+            <li>Hello, World!</li>
+            <li>Variables and Types</li>
+            <li>Lists</li>
+            <li>Basic Operators</li>
+            <li>String Formatting</li>
+            <li>Basic String Operations</li>
+            <li>Conditions</li>
+            <li>Loops</li>
+            <li>Functions</li>
+            <li>Classes and Objects</li>
+            <li>Dictionaries</li>
+            <li>Modules and Packages</li>
+            <li>Input and Output</li>
+          </ol>
+        </div>
+        
+        <div class="week-card">
+          <div class="week-header">
+            <h4 class="week-title">week 1 goals</h4>
+            <span class="week-badge">~15 hrs</span>
+          </div>
+          <div class="week-body">
+            <ul class="checklist">
+              <li>Complete all 13 "Learn the Basics" lessons</li>
+              <li>Create 20-25 Python Anki cards</li>
+              <li>Fill 5+ pages of analog notes</li>
+              <li>Write syntax patterns by hand</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="callout callout-tip">
+          <div class="callout-title">certification available</div>
+          <p>After completing the tutorials, you can get certified at <a href="https://www.learnx.org" target="_blank">LearnX</a> and add the certification to your LinkedIn profile.</p>
+        </div>
+        
+        <h2>week 2: python for data</h2>
+        
+        <p>Continue with LearnPython.org advanced sections + add NumPy basics.</p>
+        
+        <div class="week-card">
+          <div class="week-header">
+            <h4 class="week-title">week 2 goals</h4>
+            <span class="week-badge">~15 hrs</span>
+          </div>
+          <div class="week-body">
+            <ul class="checklist">
+              <li>Complete "Data Science Tutorials" section on LearnPython.org</li>
+              <li>NumPy basics: arrays, shapes, broadcasting</li>
+              <li>Practice: Write 3-5 small scripts from scratch</li>
+              <li>Create 15 more Anki cards</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">key concepts to internalize</div>
+          <ul>
+            <li>List comprehensions</li>
+            <li>Dictionary methods (<code>.get()</code>, <code>.items()</code>)</li>
+            <li>Class <code>__init__</code> and <code>self</code></li>
+            <li>NumPy array shapes and broadcasting</li>
+            <li>Common debugging patterns</li>
+          </ul>
+        </div>
+        
+        <h2>week 3: pytorch fundamentals</h2>
+        
+        <p><strong>Resource:</strong> <a href="https://www.youtube.com/watch?v=Z_ikDlimN6A" target="_blank">Daniel Bourke "PyTorch in a Day"</a> (~10 hours)</p>
+        
+        <div class="week-card">
+          <div class="week-header">
+            <h4 class="week-title">week 3 goals</h4>
+            <span class="week-badge">~15 hrs</span>
+          </div>
+          <div class="week-body">
+            <ul class="checklist">
+              <li>Watch first 5 hours, coding along</li>
+              <li>Understand tensors, operations, autograd</li>
+              <li>Build your first neural network</li>
+              <li>Understand the training loop</li>
+              <li>Create 20 PyTorch Anki cards</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">pytorch concepts to internalize</div>
+          <ul>
+            <li><code>torch.tensor</code> vs NumPy arrays</li>
+            <li>Tensor shapes: <code>.shape</code>, <code>.view()</code>, <code>.reshape()</code></li>
+            <li>Device management: CPU vs GPU</li>
+            <li><code>requires_grad</code> and <code>.backward()</code></li>
+            <li><code>nn.Module</code> and <code>forward()</code></li>
+            <li>The training loop: forward, loss, backward, step</li>
+          </ul>
+        </div>
+        
+        <div class="callout callout-important">
+          <div class="callout-title">the golden rule</div>
+          <p>Type everything yourself. Never copy-paste code. The physical act of typing builds neural pathways that passive watching cannot. When you hit errors, celebrate them — debugging stories become interview gold.</p>
+        </div>
+        
+        <h2>phase 0 completion checklist</h2>
+        
+        <div class="card">
+          <ul class="checklist">
+            <li>Can write Python classes from scratch</li>
+            <li>Understand list comprehensions, generators</li>
+            <li>Can manipulate NumPy arrays confidently</li>
+            <li>Can create tensors, move to GPU</li>
+            <li>Can build and train a simple neural network</li>
+            <li>Have ~55-60 Anki cards total</li>
+            <li>Have 15+ pages of analog notes</li>
+          </ul>
+        </div>
+        
+        <div class="page-nav">
+          <a href="checklist.html" class="page-nav-link">
+            <div class="page-nav-label">previous</div>
+            <div class="page-nav-title">← readiness</div>
+          </a>
+          <a href="phase1.html" class="page-nav-link">
+            <div class="page-nav-label">next</div>
+            <div class="page-nav-title">phase 1: concepts →</div>
+          </a>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <button class="mobile-toggle" id="toggle" onclick="toggleNav()">☰</button>
+  
+  <script>
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+      document.getElementById('toggle').textContent = document.getElementById('nav').classList.contains('open') ? '✕' : '☰';
+    }
+    function closeNav() {
+      document.getElementById('nav').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('toggle').textContent = '☰';
+    }
+  </script>
+</body>
+</html>
