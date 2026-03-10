@@ -1,12 +1,336 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=products.html">
-    <link rel="canonical" href="products.html">
-</head>
-<body>
-    <p>Redirecting to <a href="products.html">products</a>...</p>
-</body>
-</html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>products - dialogos labs</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="../android-chrome-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../android-chrome-512x512.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../styling.css" />
+    <script src="../script.js"></script>
+    <style>
+      :root {
+        --text: #3a3832;
+        --text-secondary: #666054;
+        --text-muted: #998f7e;
+        --accent: #57543e;
+        --bg: #f8f6f1;
+        --bg-warm: #f3f0e8;
+        --border: #d9d3c7;
+        --surface: #edeae2;
+        --rug: #57543e;
+        --cream: #faf8f4;
+      }
 
+      body {
+        font-family: "Fira Code", monospace;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.75;
+        font-size: 13px;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+      }
+
+      .banner {
+        background: var(--rug);
+        padding: 2rem 2rem 1.6rem;
+        position: relative;
+      }
+
+      .banner .logo {
+        font-family: "Fira Code", monospace;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: lowercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 0.6rem;
+      }
+
+      .banner h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 2rem;
+        color: #fff;
+        margin: 0;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 6px rgba(37, 39, 43, 0.3);
+      }
+
+      .content-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 2rem 4rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .content {
+        width: 100%;
+        text-align: left;
+        color: #2b2b2b;
+      }
+
+      .page-intro {
+        font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+        max-width: 620px;
+        color: #666054;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+
+      @media (min-width: 820px) {
+        .products-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .product-card {
+        background-color: #f9f6f0;
+        border: 1px solid #d9d3c7;
+        padding: 1.5rem 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 210px;
+      }
+
+      .product-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-style: italic;
+        margin: 0 0 0.75rem;
+      }
+
+      .product-tag {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #998f7e;
+        margin-bottom: 0.75rem;
+      }
+
+      .product-synopsis {
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: #666054;
+        margin-bottom: 1.25rem;
+      }
+
+      .product-links {
+        margin-top: auto;
+        font-size: 0.8rem;
+      }
+
+      .product-links a {
+        color: #57543e;
+        text-decoration: none;
+        border-bottom: 1px dotted #57543e;
+        margin-right: 1.25rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .product-links a:hover {
+        border-bottom-style: solid;
+      }
+
+      .product-links .fa {
+        font-size: 0.9rem;
+      }
+
+      .site-footer {
+        background: var(--rug);
+        padding: 2rem 2rem;
+        margin-top: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .site-footer .footer {
+        max-width: 1000px;
+        margin: 0 auto;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+      }
+
+      .site-footer .footer a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+      }
+
+      .site-footer .footer a:hover {
+        color: #fff;
+        border-bottom-color: rgba(255, 255, 255, 0.8);
+      }
+
+      @media (max-width: 768px) {
+        .banner {
+          padding: 1.5rem 1.2rem 1.2rem;
+          min-height: 4rem;
+        }
+
+        .banner h1 {
+          font-size: 1.6rem;
+        }
+
+        .content-wrapper {
+          padding: 1.8rem 1.2rem 3rem;
+        }
+
+        .product-card {
+          padding: 1.4rem 1.4rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content-wrapper {
+          padding: 1.5rem 1rem 2.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="../">home</a>
+      <a href="../applied-research/index.html">applied research</a>
+      <a href="./" class="active">products</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars" id="menuIcon"></i>
+      </a>
+    </div>
+
+    <div class="banner">
+      <div class="logo">dialogos labs</div>
+      <h1><i>products</i></h1>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="page-intro">
+          dialogos labs builds products and publications at the intersection of
+          applied AI/ML, creative technology, and contemplative practice. explore
+          active and in‑development work below.
+        </div>
+
+        <div class="products-grid">
+          <div class="product-card">
+            <div>
+              <div class="product-tag">publication · creative web & ai</div>
+              <h2 class="product-name">Mettadology</h2>
+              <div class="product-synopsis">
+                a creative web & philosophical AI publication for creative
+                technologists. mettadology is a slow synthesis of links, sources,
+                and fragments exploring alignment, embodiment, creative
+                infrastructure, and networks at the intersection of AI/ML product
+                work and contemplative practice.
+              </div>
+            </div>
+            <div class="product-links">
+              <a href="../mettadology/index.html">
+                view publication
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-tag">ai product · leave coverage</div>
+              <h2 class="product-name">sabbaticus</h2>
+              <div class="product-synopsis">
+                sabbaticus is an AI proxy for knowledge workers on leave &mdash;
+                go on vacation without worrying about catch‑up. designed for
+                professionals who need to step away but want to stay connected,
+                sabbaticus acts as an intelligent assistant while you're away,
+                handling routine inquiries and keeping you informed without the
+                stress of constant availability.
+              </div>
+            </div>
+            <div class="product-links">
+              <a href="../sabbaticus/index.html">
+                view product page
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-tag">toolkit · product & research</div>
+              <h2 class="product-name">poetic tech toolkit</h2>
+              <div class="product-synopsis">
+                a comprehensive guide to building AI/ML products across the full
+                spectrum &mdash; from corporate velocity to indie craft. the
+                toolkit bridges technical rigor and creative sensibility with
+                frameworks, mental models, and practices for building thoughtful
+                AI systems in both high‑stakes and experimental contexts.
+              </div>
+            </div>
+            <div class="product-links">
+              <a href="../poetic-tech-toolkit/index.html">
+                view product page
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer">
+        email for inquiries &mdash;
+        <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a
+        ><br />
+        based in montreal &amp; toronto<br />
+        follow along on
+        <a href="https://www.linkedin.com/company/dialogoslabs/" target="_blank"
+          >linkedin</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
