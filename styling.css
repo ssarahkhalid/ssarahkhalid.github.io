@@ -1,4 +1,17 @@
 /* Add a black background color to the top navigation */
+html,
+body {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .topnav {
   background-color: #57543e;
   overflow: hidden;
