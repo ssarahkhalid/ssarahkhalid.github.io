@@ -189,27 +189,38 @@ h2 {
 }
 .credential a:hover { color: var(--text-secondary); }
 
-.footer {
+.site-footer {
+  background: var(--rug);
+  padding: 2rem 2rem;
+  margin-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.site-footer .footer {
+  max-width: 620px;
+  margin: 0 auto;
   font-size: 11px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
 }
-.footer a {
-  color: var(--text-muted);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--border);
-}
-.footer a:hover { color: var(--text-secondary); }
 
-.bottom-band {
-  height: 6px;
-  background: linear-gradient(90deg, #6d6548, #8b7d5e, #a69578, #8b7d5e, #6d6548);
+.site-footer .footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+}
+.site-footer .footer a:hover {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.8);
 }
 
 @media (max-width: 600px) {
   .banner { padding: 1.5rem 1.2rem 1.2rem; min-height: 4rem; }
   .banner h1 { font-size: 1.6rem; }
   .page { padding: 1.8rem 1.2rem 3rem; }
+  .site-footer { padding: 1.5rem 1.2rem; }
+  .site-footer .footer { max-width: 100%; }
 }
 </style>
 </head>
@@ -271,14 +282,13 @@ h2 {
 
 <hr>
 
-<div class="footer">
-  email for inquiries &mdash; <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a><br>
-  based in montreal &amp; toronto
 </div>
 
-</div>
-
-<div class="bottom-band"></div>
+<footer class="site-footer">
+  <div class="footer">
+    email for inquiries &mdash; <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a><br>based in montreal &amp; toronto
+  </div>
+</footer>
 
 <script async src="https://plausible.io/js/pa-VSUt5LrZcKaUrzZ4hv-jt.js"></script>
 <script>
