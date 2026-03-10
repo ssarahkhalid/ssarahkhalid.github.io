@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>applied research &mdash; dialogos labs</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/android-chrome-512x512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../styling.css">
+<script src="../script.js"></script>
+<style>
+:root {
+  --text: #3a3832;
+  --text-secondary: #666054;
+  --text-muted: #998f7e;
+  --accent: #57543e;
+  --bg: #f8f6f1;
+  --bg-warm: #f3f0e8;
+  --border: #d9d3c7;
+  --surface: #edeae2;
+  --rug: #57543e;
+  --cream: #faf8f4;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.75;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.banner {
+  background: var(--rug);
+  padding: 2rem 2rem 1.6rem;
+  position: relative;
+}
+
+.banner .logo {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.6rem;
+}
+
+.banner h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 6px rgba(37,39,43,0.3);
+}
+
+.page {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+p { margin-bottom: 1.1rem; font-size: 12.5px; }
+
+a.inline {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+  transition: border-color 0.15s;
+}
+a.inline:hover { border-bottom-style: solid; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+h2 {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+
+.section-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+  margin: 1.4rem 0 0.8rem;
+}
+
+.item {
+  margin-bottom: 0.8rem;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.7;
+}
+.item::before {
+  content: "\2014";
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+.item strong, .item b {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 11.5px;
+}
+
+.model {
+  background: var(--surface);
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.6rem;
+  border-left: 2px solid var(--border);
+}
+.model-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+.model-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.project {
+  margin-bottom: 1rem;
+}
+.project-title {
+  font-size: 12px;
+  font-weight: 500;
+}
+.project-title a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border);
+}
+.project-title a:hover { border-bottom-color: var(--text); }
+
+.project-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: 0.15rem;
+}
+
+.portfolio-link {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+.portfolio-link a {
+  color: var(--text-muted);
+  border-bottom: 1px dotted var(--border);
+  text-decoration: none;
+}
+.portfolio-link a:hover { color: var(--text-secondary); }
+
+.credential {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  line-height: 1.6;
+}
+.credential a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border);
+}
+.credential a:hover { color: var(--text-secondary); }
+
+.footer {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border);
+}
+.footer a:hover { color: var(--text-secondary); }
+
+.bottom-band {
+  height: 6px;
+  background: linear-gradient(90deg, #6d6548, #8b7d5e, #a69578, #8b7d5e, #6d6548);
+}
+
+@media (max-width: 600px) {
+  .banner { padding: 1.5rem 1.2rem 1.2rem; min-height: 4rem; }
+  .banner h1 { font-size: 1.6rem; }
+  .page { padding: 1.8rem 1.2rem 3rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="../">home</a>
+  <a href="./" class="active">applied research</a>
+  <a href="../mettadology/index.html">mettadology</a>
+  <a href="../sabbaticus/index.html">sabbaticus</a>
+  <a href="../poetic-tech-toolkit/index.html">poetic tech toolkit</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars" id="menuIcon"></i>
+  </a>
+</div>
+
+<div class="banner">
+  <div class="logo">dialogos labs</div>
+  <h1><i>applied research</i></h1>
+</div>
+
+<div class="page">
+
+<h2>who we work with</h2>
+
+<p>AI labs turning research into new product categories. nonprofits building their first applied products. startups that need product leadership and a technical team without building one in-house. mission-driven organizations building communities around AI safety and responsible technology.</p>
+
+<hr>
+
+<h2>services</h2>
+
+<p class="section-label">product leadership</p>
+
+<div class="item"><b>0-to-1 product development</b> &mdash; identifying nascent research capabilities that could become products. building prototypes to validate ideas before committing resources. leading development from research to internal prototype to shipped product.</div>
+
+<div class="item"><b>evaluation &amp; safety architecture</b> &mdash; designing frameworks that measure whether AI systems are truthful, safe, and behaviorally consistent under real-world conditions.</div>
+
+<div class="item"><b>product-market fit, marketing &amp; brand</b> &mdash; user research, competitive positioning, go-to-market strategy, pricing, and adoption planning. product marketing, cultural branding, and narrative positioning for organizations whose technology deserves a distinctive voice.</div>
+
+<div class="item"><b>applied use-case strategy</b> &mdash; working with research and leadership teams to identify where technology meets real-world problems. building roadmaps with defined milestones and success metrics.</div>
+
+<div class="item"><b>stakeholder engagement</b> &mdash; interviewing partners, users, and organizations to understand their problems and requirements. synthesizing contradictory feedback into prioritized product decisions.</div>
+
+<div class="item"><b>delivery &amp; project management</b> &mdash; priorities, user stories, specs, deliverables. running iterative cycles with research and engineering teams.</div>
+
+<div class="item"><b>end-to-end product builds</b> &mdash; from research through production deployment, on engagements requiring design, engineering, or research, we assemble the team: designers, UX researchers, ML engineers, full-stack developers, and data scientists.</div>
+
+<p class="section-label">coaching &amp; advisory</p>
+
+<div class="item"><b>research team coaching</b> &mdash; helping researchers and engineers develop product thinking. what matters to users, how success is measured, and how to communicate value to non-technical stakeholders and funders.</div>
+
+<div class="item"><b>product management career coaching</b> &mdash; helping aspiring and early-career PMs break into the field, with particular focus on supporting women and underrepresented minorities in tech. portfolio development, interview preparation, career strategy, and navigating the transition from adjacent roles.</div>
+
+<p class="section-label">narrative &amp; editorial</p>
+
+<div class="item"><b>philosophical &amp; technical writing</b> &mdash; essays, editorial contributions, and long-form content on AI alignment, product craft, and the human experience of building with AI.</div>
+
+<p class="section-label">community &amp; field building</p>
+
+<div class="item"><b>community strategy &amp; operations</b> &mdash; growing and sustaining practitioner communities around AI safety, alignment, and responsible technology. event programming, hackathon design and facilitation, communications, and marketing for mission-driven organizations.</div>
+
+<hr>
+
+<div class="footer">
+  email for inquiries &mdash; <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a><br>
+  based in montreal &amp; toronto
+</div>
+
+</div>
+
+<div class="bottom-band"></div>
+
+<script async src="https://plausible.io/js/pa-VSUt5LrZcKaUrzZ4hv-jt.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+</body>
+</html>

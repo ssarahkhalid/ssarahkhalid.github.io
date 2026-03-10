@@ -6,6 +6,10 @@
   position: fixed;
   top: 0;
   z-index: 1000;
+  height: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 /* Style the links inside the navigation bar */
@@ -34,16 +38,16 @@
   color: white;
 }
 
-/* Hide the hamburger icon since navigation is always visible */
+/* Desktop: hide the hamburger icon; nav links are always visible */
 .topnav .icon {
-  display: none !important;
+  display: none;
 }
 
 .topnav .icon:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* When responsive class is added, show all links vertically */
+/* When responsive class is added (desktop fallback), show all links vertically */
 .topnav.responsive {
   position: relative;
 }
@@ -65,39 +69,90 @@ body {
   padding-top: 50px;
 }
 
-/* Mobile responsive improvements */
+/* Mobile: show hamburger, hide nav links; full-screen overlay when menu open */
 @media (max-width: 768px) {
   .topnav {
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .topnav a {
-    padding: 12px 14px;
-    font-size: 12px;
+  /* Hide nav links by default on mobile; only the icon is visible */
+  .topnav a:not(.icon) {
+    display: none !important;
   }
 
+  /* Show hamburger on mobile, place on the left */
   .topnav .icon {
-    padding: 12px 14px;
-    font-size: 16px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    order: -1;
+    padding: 14px 16px;
+    font-size: 18px;
+    float: none;
   }
 
   body {
-    padding-top: 48px;
+    padding-top: 50px;
+  }
+
+  /* Full-screen overlay when menu is open */
+  .topnav.responsive {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 52px 0 0 0;
+    overflow-y: auto;
+  }
+
+  .topnav.responsive a.icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    order: 0;
+    padding: 14px 16px;
+    font-size: 22px;
+  }
+
+  .topnav.responsive a:not(.icon) {
+    display: block !important;
+    float: none;
+    text-align: left;
+    padding: 18px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .topnav.responsive a:not(.icon):last-of-type {
+    border-bottom: none;
   }
 }
 
 @media (max-width: 480px) {
-  .topnav a {
-    padding: 10px 12px;
-    font-size: 11px;
+  .topnav .icon {
+    padding: 12px 14px;
+    font-size: 18px;
   }
 
-  .topnav .icon {
-    padding: 10px 12px;
+  .topnav.responsive a:not(.icon) {
+    padding: 16px 18px;
     font-size: 15px;
   }
 
-  body {
-    padding-top: 46px;
+  .topnav.responsive a.icon {
+    padding: 12px 14px;
+    font-size: 20px;
   }
 }

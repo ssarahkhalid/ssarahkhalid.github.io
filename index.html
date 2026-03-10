@@ -1,133 +1,172 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dialogos labs</title>
-    <!-- Favicons for Google Search and browsers -->
-    <!-- Primary favicon for Google Search (rel="icon" is required) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-    <!-- Apple touch icon for iOS devices -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/android-chrome-512x512.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styling.css">
-    <script src="script.js"></script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dialogos labs</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/android-chrome-512x512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="styling.css">
+<script src="script.js"></script>
 <style>
- 
-body{
-background-color: #57543e;
-font-family: 'Fira Code';
-}
- 
-#all{
-position: absolute;
-left: 50%;
-top: 50%;
--webkit-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
-width: 410px;
-height: 520px;
-}
- 
-#container{
-width: 300px;
-height: 500px;
-background-color: #fff;
-    opacity: 1.0;
-padding: 10px;
-}
- 
-#header{
-height: 70px;
-background-image: url('https://i.imgur.com/A6q8dfx.jpeg');
-background-position: top left;
-padding: 5px;
-position: relative;
-}
- 
-#header h1{
-font-weight: normal;
-font-family: 'Cormorant Garamond';
-color: #fff;
-font-size: 40px;
-letter-spacing: 3px;
-text-shadow: 1px 1px 4px #25272b;
-margin: 0px;
-position: absolute;
-bottom: 0px;
-right: 0px;
-}
- 
-#content{
-overflow: scroll;
-overflow-x: hidden;
-height: 240px;
-padding: 4px;
-text-align: justify;
-color: #444951;
-margin-bottom: 5px;
-margin-top: 5px;
-}
- 
-#content p{
-margin-top: 22x;
-font-size: 11px;
-}
- 
-#bottom{
-height: 150px;
-background-image: url('https://i.imgur.com/A6q8dfx.jpeg');
-background-position: bottom left;
-}
- 
-#nav{
-font-size: 13px;
-color: #fff;
-text-transform: uppercase;
-letter-spacing: 1px;
-}
- 
-#nav a{
-color: #ffffff;
-opacity: 0.8;
-text-decoration: none;
-}
- 
-#nav a:hover{
-color: #fff;
-opacity: 1;
-}
- 
-::-webkit-scrollbar{
-width: 6px; 
-}
- 
-::-webkit-scrollbar-track{
-background-color: transparent;
-}
- 
-::-webkit-scrollbar-thumb{
-background-color: #434750;  
+:root {
+  --text: #3a3832;
+  --text-secondary: #666054;
+  --text-muted: #998f7e;
+  --accent: #57543e;
+  --bg: #f8f6f1;
+  --bg-warm: #f3f0e8;
+  --border: #d9d3c7;
+  --surface: #edeae2;
+  --rug: #57543e;
+  --cream: #faf8f4;
 }
 
-/* Topnav is now visible with hamburger menu */
- 
+body {
+  font-family: 'Fira Code', monospace;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.75;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.banner {
+  background: var(--rug);
+  padding: 2rem 2rem 1.6rem;
+  position: relative;
+}
+
+.banner .logo {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.6rem;
+}
+
+.banner h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 2.4rem;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 6px rgba(37,39,43,0.3);
+}
+
+/* page content */
+.page {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+p { margin-bottom: 1.1rem; font-size: 12.5px; }
+
+a.inline {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+  transition: border-color 0.15s;
+}
+a.inline:hover { border-bottom-style: solid; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+h2 {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.practice {
+  margin-bottom: 1.4rem;
+}
+
+.practice-title {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.practice-title a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border);
+}
+.practice-title a:hover { border-bottom-color: var(--text); }
+
+.practice-desc {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: 0.2rem;
+}
+
+.practice-desc a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border);
+}
+.practice-desc a:hover { color: var(--text); }
+
+.site-footer {
+  background: var(--rug);
+  padding: 2rem 2rem;
+  margin-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.site-footer .footer {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+.site-footer .footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+}
+.site-footer .footer a:hover {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 600px) {
+  .banner { padding: 1.5rem 1.2rem 1.2rem; min-height: 4rem; }
+  .banner h1 { font-size: 1.8rem; }
+  .page { padding: 1.8rem 1.2rem 3rem; }
+  .site-footer { padding: 1.5rem 1.2rem; }
+  .site-footer .footer { max-width: 100%; }
+}
 </style>
- 
 </head>
- 
 <body>
 
 <div class="topnav" id="myTopnav">
   <a href="./" class="active">home</a>
+  <a href="applied-research/index.html">applied research</a>
   <a href="mettadology/index.html">mettadology</a>
   <a href="sabbaticus/index.html">sabbaticus</a>
   <a href="poetic-tech-toolkit/index.html">poetic tech toolkit</a>
@@ -136,29 +175,29 @@ background-color: #434750;
   </a>
 </div>
 
-<div id="all">
+<div class="banner">
+  <div class="logo">dialogos labs</div>
+  <h1><i>dialogos</i></h1>
+</div>
 
-<div id="container">
- 
-<div id="header">
- 
-<h1><i>dialogos</i></h1></div>
- 
-<div id="content">
+<div class="page">
 
-<p><b>dialogos labs</b> is a creative digital product studio building thoughtful AI and machine learning systems and experiences. named for the explorative mode of dialogue and the process of transformation through language, we aim to craft software that responds to genuine needs while facilitating meaningful connection.</p>
- 
-<p>our work extends to democratizing technical education, fostering creative community, and resource sharing. we focus on simple tools and building intentional technology that enhances the human experience.</p>
- 
+<p>we are a creative product studio for AI/ML &mdash; working at the intersection of product development, alignment research, and culture. named for the explorative mode of dialogue and the process of transformation through language, we build systems and experiences that respond to genuine needs while facilitating meaningful connection.</p>
+
+<p>our specialty is <a class="inline" href="applied-research/index.html">product management for applied AI/ML research</a>: helping teams turn nascent capabilities into products that work in the real world, with the safety architecture and evaluation discipline that high-stakes deployment demands.</p>
+
+<p>we operate as a full product studio &mdash; partnering with engineers, designers, UX researchers, data scientists, and other practitioners to deliver end-to-end across R&amp;D, product development, and go-to-market. our work also extends to coaching, narrative writing, cultural branding, and community building.</p>
+
+<hr>
+
 </div>
- 
-<div id="bottom"></div>
- 
-</div>
- 
-</div>
- 
-<!-- Privacy-friendly analytics by Plausible -->
+
+<footer class="site-footer">
+  <div class="footer">
+    email for inquiries &mdash; <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a><br>based in montreal & toronto
+  </div>
+</footer>
+
 <script async src="https://plausible.io/js/pa-VSUt5LrZcKaUrzZ4hv-jt.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
@@ -166,5 +205,4 @@ background-color: #434750;
 </script>
 
 </body>
- 
 </html>
