@@ -143,6 +143,7 @@ body {
   text-transform: lowercase;
   width: 100%;
   white-space: nowrap;
+  padding-bottom: 0.12em;
 }
 .hero-content .hero-desc {
   font-family: 'Fira Code', monospace;
@@ -151,7 +152,7 @@ body {
   letter-spacing: 0.28em;
   text-transform: lowercase;
   color: rgba(255, 255, 255, 0.75);
-  margin-top: 1.2rem;
+  margin-top: clamp(1.8rem, 2.5vw, 2.8rem);
 }
 .site-header:not(.scrolled) .wordmark,
 .site-header:not(.scrolled) nav a,
@@ -208,7 +209,7 @@ body {
   }
   .hero-content .hero-desc {
     letter-spacing: 0.18em;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
   .hero-body { padding: 3rem 1.4rem 2.5rem; }
 }
