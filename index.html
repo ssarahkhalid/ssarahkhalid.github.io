@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>dialogos labs</title>
+<meta name="description" content="Creative product studio for AI/ML — working at the intersection of product development, alignment research, and culture.">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/android-chrome-512x512.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="dialogos labs">
+<meta property="og:title" content="dialogos labs">
+<meta property="og:description" content="Creative product studio for AI/ML — working at the intersection of product development, alignment research, and culture.">
+<meta property="og:url" content="https://dialogoslabs.xyz/">
+<meta property="og:image" content="https://dialogoslabs.xyz/android-chrome-512x512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dialogoslabs.xyz/android-chrome-512x512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Fira+Code:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -294,6 +309,18 @@ body {
     width: 240px;
     text-align: center;
     color: var(--text);
+  }
+  .site-header.nav-open .menu-toggle,
+  .site-header:not(.scrolled).nav-open .menu-toggle {
+    color: var(--accent-green);
+  }
+  .site-header.nav-open nav a,
+  .site-header:not(.scrolled).nav-open nav a {
+    color: var(--text);
+  }
+  .site-header.nav-open nav a:hover,
+  .site-header:not(.scrolled).nav-open nav a:hover {
+    color: var(--plum);
   }
   .site-header nav a:last-child { border-bottom: none; }
   .approach-grid { grid-template-columns: 1fr; gap: 2rem; }
