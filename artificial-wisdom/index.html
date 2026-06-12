@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>artificial wisdom — a monthly sitting on meditation × AI</title>
+<meta name="description" content="a contemplative gathering: a 20-minute guided practice, then a conversation with researchers working at the intersection of meditation and AI. hosted by dialogos labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#f4f0e4;
+    --paper-deep:#ece7d6;
+    --ink:#2d2b21;
+    --olive:#57543e;
+    --sage:#8e8a6d;
+    --faint:#b9b49a;
+    --signal:#6e7cb8;
+    --hairline:rgba(87,84,62,.22);
+    --border:#d9d3c7;
+    --panel:rgba(244,240,228,.88);
+    --panel-deep:rgba(236,231,214,.92);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    color:var(--ink);
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--olive);color:var(--parchment)}
+  .mono{font-family:'Fira Code',monospace}
+
+  /* ───── full-page figure background ───── */
+  .page-bg{
+    position:fixed;inset:0;z-index:0;
+    display:grid;grid-template-columns:1fr 1fr;
+  }
+  .page-bg-fig{
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
+  .page-bg-fig-1{background-image:url(artwork-1.jpg)}
+  .page-bg-fig-2{background-image:url(artwork-2.jpg)}
+
+  .page-content{position:relative;z-index:1}
+
+  /* ───── top ───── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:baseline;
+    max-width:980px;margin:0 auto;padding:26px;
+    font-family:'Fira Code',monospace;font-size:11.5px;letter-spacing:.1em;
+    color:var(--olive);
+    background:var(--panel);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline);
+  }
+  nav a{color:var(--olive);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s}
+  nav a:hover,nav a:focus-visible{border-bottom-color:var(--olive)}
+
+  .col{max-width:660px;margin:0 auto;padding:0 26px}
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--hairline);
+    padding:2.4rem 2rem;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  .panel-deep{
+    background:var(--panel-deep);
+    border:1px solid var(--hairline);
+    padding:2.4rem 2rem;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+
+  /* ───── hero ───── */
+  header{
+    min-height:88vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    padding:60px 26px 80px;
+  }
+  .hero-panel{max-width:560px;width:100%}
+  .eyebrow{
+    font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--sage);margin-bottom:26px;
+  }
+  h1{
+    font-weight:500;
+    font-size:clamp(50px,8.4vw,92px);
+    line-height:1.02;
+    letter-spacing:.01em;
+    color:var(--ink);
+  }
+  h1 em{font-style:italic;font-weight:400;color:var(--olive)}
+  .hero-sub{
+    margin-top:24px;max-width:34ch;margin-left:auto;margin-right:auto;
+    font-size:22px;line-height:1.6;font-style:italic;color:var(--olive);
+  }
+  .hero-detail{
+    margin-top:40px;font-family:'Fira Code',monospace;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);
+    line-height:2.3;
+  }
+  .hero-cta{margin-top:40px}
+
+  /* ───── ripple divider (breath × the water) ───── */
+  .rule{
+    max-width:660px;margin:0 auto;display:flex;align-items:center;gap:18px;
+    padding:0 26px;color:var(--faint);
+  }
+  .rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--hairline)}
+  .breath-glyph{width:30px;height:30px;display:block;overflow:visible}
+  .breath-glyph circle{fill:none;stroke:var(--olive);stroke-width:1}
+  .breath-glyph .r-in{stroke:var(--signal)}
+  @keyframes emit{0%{opacity:0}22%{opacity:.85}100%{opacity:0}}
+  .breath-glyph .r-in{animation:emit 5.4s ease-out infinite}
+  .breath-glyph .r-mid{animation:emit 5.4s ease-out infinite 1s}
+  .breath-glyph .r-out{animation:emit 5.4s ease-out infinite 2s}
+
+  /* ───── sections ───── */
+  section{padding:72px 0}
+  .label{
+    font-family:'Fira Code',monospace;font-size:10.5px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--sage);margin-bottom:30px;text-align:center;
+  }
+  h2{
+    font-weight:500;font-size:clamp(32px,5vw,46px);line-height:1.2;
+    text-align:center;margin-bottom:38px;color:var(--ink);
+  }
+  h2 em{font-style:italic;color:var(--olive)}
+  .prose{font-size:20px}
+  .prose p+p{margin-top:1.25em}
+  .prose em{color:var(--olive)}
+  .prose a{color:var(--olive);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+
+  .sitting{border-top:1px solid var(--hairline);margin-top:14px}
+  .sit-row{
+    display:grid;grid-template-columns:120px 1fr;gap:26px;
+    padding:26px 4px;border-bottom:1px solid var(--hairline);
+    align-items:baseline;
+  }
+  .sit-row .when{
+    font-family:'Fira Code',monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--sage);
+  }
+  .sit-row .what b{font-weight:600;font-size:22px;display:block;margin-bottom:4px}
+  .sit-row .what p{font-size:18px;color:#4d4a3a}
+
+  .center-note{text-align:center;max-width:46ch;margin:0 auto;font-size:20px}
+  .center-note p+p{margin-top:1.2em}
+
+  .metta .prose{text-align:center;max-width:48ch;margin:0 auto;font-style:italic;font-size:21px}
+  .metta .label{margin-bottom:24px}
+
+  .cta{text-align:center}
+  .btn{
+    display:inline-block;font-family:'Fira Code',monospace;font-size:12px;
+    letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+    color:var(--parchment);background:var(--olive);
+    padding:16px 34px;border:1px solid var(--olive);border-radius:1px;
+    transition:all .25s;
+  }
+  .btn:hover,.btn:focus-visible{background:transparent;color:var(--olive)}
+  .cta .note{
+    margin-top:20px;font-family:'Fira Code',monospace;font-size:11px;
+    letter-spacing:.12em;color:var(--sage);
+  }
+
+  footer{
+    border-top:1px solid var(--hairline);
+    padding:40px 26px 56px;text-align:center;
+    font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.12em;
+    color:var(--sage);line-height:2.4;
+    background:var(--panel);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  footer a{color:var(--olive);text-decoration:none;border-bottom:1px solid var(--hairline)}
+  footer a:hover{border-bottom-color:var(--olive)}
+
+  @media(max-width:768px){
+    .page-bg{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .sit-row{grid-template-columns:1fr;gap:6px}
+    section{padding:56px 0}
+    .hero-sub{font-size:21px}
+    .panel,.panel-deep{padding:1.8rem 1.4rem}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .breath-glyph .r-in,.breath-glyph .r-mid,.breath-glyph .r-out{animation:none;opacity:.45}
+  }
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="page-bg" aria-hidden="true">
+  <div class="page-bg-fig page-bg-fig-1"></div>
+  <div class="page-bg-fig page-bg-fig-2"></div>
+</div>
+
+<div class="page-content">
+
+<nav>
+  <a href="/">dialogos labs</a>
+  <span>artificial wisdom</span>
+  <a href="https://luma.com/dialogos" target="_blank" rel="noopener noreferrer">join the sitting</a>
+</nav>
+
+<header>
+  <div class="hero-panel panel">
+    <p class="eyebrow">wisdom x meditation × ai</p>
+    <h1>artificial <em>wisdom</em></h1>
+    <p class="hero-sub">exploring the spaces of contemplative practice and artificial intelligence.</p>
+    <div class="hero-cta">
+      <a class="btn" href="https://luma.com/dialogos" target="_blank" rel="noopener noreferrer">subscribe &amp; join</a>
+    </div>
+  </div>
+</header>
+
+<div class="rule" aria-hidden="true">
+  <svg class="breath-glyph" viewBox="0 0 30 30"><circle class="r-out" cx="15" cy="15" r="13.5"/><circle class="r-mid" cx="15" cy="15" r="9"/><circle class="r-in" cx="15" cy="15" r="4.5"/></svg>
+</div>
+
+<section id="about">
+  <div class="col">
+    <div class="panel">
+      <p class="label">the inquiry</p>
+      <h2>two traditions of studying <em>the mind</em> in one room.</h2>
+      <div class="prose">
+        <p>contemplative traditions have spent millennia investigating attention, awareness, and the construction of self. machine learning has spent a few decades building systems that model exactly those things.</p>
+        <p><em>artificial wisdom</em> highlights the work of researchers innovating at the meditation × AI — contemplative science, attention and awareness, alignment and wellbeing, machine phenomenology — and we hold a slow conversation about it.</p>
+        <p>working in this space and want to share? <a href="mailto:hello@dialogoslabs.xyz?subject=artificial%20wisdom%20—%20speaking">write to us.</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule" aria-hidden="true">
+  <svg class="breath-glyph" viewBox="0 0 30 30"><circle class="r-out" cx="15" cy="15" r="13.5"/><circle class="r-mid" cx="15" cy="15" r="9"/><circle class="r-in" cx="15" cy="15" r="4.5"/></svg>
+</div>
+
+<section id="sitting">
+  <div class="col">
+    <div class="panel">
+      <p class="label">order of the evening</p>
+      <h2>the shape of a <em>sitting</em></h2>
+      <div class="sitting">
+        <div class="sit-row">
+          <span class="when">arrival</span>
+          <div class="what"><b>gather quietly</b><p>tea, settling, finding a cushion or a chair. phones rest at the door of attention.</p></div>
+        </div>
+        <div class="sit-row">
+          <span class="when">20 min</span>
+          <div class="what"><b>guided practice</b><p>a chosen meditation — breath, metta, open awareness — guided live. beginners are genuinely welcome; instructions assume nothing.</p></div>
+        </div>
+        <div class="sit-row">
+          <span class="when">30-45 min</span>
+          <div class="what"><b>the talk</b><p>a contemplative researcher or practitioner working in this space presents their current work.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  artificial wisdom · <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a> &nbsp;·&nbsp; montréal & online
+</footer>
+
+</div>
+
+</body>
+</html>

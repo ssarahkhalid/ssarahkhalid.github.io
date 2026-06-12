@@ -53,6 +53,10 @@
         --cream: #faf8f4;
       }
 
+      .topnav {
+        background-color: var(--rug);
+      }
+
       body {
         font-family: "Fira Code", monospace;
         color: var(--text);
@@ -61,32 +65,22 @@
         font-size: 13px;
         -webkit-font-smoothing: antialiased;
         margin: 0;
+        min-height: 100vh;
       }
 
-      .banner {
-        background: var(--rug);
-        padding: 2rem 2rem 1.6rem;
+      .page-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background: url("../assets/products-bg.png") center / cover no-repeat;
+      }
+
+      .page-content {
         position: relative;
-      }
-
-      .banner .logo {
-        font-family: "Fira Code", monospace;
-        font-size: 10px;
-        letter-spacing: 0.2em;
-        text-transform: lowercase;
-        color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 0.6rem;
-      }
-
-      .banner h1 {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-style: italic;
-        font-size: 2rem;
-        color: #fff;
-        margin: 0;
-        letter-spacing: 2px;
-        text-shadow: 1px 1px 6px rgba(37, 39, 43, 0.3);
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
       .content-wrapper {
@@ -98,13 +92,16 @@
         max-width: 1000px;
         margin: 0 auto;
         width: 100%;
+        background: rgba(248, 246, 241, 0.78);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
       }
 
       .content {
         width: 100%;
         max-width: 720px;
         text-align: left;
-        color: #2b2b2b;
+        color: var(--text);
       }
 
       .page-intro {
@@ -112,7 +109,7 @@
         line-height: 1.8;
         margin-bottom: 2.5rem;
         max-width: 60ch;
-        color: #666054;
+        color: var(--text-secondary);
       }
 
       .products-grid {
@@ -128,8 +125,8 @@
       }
 
       .product-card {
-        background-color: #f9f6f0;
-        border: 1px solid #d9d3c7;
+        background-color: rgba(249, 246, 240, 0.92);
+        border: 1px solid var(--border);
         padding: 1.5rem 1.75rem;
         display: flex;
         flex-direction: column;
@@ -148,14 +145,14 @@
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        color: #998f7e;
+        color: var(--text-muted);
         margin-bottom: 0.75rem;
       }
 
       .product-synopsis {
         font-size: 0.85rem;
         line-height: 1.7;
-        color: #666054;
+        color: var(--text-secondary);
         margin-bottom: 1.25rem;
         max-width: 60ch;
       }
@@ -166,16 +163,19 @@
       }
 
       .product-links a {
-        color: #57543e;
+        color: var(--accent);
         text-decoration: none;
-        border-bottom: 1px dotted #57543e;
+        border-bottom: 1px dotted var(--accent);
         margin-right: 1.25rem;
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
+        transition: color 0.15s, border-color 0.15s;
       }
 
       .product-links a:hover {
+        color: var(--text);
+        border-bottom-color: var(--text);
         border-bottom-style: solid;
       }
 
@@ -183,12 +183,44 @@
         font-size: 0.9rem;
       }
 
+      .product-coming-soon {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+      }
+
       .site-footer {
         background: var(--rug);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding: 2rem 2rem;
-        margin-top: 0;
+        margin-top: auto;
         width: 100%;
         box-sizing: border-box;
+      }
+
+      .site-footer .banner {
+        max-width: 620px;
+        margin: 0 auto 1.5rem;
+      }
+
+      .site-footer .banner .logo {
+        font-family: "Fira Code", monospace;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: lowercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 0.6rem;
+      }
+
+      .site-footer .banner h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 2rem;
+        color: var(--text);
+        margin: 0;
+        letter-spacing: 2px;
       }
 
       .site-footer .footer {
@@ -211,21 +243,20 @@
       }
 
       @media (max-width: 768px) {
-        .banner {
-          padding: 1.5rem 1.2rem 1.2rem;
-          min-height: 4rem;
-        }
-
-        .banner h1 {
-          font-size: 1.6rem;
-        }
-
         .content-wrapper {
           padding: 1.8rem 1.4rem 3rem;
         }
 
         .product-card {
           padding: 1.4rem 1.4rem;
+        }
+
+        .site-footer {
+          padding: 1.5rem 1.2rem;
+        }
+
+        .site-footer .banner h1 {
+          font-size: 1.6rem;
         }
       }
 
@@ -238,6 +269,8 @@
   </head>
 
   <body>
+    <div class="page-bg" aria-hidden="true"></div>
+    <div class="page-content">
     <div class="topnav" id="myTopnav">
       <a href="../">home</a>
       <a href="../applied-research/index.html">applied research</a>
@@ -247,15 +280,10 @@
       </a>
     </div>
 
-    <div class="banner">
-      <div class="logo">dialogos labs</div>
-      <h1><i>products</i></h1>
-    </div>
-
     <div class="content-wrapper">
       <div class="content">
         <div class="page-intro">
-          dialogos labs builds products and publications at the intersection of
+          <b>dialogos labs</b> builds products and publications at the intersection of
           applied AI/ML, creative technology, and contemplative practice. explore
           active and in‑development work below.
         </div>
@@ -264,7 +292,7 @@
           <div class="product-card">
             <div>
               <div class="product-tag">publication · creative web & ai</div>
-              <h2 class="product-name">Mettadology</h2>
+              <h2 class="product-name">mettadology</h2>
               <div class="product-synopsis">
                 a creative web & philosophical AI publication for creative
                 technologists. mettadology is a slow synthesis of links, sources,
@@ -282,20 +310,57 @@
 
           <div class="product-card">
             <div>
-              <div class="product-tag">ai product · leave coverage</div>
-              <h2 class="product-name">sabbaticus</h2>
+              <div class="product-tag">tool · family stories & heritage</div>
+              <h2 class="product-name">hana</h2>
               <div class="product-synopsis">
-                sabbaticus is an AI proxy for knowledge workers on leave &mdash;
-                go on vacation without worrying about catch‑up. designed for
-                professionals who need to step away but want to stay connected,
-                sabbaticus acts as an intelligent assistant while you're away,
-                handling routine inquiries and keeping you informed without the
-                stress of constant availability.
+                record a conversation with a loved one and turn it into a
+                beautiful, shareable digital story in their words and language
+                &mdash; preserving family histories, recipes, and cultural
+                heritage before they're lost.
               </div>
             </div>
             <div class="product-links">
-              <a href="../sabbaticus/index.html">
-                view product page
+              <a
+                href="https://hana.intentional.company/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                visit hana
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-tag">meditation × ai</div>
+              <h2 class="product-name">artificial wisdom</h2>
+              <div class="product-synopsis">
+                a contemplative gathering at the intersection of meditation and AI &mdash;
+                wisdom traditions, attention and awareness, alignment and
+                well-being.
+              </div>
+            </div>
+            <div class="product-links">
+              <a href="../artificial-wisdom/index.html">
+                view page
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-tag">creative technologists</div>
+              <h2 class="product-name">machine yearning</h2>
+              <div class="product-synopsis">
+                a gathering for creative technologists making incremental
+                progress on personal projects. bring your half‑built thing, work
+                beside other people doing the same, and demo five minutes of it
+                before you go. all disciplines welcome.
+              </div>
+            </div>
+            <div class="product-links">
+              <a href="../machine-yearning/index.html">
+                view page
               </a>
             </div>
           </div>
@@ -313,9 +378,24 @@
               </div>
             </div>
             <div class="product-links">
-              <a href="../poetic-tech-toolkit/index.html">
-                view product page
-              </a>
+              <span class="product-coming-soon">coming soon</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-tag">program · ai safety</div>
+              <h2 class="product-name">crossover</h2>
+              <div class="product-synopsis">
+                a conversion engine for product leaders moving into AI safety
+                &mdash; workshops, a hackathon, a cohort, and a toolkit for
+                making the transition real. built for high‑agency PMs and product
+                leaders who sit closer to where frontier capability ships than
+                almost anyone.
+              </div>
+            </div>
+            <div class="product-links">
+              <span class="product-coming-soon">coming soon</span>
             </div>
           </div>
         </div>
@@ -323,6 +403,9 @@
     </div>
 
     <footer class="site-footer">
+      <div class="banner">
+        <div class="logo">dialogos labs</div>
+      </div>
       <div class="footer">
         email for inquiries &mdash;
         <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a
@@ -334,5 +417,6 @@
         >
       </div>
     </footer>
+    </div>
   </body>
 </html>

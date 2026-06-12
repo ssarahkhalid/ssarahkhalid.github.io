@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>crossover — the path from product into AI safety</title>
+<meta name="description" content="Crossover is a conversion engine for product leaders moving into AI safety: workshops, a hackathon, a cohort, and a toolkit — evals, spec-driven development, and the craft of floating between worlds. By dialogos labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,800;1,400&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf8f2;
+    --paper-2:#f1eee4;
+    --ink:#1d2026;
+    --ink-soft:#42454d;
+    --safety:#e35414;       /* high-vis safety orange */
+    --safety-deep:#b53e08;
+    --slate:#39506b;
+    --hairline:rgba(29,32,38,.16);
+    --hairline-strong:rgba(29,32,38,.5);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',sans-serif;
+    font-size:16.5px;
+    line-height:1.7;
+  }
+  ::selection{background:var(--safety);color:var(--paper)}
+  .mono{font-family:'Fira Code',monospace}
+  .wrap{max-width:980px;margin:0 auto;padding:0 26px}
+
+  /* ── spec header strip ── */
+  .spec-bar{
+    border-bottom:1px solid var(--hairline-strong);
+    font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.06em;
+    background:var(--paper);position:sticky;top:0;z-index:20;
+  }
+  .spec-bar .wrap{
+    display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;
+    padding-top:12px;padding-bottom:12px;color:var(--ink-soft);
+  }
+  .spec-bar a{color:var(--ink);text-decoration:none}
+  .spec-bar a:hover{color:var(--safety)}
+  .badge{
+    display:inline-block;padding:2px 9px;border-radius:999px;
+    border:1px solid var(--safety);color:var(--safety-deep);
+    font-weight:500;
+  }
+  .spec-bar .right{margin-left:auto;display:flex;gap:18px}
+
+  /* ── hero ── */
+  header{padding:84px 0 0;border-bottom:1px solid var(--hairline-strong)}
+  .doc-meta{
+    font-family:'Fira Code',monospace;font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .doc-meta b{color:var(--safety-deep);font-weight:600}
+  h1{
+    font-weight:800;
+    font-size:clamp(40px,7.2vw,82px);
+    line-height:1.02;letter-spacing:-.025em;
+    max-width:18ch;
+  }
+  h1 .mark{
+    color:var(--safety);
+    text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:8px;
+  }
+  .hero-sub{
+    margin-top:30px;max-width:58ch;font-size:19px;color:var(--ink-soft);
+  }
+  .hero-sub strong{color:var(--ink);font-weight:600}
+  .hero-cta{margin:40px 0 0;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:'Fira Code',monospace;font-size:12.5px;letter-spacing:.1em;
+    text-transform:uppercase;text-decoration:none;font-weight:500;
+    padding:14px 26px;border-radius:2px;transition:all .2s;
+    background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  }
+  .btn:hover,.btn:focus-visible{background:var(--safety);border-color:var(--safety);color:#fff}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover,.btn.ghost:focus-visible{background:transparent;color:var(--safety-deep);border-color:var(--safety)}
+
+  /* signature: track-switch diagram */
+  .tracks{margin:64px 0 0;overflow:hidden}
+  .tracks svg{display:block;width:100%;height:auto}
+  .tracks .rail{stroke:var(--hairline-strong);stroke-width:2;fill:none}
+  .tracks .switch{
+    stroke:var(--safety);stroke-width:3;fill:none;
+    stroke-dasharray:8 7;
+    animation:flow 2.6s linear infinite;
+  }
+  @keyframes flow{to{stroke-dashoffset:-30}}
+  .tracks text{font-family:'Fira Code',monospace;font-size:12px;letter-spacing:.12em;fill:var(--ink-soft);text-transform:uppercase}
+  .tracks text.hot{fill:var(--safety-deep);font-weight:600}
+
+  /* ── sections ── */
+  section{padding:96px 0;border-bottom:1px solid var(--hairline)}
+  .sec-id{
+    font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--safety-deep);margin-bottom:26px;font-weight:600;
+  }
+  h2{
+    font-weight:800;font-size:clamp(28px,4.4vw,44px);letter-spacing:-.02em;
+    line-height:1.12;max-width:24ch;margin-bottom:26px;
+  }
+  .prose{max-width:62ch;color:var(--ink-soft);font-size:17px}
+  .prose p+p{margin-top:1.15em}
+  .prose strong{color:var(--ink);font-weight:600}
+  .prose a{color:var(--slate);text-decoration:underline;text-underline-offset:3px}
+  .prose a:hover{color:var(--safety-deep)}
+
+  /* blockers */
+  .blockers{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:42px}
+  .blocker{
+    border:1px solid var(--hairline-strong);border-radius:3px;
+    padding:28px 26px;background:var(--paper);
+  }
+  .blocker .tag{
+    font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.16em;
+    color:var(--safety-deep);font-weight:600;margin-bottom:14px;display:block;
+  }
+  .blocker h3{font-size:19px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+  .blocker p{font-size:15px;color:var(--ink-soft)}
+  .blocker .fix{margin-top:16px;padding-top:14px;border-top:1px dashed var(--hairline-strong);font-size:14.5px}
+  .blocker .fix b{color:var(--safety-deep);font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+  /* funnel */
+  .funnel{margin-top:46px;border-top:2px solid var(--ink)}
+  .stage{
+    display:grid;grid-template-columns:170px 1fr;gap:30px;
+    padding:34px 4px;border-bottom:1px solid var(--hairline-strong);
+  }
+  .stage .k{font-family:'Fira Code',monospace}
+  .stage .k .num{font-size:11px;letter-spacing:.2em;color:var(--ink-soft);display:block}
+  .stage .k .name{
+    font-size:21px;font-weight:600;color:var(--safety-deep);
+    letter-spacing:-.01em;margin-top:4px;display:block;
+  }
+  .stage h3{font-size:19px;font-weight:600;margin-bottom:8px}
+  .stage p{font-size:15.5px;color:var(--ink-soft);max-width:58ch}
+  .stage .where{
+    font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-soft);margin-top:12px;display:block;
+  }
+
+  /* curriculum table */
+  .syllabus{margin-top:42px;border:1px solid var(--hairline-strong);border-radius:3px;overflow:hidden}
+  .row{
+    display:grid;grid-template-columns:200px 1fr;gap:24px;
+    padding:22px 26px;border-bottom:1px solid var(--hairline);
+    background:var(--paper);transition:background .2s;
+  }
+  .row:last-child{border-bottom:none}
+  .row:hover{background:var(--paper-2)}
+  .row .mod{
+    font-family:'Fira Code',monospace;font-size:13px;font-weight:600;
+    color:var(--ink);letter-spacing:.02em;
+  }
+  .row p{font-size:15px;color:var(--ink-soft)}
+
+  /* roadmap */
+  .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .phase{border-top:3px solid var(--ink);padding-top:20px}
+  .phase.hot{border-top-color:var(--safety)}
+  .phase .h{
+    font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;
+  }
+  .phase.hot .h{color:var(--safety-deep);font-weight:600}
+  .phase h3{font-size:19px;font-weight:600;margin-bottom:10px}
+  .phase p{font-size:14.5px;color:var(--ink-soft)}
+
+  /* acceptance criteria */
+  .criteria{
+    margin-top:42px;background:var(--ink);color:var(--paper);
+    border-radius:3px;padding:42px 40px;
+  }
+  .criteria .sec-id{color:var(--safety)}
+  .criteria ul{list-style:none;max-width:60ch}
+  .criteria li{
+    padding:14px 0;border-bottom:1px solid rgba(250,248,242,.18);
+    font-size:16.5px;display:flex;gap:16px;align-items:baseline;
+  }
+  .criteria li:last-child{border-bottom:none}
+  .criteria li::before{
+    content:"✓";font-family:'Fira Code',monospace;color:var(--safety);
+    font-weight:600;flex-shrink:0;
+  }
+  .criteria li b{font-weight:600}
+
+  /* ecosystem */
+  .eco{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+  .eco a,.eco span{
+    font-family:'Fira Code',monospace;font-size:12.5px;letter-spacing:.04em;
+    border:1px solid var(--hairline-strong);border-radius:999px;
+    padding:9px 18px;color:var(--ink);text-decoration:none;transition:all .2s;
+  }
+  .eco a:hover{border-color:var(--safety);color:var(--safety-deep)}
+
+  /* footer */
+  footer{padding:84px 0 64px}
+  .foot-big{
+    font-weight:800;font-size:clamp(30px,5.2vw,54px);letter-spacing:-.025em;
+    line-height:1.06;max-width:22ch;margin-bottom:36px;
+  }
+  .foot-big em{font-style:normal;color:var(--safety)}
+  .changelog{
+    margin-top:70px;border-top:1px solid var(--hairline-strong);padding-top:24px;
+    font-family:'Fira Code',monospace;font-size:11.5px;color:var(--ink-soft);
+    letter-spacing:.04em;line-height:2.1;
+  }
+  .changelog b{color:var(--ink);font-weight:600}
+  .changelog a{color:var(--slate)}
+
+  @media(max-width:780px){
+    .blockers,.roadmap{grid-template-columns:1fr}
+    .stage{grid-template-columns:1fr;gap:10px}
+    .row{grid-template-columns:1fr;gap:6px}
+    section{padding:72px 0}
+  }
+  @media(prefers-reduced-motion:reduce){.tracks .switch{animation:none}}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--safety);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="spec-bar">
+  <div class="wrap">
+    <a href="/"><b>dialogos labs</b> / crossover</a>
+    <span class="badge">status: building in public</span>
+    <span>v0.1 — summer 2026</span>
+    <span class="right">
+      <a href="#funnel">the funnel</a>
+      <a href="#practice">the practice</a>
+      <a href="#join">join</a>
+    </span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <p class="doc-meta">spec · <b>crossover</b> · a conversion engine for product leaders moving into AI safety</p>
+    <h1>you don't need a PhD to work on AI safety. you need a <span class="mark">path.</span></h1>
+    <p class="hero-sub">AI safety's biggest talent gap isn't researchers — it's <strong>high-agency product leaders</strong>. PMs at fast-growing AI companies sit closer to where frontier capability actually ships than almost anyone, and almost no one is deliberately recruiting them. crossover is that recruitment engine: workshops, a hackathon, a cohort, and a toolkit for making the transition real.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#join">join the first cohort list</a>
+      <a class="btn ghost" href="#funnel">read the spec ↓</a>
+    </div>
+
+    <div class="tracks" aria-hidden="true">
+      <svg viewBox="0 0 980 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A track diagram showing a product career path crossing over to an AI safety path">
+        <path class="rail" d="M0,55 H980"/>
+        <path class="rail" d="M0,140 H980"/>
+        <path class="switch" d="M120,55 C 380,55 420,140 680,140 H980"/>
+        <circle cx="120" cy="55" r="5" fill="#e35414"/>
+        <text x="14" y="40">product / your current track</text>
+        <text x="14" y="172">ai safety</text>
+        <text class="hot" x="700" y="125">← you, after crossover</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <p class="sec-id">01 · thesis</p>
+    <h2>horizontal influence is a scarce safety contribution — not a consolation prize.</h2>
+    <div class="prose">
+      <p>the thing PMs do all day — translating between engineering, leadership, and users; turning ambiguity into shippable specs; holding the line on what "done" means — is exactly the muscle safety work is short on. evals need product thinking. governance needs people who've shipped under constraint. labs and safety orgs need operators who've watched real systems fail real people.</p>
+      <p>crossover exists because the field has the arguments but not the conversion machinery. it was built by a PM with seven years shipping production AI in healthcare — a domain where if the system fails, a real person gets hurt — and it treats your product instincts as the asset, not the thing to apologize for.</p>
+    </div>
+  </div>
+</section>
+
+<section id="blockers">
+  <div class="wrap">
+    <p class="sec-id">02 · why PMs haven't converted already</p>
+    <h2>two blockers, both fixable.</h2>
+    <div class="blockers">
+      <div class="blocker">
+        <span class="tag">BLK-01 · the credential myth</span>
+        <h3>"safety means a research PhD."</h3>
+        <p>so capable product people quietly count themselves out before anyone has a chance to tell them otherwise. the field's front doors look like they're built for researchers, because mostly they were.</p>
+        <p class="fix"><b>resolution</b>crossover shows the concrete, non-PhD paths — evals, safety product work, governance, field-building — with living proof of people who've walked them.</p>
+      </div>
+      <div class="blocker">
+        <span class="tag">BLK-02 · the unmade pitch</span>
+        <h3>nobody told you that you're needed.</h3>
+        <p>no one has said, plainly, that PM skills are a scarce and wanted contribution in safety. recruitment in this field is accidental — it runs on people who stumble in.</p>
+        <p class="fix"><b>resolution</b>crossover is deliberate recruitment: your influence is the contribution, here's the path, here's the room where it starts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="funnel">
+  <div class="wrap">
+    <p class="sec-id">03 · the funnel</p>
+    <h2>one pipeline, three stages.</h2>
+    <div class="prose"><p>crossover starts as a series of workshops, talks, and meetups, and builds toward a full product offering for PM-to-safety transitions. but the spine is the same at every scale:</p></div>
+    <div class="funnel">
+      <div class="stage">
+        <div class="k"><span class="num">stage 01</span><span class="name">attract</span></div>
+        <div>
+          <h3>a hackathon built for generalists</h3>
+          <p>an AI safety hackathon for generalists in canada — in the lineage of london's "breaking barriers" format — designed as the low-pressure front door. no research background assumed; curiosity does the work.</p>
+          <span class="where">co-hosted with horizon omega &amp; trajectory labs · fall 2026</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="k"><span class="num">stage 02</span><span class="name">convert</span></div>
+        <div>
+          <h3>a high-intensity cohort</h3>
+          <p>evals, the AI-risk landscape and its competing worldviews, and coaching each person down to one concrete, real project. this is where a curious PM becomes a literate one with a thing to build.</p>
+          <span class="where">workshop series + 1:1 project coaching</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="k"><span class="num">stage 03</span><span class="name">commit</span></div>
+        <div>
+          <h3>proof-of-work, on a real stage</h3>
+          <p>eval benchmarks, joint projects, and genuine artifacts that make a PM's transition legible to the field — showcased at the AI safety unconference this november.</p>
+          <span class="where">capstone: AISU 2026 · november 20–22 · montréal + global</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <div class="wrap">
+    <p class="sec-id">04 · the practice</p>
+    <h2>more technical, still a PM.</h2>
+    <div class="prose">
+      <p>you are not an engineer and not a designer — you <strong>float between those worlds</strong>, and your toolkit is what makes the floating useful. the crossover curriculum upgrades that toolkit for the AI era instead of asking you to abandon it:</p>
+    </div>
+    <div class="syllabus">
+      <div class="row"><span class="mod">spec-driven development</span><p>run product work as living specs — constitutions, briefs, proposals, unified specs — so your intent survives contact with agents, engineers, and time.</p></div>
+      <div class="row"><span class="mod">context engineering</span><p>how to context well: structuring knowledge bases, prompts, and artifacts so models (and teammates) do their best work with what you give them.</p></div>
+      <div class="row"><span class="mod">evals as product craft</span><p>designing eval suites, red-teaming your own features, and turning "is it safe?" into something measurable, shippable, and owned.</p></div>
+      <div class="row"><span class="mod">the AI-risk landscape</span><p>a working map of the field — the threat models, the worldviews, the orgs, the open problems — and where a product person plugs in.</p></div>
+      <div class="row"><span class="mod">workflows, shared openly</span><p>real crossover-experiment workflows from working PMs: how they study, what they built, what actually moved their transition forward.</p></div>
+      <div class="row"><span class="mod">finding your project</span><p>coaching from your current role to one concrete safety project — the artifact that turns interest into evidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <p class="sec-id">05 · roadmap</p>
+    <h2>from meetup to product offering.</h2>
+    <div class="roadmap">
+      <div class="phase hot">
+        <p class="h">now · summer 2026</p>
+        <h3>talks, workshops &amp; meetups</h3>
+        <p>open sessions on evals, spec-driven development, and the safety landscape. low-commitment, high-signal — come see what the work actually looks like.</p>
+      </div>
+      <div class="phase">
+        <p class="h">next · fall 2026</p>
+        <h3>hackathon + first cohort</h3>
+        <p>the generalist hackathon as front door, then the first conversion cohort, instrumented end-to-end, capstoned at AISU in november.</p>
+      </div>
+      <div class="phase">
+        <p class="h">later · 2027</p>
+        <h3>the product</h3>
+        <p>an open-source playbook any organizer can fork, plus a full transition offering: curriculum, coaching, and a bridge to the orgs that hire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bar">
+  <div class="wrap">
+    <p class="sec-id">06 · definition of done</p>
+    <h2>strict about what counts.</h2>
+    <div class="criteria">
+      <p class="sec-id">acceptance criteria</p>
+      <ul>
+        <li><b>a verifiable redirect into high-impact work</b> — not responsible-AI theater, not in-place advocacy with a new job title.</li>
+        <li><b>the metric is real transitions.</b> not attendance. not vibes.</li>
+        <li><b>depth over throughput</b> — the best few conversions, followed up at 6 and 12 months, matter more than the headcount.</li>
+        <li><b>the playbook ships open-source</b>, so any community can run the funnel without us.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="eco">
+  <div class="wrap">
+    <p class="sec-id">07 · ecosystem</p>
+    <h2>one engine, many doors.</h2>
+    <div class="prose">
+      <p>crossover is a <a href="/">dialogos labs</a> venture and runs as one connected system with the communities around it — each event is a different door into the same path.</p>
+    </div>
+    <div class="eco">
+      <a href="/poetic-tech-toolkit/">the AI safety PM toolkit</a>
+      <span>AI safety hackathon for generalists</span>
+      <span>AI safety unconference · nov 2026</span>
+      <span>horizon omega</span>
+      <span>trajectory labs</span>
+    </div>
+  </div>
+</section>
+
+<footer id="join">
+  <div class="wrap">
+    <p class="sec-id">08 · join</p>
+    <p class="foot-big">the field needs people who ship. <em>that's you.</em></p>
+    <div class="hero-cta" style="margin-top:0">
+      <a class="btn" href="mailto:hello@dialogoslabs.xyz?subject=crossover%20—%20count%20me%20in">join the list</a>
+      <a class="btn ghost" href="mailto:hello@dialogoslabs.xyz?subject=crossover%20—%20bring%20it%20to%20my%20org">bring crossover to your org</a>
+    </div>
+    <div class="changelog">
+      <b>changelog</b><br>
+      v0.1 — public spec published. workshop series announced for summer 2026.<br>
+      next — first workshop date, cohort application, hackathon announcement.<br><br>
+      crossover © 2026 · a <a href="/">dialogos labs</a> venture · montréal &amp; toronto · <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

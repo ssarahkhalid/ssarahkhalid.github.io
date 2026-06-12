@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>machine yearning — dialogos labs</title>
+<meta name="description" content="A creative technologist meetup for incremental progress on your AI/ML side quests. Work, then demo. Montréal.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="512x512" href="../android-chrome-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../android-chrome-512x512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Fira+Code:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1e241c;
+  --moss: #3d4a32;
+  --plum-deep: #2a2430;
+  --plum: #4a3d48;
+  --mauve: #8b6b82;
+  --rose: #b892a8;
+  --lilac: #d4c4d8;
+  --glow: #eadcea;
+
+  --text: #342e32;
+  --text-secondary: #5a5058;
+  --text-muted: #8a7886;
+  --accent: #7a6280;
+  --accent-green: #4a5c44;
+  --border: #ddd2dc;
+  --rug: #2e2634;
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-inverse: rgba(46, 38, 52, 0.88);
+  --inverse-text: #ffffff;
+  --inverse-text-secondary: #f5eef5;
+  --inverse-text-muted: rgba(234, 220, 234, 0.75);
+  --inverse-border: rgba(212, 196, 216, 0.22);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+::selection { background: var(--lilac); color: var(--text); }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Fira Code', monospace;
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── FULL-PAGE FIGURE BACKGROUND ─── */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.page-bg-fig {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page-bg-fig-1 { background-image: url(artwork-1.jpg); }
+.page-bg-fig-2 { background-image: url(artwork-2.jpg); }
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── HEADER ─── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.site-header .wordmark {
+  font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: lowercase; color: var(--accent-green); text-decoration: none;
+}
+.site-header nav { display: flex; gap: 2rem; }
+.site-header nav a {
+  font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 400;
+  letter-spacing: 0.08em; text-transform: lowercase; color: var(--text-muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.site-header nav a:hover { color: var(--text); }
+
+.site-header .menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--accent);
+  -webkit-tap-highlight-color: transparent;
+}
+.site-header .menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.site-header .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.site-header .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.site-header .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+.menu-overlay { display: none; }
+
+/* ─── WHITE TEXT PANELS ─── */
+.wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2.2rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.panel + .panel { margin-top: 2rem; }
+
+.panel-inverse {
+  background: var(--panel-inverse);
+  border-color: var(--inverse-border);
+  color: var(--inverse-text);
+}
+.panel-inverse .label,
+.panel-inverse .eyebrow,
+.panel-inverse .hero-meta { color: var(--inverse-text-muted); }
+.panel-inverse .eyebrow b { color: var(--inverse-text); }
+.panel-inverse h1,
+.panel-inverse h2 { color: var(--inverse-text); }
+.panel-inverse .sub,
+.panel-inverse .prose { color: var(--inverse-text-secondary); }
+.panel-inverse .prose strong { color: var(--inverse-text); }
+.panel-inverse .sub em { color: var(--inverse-text); }
+.panel-inverse .prose a {
+  color: var(--inverse-text);
+  border-bottom-color: rgba(255, 255, 255, 0.45);
+}
+.panel-inverse .prose a:hover { border-bottom-color: var(--inverse-text); }
+.panel-inverse .btn {
+  background: var(--inverse-text);
+  border-color: var(--inverse-text);
+  color: var(--rug);
+}
+.panel-inverse .btn:hover {
+  background: transparent;
+  color: var(--inverse-text);
+}
+.panel-inverse .btn.ghost {
+  background: transparent;
+  color: var(--inverse-text);
+  border-color: var(--inverse-border);
+}
+.panel-inverse .btn.ghost:hover {
+  border-color: var(--inverse-text);
+  color: var(--inverse-text);
+}
+/* ─── HERO ─── */
+.hero {
+  margin-top: 48px;
+  padding: 3.5rem 2.5rem 2rem;
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero .panel { max-width: 560px; }
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+.eyebrow b { color: var(--mauve); font-weight: 500; }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+  line-height: 1.1;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+}
+.hero .sub {
+  font-size: 12.5px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  max-width: 46ch;
+}
+.hero .sub em { font-style: italic; color: var(--rose); }
+.hero-cta {
+  margin-top: 1.8rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  text-decoration: none;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--moss);
+  color: #fff;
+  background: var(--moss);
+  transition: all 0.2s;
+}
+.btn:hover { background: transparent; color: var(--moss); }
+.btn.ghost {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn.ghost:hover { border-color: var(--mauve); color: var(--mauve); }
+.hero-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 0 0 2.5rem;
+}
+section .panel { max-width: 720px; }
+
+.label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  color: var(--text);
+  max-width: 24ch;
+  margin-bottom: 1.4rem;
+}
+.prose {
+  max-width: 62ch;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+.prose p + p { margin-top: 1.1rem; }
+.prose strong { color: var(--text); font-weight: 500; }
+.prose a {
+  color: var(--mauve);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--rose);
+  transition: color 0.15s, border-color 0.15s;
+}
+.prose a:hover { color: var(--plum); border-bottom-color: var(--plum); border-bottom-style: solid; }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  padding: 2rem 2.5rem 2.5rem;
+}
+.site-footer .footer {
+  max-width: 1060px;
+  margin: 0 auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 1.6rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.site-footer .footer a {
+  color: var(--mauve);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--rose);
+  transition: color 0.15s, border-color 0.15s;
+}
+.site-footer .footer a:hover { color: var(--plum); border-bottom-color: var(--plum); border-bottom-style: solid; }
+.site-footer .footer.panel-inverse a {
+  color: var(--glow);
+  border-bottom-color: rgba(212, 196, 216, 0.45);
+}
+.site-footer .footer.panel-inverse a:hover { color: var(--lilac); border-bottom-color: var(--lilac); }
+
+@media (max-width: 768px) {
+  .page-bg { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .site-header { padding: 0.8rem 1.4rem; }
+  .site-header .menu-toggle { display: flex; position: relative; z-index: 110; }
+  .site-header nav {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 2rem;
+    background: #fff;
+    z-index: 105;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .site-header.nav-open nav {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .site-header nav a {
+    display: block;
+    padding: 1.1rem 0;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    border-bottom: 1px solid var(--border);
+    width: 240px;
+    text-align: center;
+    color: var(--text);
+  }
+  .site-header nav a:last-child { border-bottom: none; }
+  .hero { padding: 3rem 1.4rem 1.5rem; }
+  .wrap { padding: 0 1.4rem; }
+  .panel { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-bg" aria-hidden="true">
+  <div class="page-bg-fig page-bg-fig-1"></div>
+  <div class="page-bg-fig page-bg-fig-2"></div>
+</div>
+
+<header class="site-header">
+  <a href="../" class="wordmark">dialogos labs</a>
+  <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true"></div>
+  <nav id="site-nav">
+    <a href="../products/">products</a>
+    <a href="../applied-research/index.html">services</a>
+    <a href="mailto:hello@dialogoslabs.xyz">contact</a>
+  </nav>
+</header>
+
+<div class="page-content">
+
+<div class="hero">
+  <div class="panel">
+    <h1>machine yearning</h1>
+    <p class="sub">a gathering for creative technologists making incremental progress on personal projects. bring your half-built thing, work beside other people doing the same, and demo five minutes of it before you go. all disciplines welcome.</p>
+    <div class="hero-cta">
+      <a class="btn" href="https://luma.com/dialogos" target="_blank" rel="noopener noreferrer">subscribe to the calendar</a>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="panel panel-inverse">
+      <div class="prose">
+        <p>everyone has a side quest and <strong>machine yearning</strong> is structural protection for those projects. sit in a room with other people who also brought their works, and make a little progress together.</p>
+        <p>it ends with five-minute demos: show what you made, what broke, or what you're stuck on. connect with other curious and passionate human beings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer">
+    <span>machine yearning © 2026 · a dialogos labs series</span>
+    <span>
+      <a href="../">dialogoslabs.xyz</a> ·
+      <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a> · montréal
+    </span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  (function() {
+    var header = document.querySelector('.site-header');
+    var toggle = document.querySelector('.menu-toggle');
+    var overlay = document.getElementById('menu-overlay');
+    if (!header || !toggle || !overlay) return;
+    function openMenu() {
+      header.classList.add('nav-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+    function closeMenu() {
+      header.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+    toggle.addEventListener('click', function() {
+      if (header.classList.contains('nav-open')) closeMenu();
+      else openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
+    var navLinks = document.querySelectorAll('#site-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', closeMenu);
+    }
+  })();
+</script>
+<script async src="https://plausible.io/js/pa-VSUt5LrZcKaUrzZ4hv-jt.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+</body>
+</html>

@@ -4,29 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>dialogos labs</title>
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/android-chrome-512x512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="styling.css">
-<script src="script.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Fira+Code:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --text: #3a3832;
-  --text-secondary: #666054;
-  --text-muted: #998f7e;
-  --accent: #57543e;
-  --bg: #f8f6f1;
-  --bg-warm: #f3f0e8;
-  --border: #d9d3c7;
-  --surface: #edeae2;
-  --rug: #57543e;
-  --cream: #faf8f4;
+  /* pulled from hero forest & products imagery */
+  --forest: #1e241c;
+  --moss: #3d4a32;
+  --plum-deep: #2a2430;
+  --plum: #4a3d48;
+  --mauve: #8b6b82;
+  --rose: #b892a8;
+  --lilac: #d4c4d8;
+  --glow: #eadcea;
+
+  --text: #342e32;
+  --text-secondary: #5a5058;
+  --text-muted: #8a7886;
+  --accent: #7a6280;
+  --accent-green: #4a5c44;
+  --bg: #f7f4f6;
+  --bg-warm: #f3eef2;
+  --border: #ddd2dc;
+  --surface: #ece6ea;
+  --rug: #2e2634;
+  --cream: #faf7f9;
+  --parchment: #f0ebef;
+  --shadow-book: rgba(74, 61, 72, 0.12);
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+::selection { background: var(--lilac); color: var(--text); }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Fira Code', monospace;
@@ -35,97 +46,193 @@ body {
   line-height: 1.75;
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
-  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-.banner {
-  background: var(--rug);
-  padding: 2rem 2rem 1.6rem;
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  border-bottom: 1px solid transparent;
+  padding: 0.9rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: transparent;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.site-header.scrolled {
+  background: rgba(247, 244, 246, 0.92);
+  border-bottom-color: var(--border);
+}
+.site-header .wordmark {
+  font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: lowercase; color: var(--accent-green); text-decoration: none;
+}
+.site-header nav { display: flex; gap: 2rem; }
+.site-header nav a {
+  font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 400;
+  letter-spacing: 0.08em; text-transform: lowercase; color: var(--text-muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.site-header nav a:hover { color: var(--text); }
+
+.site-header .menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--accent-green);
+  -webkit-tap-highlight-color: transparent;
+}
+.site-header .menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.site-header .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.site-header .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.site-header .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+.menu-overlay { display: none; }
+
+.hero-cinematic {
   position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
-
-.banner .logo {
-  font-family: 'Fira Code', monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: lowercase;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 0.6rem;
+.hero-cinematic .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
-
-.banner h1 {
+.hero-cinematic .hero-content {
+  position: absolute;
+  bottom: 18%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 1.4rem;
+  z-index: 2;
+}
+.hero-content h1 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
   font-style: italic;
-  font-size: 2.4rem;
+  font-size: clamp(3.5rem, 17vw, 22rem);
   color: #fff;
-  margin: 0;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 6px rgba(37,39,43,0.3);
-}
-
-/* page content */
-.page {
-  max-width: 620px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem 4rem;
-}
-
-p { margin-bottom: 1.1rem; font-size: 12.5px; }
-
-a.inline {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--accent);
-  transition: border-color 0.15s;
-}
-a.inline:hover { border-bottom-style: solid; }
-
-hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 2rem 0;
-}
-
-h2 {
-  font-family: 'Fira Code', monospace;
-  font-size: 11px;
-  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
   text-transform: lowercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin: 0 0 1rem;
+  width: 100%;
+  white-space: nowrap;
 }
-
-.practice {
-  margin-bottom: 1.4rem;
+.hero-content .hero-desc {
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(10px, 1.4vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 1.2rem;
 }
-
-.practice-title {
-  font-size: 12.5px;
-  font-weight: 600;
+.site-header:not(.scrolled) .wordmark,
+.site-header:not(.scrolled) nav a,
+.site-header:not(.scrolled) .menu-toggle {
+  color: rgba(255, 255, 255, 0.85);
 }
-
-.practice-title a {
-  color: var(--text);
+.site-header:not(.scrolled) nav a:hover {
+  color: #fff;
+}
+.hero-cinematic .hero-scroll-link {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: rgba(255,255,255,0.5);
   text-decoration: none;
-  border-bottom: 1px dotted var(--border);
+  font-family: 'Fira Code', monospace;
+  font-size: 18px;
+  animation: hero-bounce 2s ease-in-out infinite;
+  transition: color 0.2s;
 }
-.practice-title a:hover { border-bottom-color: var(--text); }
+.hero-cinematic .hero-scroll-link:hover { color: rgba(255,255,255,0.85); }
+@keyframes hero-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
 
-.practice-desc {
-  font-size: 11.5px;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-top: 0.2rem;
+.hero-body {
+  max-width: 900px; margin: 0 auto;
+  padding: 4.5rem 2.5rem 4rem;
+}
+.hero-body .hero-label {
+  font-family: 'Fira Code', monospace; font-size: 10px;
+  letter-spacing: 0.25em; text-transform: lowercase; color: var(--text-muted); margin-bottom: 1.2rem;
+}
+.hero-text {
+  font-size: 12.5px; color: var(--text-secondary); max-width: 540px; line-height: 1.85;
+}
+.hero-text a {
+  color: var(--mauve); text-decoration: none; border-bottom: 1px dotted var(--rose); transition: color 0.15s, border-color 0.15s;
+}
+.hero-text a:hover { color: var(--plum); border-bottom-color: var(--plum); border-bottom-style: solid; }
+
+@media (max-width: 768px) {
+  .hero-cinematic .hero-content {
+    bottom: 22%;
+    padding: 0 1.4rem;
+  }
+  .hero-content h1 {
+    font-size: clamp(2.6rem, 15vw, 4.2rem);
+    line-height: 0.9;
+    white-space: normal;
+  }
+  .hero-content .hero-desc {
+    letter-spacing: 0.18em;
+    margin-top: 1rem;
+  }
+  .hero-body { padding: 3rem 1.4rem 2.5rem; }
 }
 
-.practice-desc a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--border);
+.divider { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; }
+.divider hr { border: none; border-top: 1px solid var(--border); }
+
+.section-label {
+  font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: lowercase; color: var(--text-muted); margin-bottom: 2.5rem;
 }
-.practice-desc a:hover { color: var(--text); }
+
+.approach-section { background: var(--parchment); padding: 5rem 2.5rem; margin-top: 2rem; }
+.approach-inner { max-width: 900px; margin: 0 auto; }
+.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+.approach-item .approach-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300;
+  font-style: italic; color: var(--lilac); line-height: 1; margin-bottom: 0.5rem;
+}
+.approach-item h3 {
+  font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.04em; color: var(--text); margin-bottom: 0.6rem;
+}
+.approach-item p { font-size: 11.5px; color: var(--text-secondary); line-height: 1.75; }
 
 .site-footer {
   background: var(--rug);
@@ -146,17 +253,50 @@ h2 {
 .site-footer .footer a {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+  border-bottom: 1px dotted rgba(212, 196, 216, 0.45);
 }
 .site-footer .footer a:hover {
-  color: #fff;
-  border-bottom-color: rgba(255, 255, 255, 0.8);
+  color: var(--glow);
+  border-bottom-color: var(--lilac);
 }
 
-@media (max-width: 600px) {
-  .banner { padding: 1.5rem 1.2rem 1.2rem; min-height: 4rem; }
-  .banner h1 { font-size: 1.8rem; }
-  .page { padding: 1.8rem 1.2rem 3rem; }
+@media (max-width: 768px) {
+  .site-header { padding: 0.8rem 1.4rem; }
+  .site-header .menu-toggle { display: flex; position: relative; z-index: 110; }
+  .site-header nav {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 2rem;
+    background: var(--bg);
+    z-index: 105;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .site-header.nav-open nav {
+    opacity: 1;
+    visibility: visible;
+  }
+  .site-header nav a {
+    display: block;
+    padding: 1.1rem 0;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    border-bottom: 1px solid var(--border);
+    width: 240px;
+    text-align: center;
+    color: var(--text);
+  }
+  .site-header nav a:last-child { border-bottom: none; }
+  .approach-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .approach-section { padding: 3.5rem 1.4rem; }
   .site-footer { padding: 1.5rem 1.2rem; }
   .site-footer .footer { max-width: 100%; }
 }
@@ -164,40 +304,123 @@ h2 {
 </head>
 <body>
 
-<div class="topnav" id="myTopnav">
-  <a href="./" class="active">home</a>
-  <a href="applied-research/index.html">applied research</a>
-  <a href="products/">products</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars" id="menuIcon"></i>
-  </a>
-</div>
+<header class="site-header">
+  <a href="./" class="wordmark">dialogos labs</a>
+  <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true"></div>
+  <nav id="site-nav">
+    <a href="products/">products</a>
+    <a href="applied-research/index.html">services</a>
+    <a href="mailto:hello@dialogoslabs.xyz">contact</a>
+  </nav>
+</header>
 
-<div class="banner">
-  <div class="logo">dialogos labs</div>
-  <h1><i>dialogos</i></h1>
-</div>
+<section class="hero-cinematic" id="hero">
+  <img class="hero-bg" src="assets/hero-forest.png" alt="" aria-hidden="true">
+  <div class="hero-content">
+    <h1>dialogos labs</h1>
+    <p class="hero-desc">creative product studio for ai/ml</p>
+  </div>
+  <a href="#hero-body" class="hero-scroll-link" aria-label="Scroll down">&#8595;</a>
+</section>
 
-<div class="page">
+<section class="hero-body" id="hero-body">
+  <div class="hero-label">about our practice</div>
+  <p class="hero-text">we are a <b>creative product studio for AI/ML</b> — working at the intersection of product development, alignment research, and culture. named for the explorative mode of dialogue and the process of transformation through language, we build systems and experiences that respond to genuine needs while facilitating meaningful connection.</p>
 
-<p>we are a creative product studio for AI/ML &mdash; working at the intersection of product development, alignment research, and culture. named for the explorative mode of dialogue and the process of transformation through language, we build systems and experiences that respond to genuine needs while facilitating meaningful connection.</p>
+  <p class="hero-text">our specialty is <a href="applied-research/index.html">product management for applied AI/ML research</a>: helping teams turn nascent capabilities into products that work in the real world, with the safety architecture and evaluation discipline that high-stakes deployment demands.</p>
+    
+  <p class="hero-text">we operate as a full product studio — partnering with engineers, designers, UX researchers, data scientists, and other practitioners to deliver end-to-end across R&D, product development, and go-to-market. our work also extends to coaching, narrative writing, cultural branding, and community building.</p>
+</section>
 
-<p>our specialty is <a class="inline" href="applied-research/index.html">product management for applied AI/ML research</a>: helping teams turn nascent capabilities into products that work in the real world, with the safety architecture and evaluation discipline that high-stakes deployment demands.</p>
+<div class="divider"><hr></div>
 
-<p>we operate as a full product studio &mdash; partnering with engineers, designers, UX researchers, data scientists, and other practitioners to deliver end-to-end across R&amp;D, product development, and go-to-market. our work also extends to coaching, narrative writing, cultural branding, and community building.</p>
+<section style="max-width:900px;margin:0 auto;padding:3.5rem 2.5rem 0;">
+  <div class="section-label">products</div>
+  <p style="font-size:12.5px;color:var(--text-secondary);max-width:520px;line-height:1.85;margin-bottom:1.2rem;">we focus on building tools and publications at the intersection of applied AI/ML, creative technology, and contemplative practice.</p>
+  <a href="products/" style="font-family:'Fira Code',monospace;font-size:10.5px;color:var(--mauve);text-decoration:none;border-bottom:1px dotted var(--rose);transition:color 0.15s,border-color 0.15s;">view all products →</a>
+</section>
 
-<hr>
-
-</div>
+<section class="approach-section" id="approach">
+  <div class="approach-inner">
+    <div class="section-label">how we work</div>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <div class="approach-num">01</div>
+        <h3>applied research pm</h3>
+        <p>turning nascent AI/ML capabilities into products that work in the real world. safety architecture, evaluation discipline, and the bridge between research and deployment.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-num">02</div>
+        <h3>product & cultural branding</h3>
+        <p>defining a product's cultural role — not just its features. product-market fit, go-to-market strategy, and brand narratives that resonate beyond the feature set.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-num">03</div>
+        <h3>coaching & advisory</h3>
+        <p>senior PM coaching for AI/ML transitions, with a commitment to pro bono mentorship for women and underrepresented minorities entering the field.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-num">04</div>
+        <h3>narrative & community</h3>
+        <p>editorial writing, field building, and community organizing. shaping the conversations that shape the field — from philosophical publications to practitioner communities.</p>
+      </div>
+      <a href="applied-research/index.html" style="font-family:'Fira Code',monospace;font-size:10.5px;color:var(--mauve);text-decoration:none;border-bottom:1px dotted var(--rose);transition:color 0.15s,border-color 0.15s;">view all services →</a>
+    </div>
+  </div>
+</section>
 
 <footer class="site-footer">
   <div class="footer">
     email for inquiries &mdash; <a href="mailto:hello@dialogoslabs.xyz">hello@dialogoslabs.xyz</a><br>
-    based in montreal & toronto<br>
+    based in montreal &amp; toronto<br>
     follow along on <a href="https://www.linkedin.com/company/dialogoslabs/" target="_blank">linkedin</a>
   </div>
 </footer>
 
+<script>
+  (function() {
+    var header = document.querySelector('.site-header');
+    var toggle = document.querySelector('.menu-toggle');
+    var overlay = document.getElementById('menu-overlay');
+    if (!header || !toggle || !overlay) return;
+    function openMenu() {
+      header.classList.add('nav-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+    function closeMenu() {
+      header.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+    toggle.addEventListener('click', function() {
+      if (header.classList.contains('nav-open')) closeMenu();
+      else openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
+    var navLinks = document.querySelectorAll('#site-nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', closeMenu);
+    }
+
+    var heroEl = document.getElementById('hero');
+    if (heroEl) {
+      var scrollObs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          header.classList.remove('scrolled');
+        } else {
+          header.classList.add('scrolled');
+        }
+      }, { threshold: 0.15 });
+      scrollObs.observe(heroEl);
+    }
+  })();
+</script>
 <script async src="https://plausible.io/js/pa-VSUt5LrZcKaUrzZ4hv-jt.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
