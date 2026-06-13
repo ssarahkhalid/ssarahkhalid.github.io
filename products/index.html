@@ -91,7 +91,7 @@
 
       .content {
         width: 100%;
-        max-width: 720px;
+        max-width: 900px;
         text-align: left;
         color: var(--text);
       }
@@ -107,12 +107,22 @@
       .products-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1.75rem;
+        gap: 0.75rem;
       }
 
       @media (min-width: 820px) {
         .products-grid {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .product-span-2 {
+        grid-column: span 1;
+      }
+
+      @media (min-width: 820px) {
+        .product-span-2 {
+          grid-column: span 2;
         }
       }
 
@@ -124,6 +134,102 @@
         flex-direction: column;
         justify-content: space-between;
         min-height: 210px;
+      }
+
+      .product-card--visual {
+        position: relative;
+        padding: 0;
+        min-height: 280px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.35s ease;
+      }
+
+      .product-card--visual:hover {
+        transform: translateY(-2px);
+      }
+
+      .product-card--visual img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .product-card--visual.product-card--crop img {
+        transform: scale(1.68);
+      }
+
+      .product-card--visual.product-card--crop-border img {
+        transform: scale(1.14);
+      }
+
+      .product-card--visual.product-card--crop-hana img {
+        transform: scale(1.2);
+      }
+
+      .product-card--visual .product-card-overlay {
+        position: relative;
+        z-index: 1;
+        min-height: 280px;
+        padding: 1.5rem 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: linear-gradient(
+          to top,
+          rgba(46, 38, 52, 0.88) 0%,
+          rgba(46, 38, 52, 0.35) 52%,
+          rgba(46, 38, 52, 0.08) 100%
+        );
+      }
+
+      .product-card--visual.product-card--panel-overlay .product-card-overlay {
+        background: none;
+      }
+
+      .product-card--visual.product-card--panel-overlay .product-card-text-panel {
+        background: rgba(28, 24, 32, 0.82);
+        padding: 1.15rem 1.35rem;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+
+      .product-card--visual .product-tag {
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .product-card--visual .product-name {
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-card--visual .product-synopsis {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.82rem;
+        margin-bottom: 1rem;
+      }
+
+      .product-card--visual .product-links {
+        margin-top: 0;
+      }
+
+      .product-card--visual .product-links a,
+      .product-card--visual .product-links span {
+        color: rgba(255, 255, 255, 0.92);
+        border-bottom-color: rgba(255, 255, 255, 0.45);
+      }
+
+      .product-card--visual .product-links a:hover {
+        color: #fff;
+        border-bottom-color: #fff;
+      }
+
+      .product-card--visual .product-coming-soon {
+        color: rgba(255, 255, 255, 0.55);
       }
 
       .product-name {
@@ -243,6 +349,14 @@
           padding: 1.4rem 1.4rem;
         }
 
+        .topnav.responsive {
+          background-color: var(--rug);
+        }
+
+        .topnav.responsive a:not(.icon):hover {
+          color: var(--cream);
+        }
+
         .site-footer {
           padding: 1.5rem 1.2rem;
         }
@@ -281,113 +395,122 @@
         </div>
 
         <div class="products-grid">
-          <div class="product-card">
-            <div>
-              <div class="product-tag">publication · creative web & ai</div>
-              <h2 class="product-name">mettadology</h2>
-              <div class="product-synopsis">
-                a creative web & philosophical AI publication for creative
-                technologists. mettadology is a slow synthesis of links, sources,
-                and fragments exploring alignment, embodiment, creative
-                infrastructure, and networks at the intersection of AI/ML product
-                work and contemplative practice.
+          <a href="../artificial-wisdom/index.html" class="product-card product-card--visual product-card--panel-overlay">
+            <img src="../assets/services/soft-light.png" alt="">
+            <div class="product-card-overlay">
+              <div class="product-card-text-panel">
+                <div class="product-tag">meditation × ai</div>
+                <h2 class="product-name">artificial wisdom</h2>
+                <div class="product-synopsis">
+                  a contemplative gathering at the intersection of meditation and AI &mdash;
+                  wisdom traditions, attention and awareness, alignment and
+                  well-being.
+                </div>
+                <div class="product-links">
+                  <b><span>view page →</span></b>
+                </div>
               </div>
             </div>
-            <div class="product-links">
-              <a href="../mettadology/index.html">
-                view publication
-              </a>
+          </a>
+
+          <a href="../machine-yearning/index.html" class="product-card product-card--visual product-card--panel-overlay">
+            <img src="../assets/services/light-beams.png" alt="">
+            <div class="product-card-overlay">
+              <div class="product-card-text-panel">
+                <div class="product-tag">creative technologists</div>
+                <h2 class="product-name">machine yearning</h2>
+                <div class="product-synopsis">
+                  for creative technologists making incremental
+                  progress on personal projects. bring your half‑built thing, work
+                  beside other people doing the same, and demo five minutes of it
+                  before you go.
+                </div>
+                <div class="product-links">
+                  <b><span>view page →</span></b>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="../mettadology/index.html" class="product-card product-card--visual product-card--panel-overlay product-card--crop">
+            <img src="../assets/services/sacred-geometry.png" alt="">
+            <div class="product-card-overlay">
+              <div class="product-card-text-panel">
+                <div class="product-tag">publication · creative web & ai</div>
+                <h2 class="product-name">mettadology</h2>
+                <div class="product-synopsis">
+                  a creative web & philosophical AI publication for creative
+                  technologists. mettadology is a slow synthesis of links, sources,
+                  and fragments exploring alignment, embodiment, creative
+                  infrastructure, and networks at the intersection of AI/ML product
+                  work and contemplative practice.
+                </div>
+                <div class="product-links">
+                  <span>view publication →</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://hana.intentional.company/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="product-card product-card--visual product-card--panel-overlay product-card--crop-hana"
+          >
+            <img src="../assets/services/landscape-sketch.png" alt="">
+            <div class="product-card-overlay">
+              <div class="product-card-text-panel">
+                <div class="product-tag">tool · family stories & heritage</div>
+                <h2 class="product-name">hana</h2>
+                <div class="product-synopsis">
+                  record a conversation with a loved one and turn it into a
+                  beautiful, shareable digital story in their words and language
+                  &mdash; preserving family histories, recipes, and cultural
+                  heritage before they're lost.
+                </div>
+                <div class="product-links">
+                  <b><span>visit hana →</span></b>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <div class="product-card product-card--visual product-card--panel-overlay product-card--crop-border">
+            <img src="../assets/services/liquid-chrome.png" alt="">
+            <div class="product-card-overlay">
+              <div class="product-card-text-panel">
+                <div class="product-tag">toolkit · product & research</div>
+                <h2 class="product-name">poetic tech toolkit</h2>
+                <div class="product-synopsis">
+                  a comprehensive guide to building AI/ML products across the full
+                  spectrum &mdash; from corporate velocity to indie craft. the
+                  toolkit bridges technical rigor and creative sensibility with
+                  frameworks, mental models, and practices for building thoughtful
+                  AI systems in both high‑stakes and experimental contexts.
+                </div>
+                <div class="product-links">
+                  <b><span class="product-coming-soon">coming soon</span></b>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="product-card">
-            <div>
-              <div class="product-tag">meditation × ai</div>
-              <h2 class="product-name">artificial wisdom</h2>
-              <div class="product-synopsis">
-                a contemplative gathering at the intersection of meditation and AI &mdash;
-                wisdom traditions, attention and awareness, alignment and
-                well-being.
+          <div class="product-card product-card--visual product-card--panel-overlay">
+            <img src="../assets/services/trees-sky.png" alt="">
+            <div class="product-card-overlay">
+              <div class="product-card-text-panel">
+                <div class="product-tag">program · ai safety</div>
+                <h2 class="product-name">crossover</h2>
+                <div class="product-synopsis">
+                  a conversion engine for product leaders moving into AI safety
+                  &mdash; workshops, a hackathon, a cohort, and a toolkit for
+                  making the transition real.
+                </div>
+                <div class="product-links">
+                  <b><span class="product-coming-soon">coming soon</span></b>
+                </div>
               </div>
-            </div>
-            <div class="product-links">
-              <a href="../artificial-wisdom/index.html">
-                view page
-              </a>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div>
-              <div class="product-tag">creative technologists</div>
-              <h2 class="product-name">machine yearning</h2>
-              <div class="product-synopsis">
-                a gathering for creative technologists making incremental
-                progress on personal projects. bring your half‑built thing, work
-                beside other people doing the same, and demo five minutes of it
-                before you go. all disciplines welcome.
-              </div>
-            </div>
-            <div class="product-links">
-              <a href="../machine-yearning/index.html">
-                view page
-              </a>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div>
-              <div class="product-tag">tool · family stories & heritage</div>
-              <h2 class="product-name">hana</h2>
-              <div class="product-synopsis">
-                record a conversation with a loved one and turn it into a
-                beautiful, shareable digital story in their words and language
-                &mdash; preserving family histories, recipes, and cultural
-                heritage before they're lost.
-              </div>
-            </div>
-            <div class="product-links">
-              <a
-                href="https://hana.intentional.company/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                visit hana
-              </a>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div>
-              <div class="product-tag">toolkit · product & research</div>
-              <h2 class="product-name">poetic tech toolkit</h2>
-              <div class="product-synopsis">
-                a comprehensive guide to building AI/ML products across the full
-                spectrum &mdash; from corporate velocity to indie craft. the
-                toolkit bridges technical rigor and creative sensibility with
-                frameworks, mental models, and practices for building thoughtful
-                AI systems in both high‑stakes and experimental contexts.
-              </div>
-            </div>
-            <div class="product-links">
-              <span class="product-coming-soon">coming soon</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div>
-              <div class="product-tag">program · ai safety</div>
-              <h2 class="product-name">crossover</h2>
-              <div class="product-synopsis">
-                a conversion engine for product leaders moving into AI safety
-                &mdash; workshops, a hackathon, a cohort, and a toolkit for
-                making the transition real. built for high‑agency PMs and product
-                leaders who sit closer to where frontier capability ships than
-                almost anyone.
-              </div>
-            </div>
-            <div class="product-links">
-              <span class="product-coming-soon">coming soon</span>
             </div>
           </div>
         </div>
