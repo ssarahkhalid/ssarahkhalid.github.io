@@ -1,0 +1,36 @@
+<svg viewBox="0 0 960 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="What Sarah offers Zero — three pillars">
+  <defs>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faf8f2"/>
+      <stop offset="100%" stop-color="#ece6ea"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .card { fill: url(#cardGrad); stroke: rgba(29,32,38,.35); stroke-width: 1.5; }
+    .num { font-family: 'Fira Code', monospace; font-size: 11px; fill: #5c4d7a; letter-spacing: 0.12em; }
+    .title { font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 700; fill: #1d2026; }
+    .sub { font-family: 'Fira Code', monospace; font-size: 9.5px; fill: #42454d; letter-spacing: 0.06em; }
+    .connector { stroke: #5c4d7a; stroke-width: 1.5; fill: none; opacity: 0.35; stroke-dasharray: 4 4; }
+  </style>
+  <path class="connector" d="M320,160 H640"/>
+  <rect class="card" x="40" y="40" width="260" height="240" rx="4"/>
+  <text class="num" x="60" y="72">01</text>
+  <text class="title" x="60" y="100">Run engagements</text>
+  <text class="sub" x="60" y="130">scope / budget / ship</text>
+  <text class="sub" x="60" y="152">PS to 6-product AI portfolio</text>
+  <text class="sub" x="60" y="174">50+ feature-flag rollout</text>
+
+  <rect class="card" x="350" y="40" width="260" height="240" rx="4"/>
+  <text class="num" x="370" y="72">02</text>
+  <text class="title" x="370" y="100">Build agent OS</text>
+  <text class="sub" x="370" y="130">skills / agents / loops</text>
+  <text class="sub" x="370" y="152">Gherkin/EARS / AGENTS file</text>
+  <text class="sub" x="370" y="174">versioned like code</text>
+
+  <rect class="card" x="660" y="40" width="260" height="240" rx="4"/>
+  <text class="num" x="680" y="72">03</text>
+  <text class="title" x="680" y="100">Ship &amp; compound</text>
+  <text class="sub" x="680" y="130">prototypes to production</text>
+  <text class="sub" x="680" y="152">Layla / AlayaFlow / 24h MVP</text>
+  <text class="sub" x="680" y="174">R&amp;D fold-back · Zero 50/50</text>
+</svg>

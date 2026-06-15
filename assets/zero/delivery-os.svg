@@ -1,0 +1,56 @@
+<svg viewBox="0 0 920 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Delivery operating system architecture">
+  <defs>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5c4d7a" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#5c4d7a" stop-opacity="0.6"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#5c4d7a"/>
+    </marker>
+  </defs>
+  <style>
+    .node-label { font-family: 'Fira Code', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; fill: #42454d; }
+    .node-title { font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 600; fill: #1d2026; }
+    .flow-line { stroke: url(#flowGrad); stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .flow-dash { stroke: #5c4d7a; stroke-width: 2; fill: none; stroke-dasharray: 6 5; opacity: 0.5; }
+  </style>
+  <path class="flow-line" d="M130,140 H790"/>
+  <path class="flow-dash" d="M790,140 C850,140 870,220 920,240"/>
+  <text class="node-label" x="800" y="230">R&amp;D feed</text>
+  <g class="os-node" data-node="intake">
+    <rect x="20" y="90" width="110" height="100" rx="4" fill="#faf8f2" stroke="#2a2430" stroke-width="1.5"/>
+    <text class="node-label" x="35" y="115">01</text>
+    <text class="node-title" x="35" y="140">Intake</text>
+    <text class="node-label" x="35" y="165" style="font-size:9px">brief / noise</text>
+  </g>
+  <g class="os-node" data-node="skills">
+    <rect x="160" y="90" width="110" height="100" rx="4" fill="#faf8f2" stroke="#5c4d7a" stroke-width="1.5"/>
+    <text class="node-label" x="175" y="115">02</text>
+    <text class="node-title" x="175" y="140">Skills</text>
+    <text class="node-label" x="175" y="165" style="font-size:9px">triage / scope</text>
+  </g>
+  <g class="os-node" data-node="agents">
+    <rect x="300" y="90" width="110" height="100" rx="4" fill="#faf8f2" stroke="#5c4d7a" stroke-width="1.5"/>
+    <text class="node-label" x="315" y="115">03</text>
+    <text class="node-title" x="315" y="140">Agents</text>
+    <text class="node-label" x="315" y="165" style="font-size:9px">draft / sync</text>
+  </g>
+  <g class="os-node" data-node="feedback">
+    <rect x="440" y="90" width="110" height="100" rx="4" fill="#faf8f2" stroke="#5c4d7a" stroke-width="1.5"/>
+    <text class="node-label" x="455" y="115">04</text>
+    <text class="node-title" x="455" y="140">Feedback</text>
+    <text class="node-label" x="455" y="165" style="font-size:9px">evals / gates</text>
+  </g>
+  <g class="os-node" data-node="ship">
+    <rect x="580" y="90" width="110" height="100" rx="4" fill="#faf8f2" stroke="#2a2430" stroke-width="1.5"/>
+    <text class="node-label" x="595" y="115">05</text>
+    <text class="node-title" x="595" y="140">Ship</text>
+    <text class="node-label" x="595" y="165" style="font-size:9px">rollout / retro</text>
+  </g>
+  <g class="os-node" data-node="learnings">
+    <rect x="720" y="90" width="110" height="100" rx="4" fill="#ece6ea" stroke="#5c4d7a" stroke-width="2"/>
+    <text class="node-label" x="735" y="115">06</text>
+    <text class="node-title" x="735" y="140">Learnings</text>
+    <text class="node-label" x="735" y="165" style="font-size:9px">back to R&amp;D</text>
+  </g>
+</svg>

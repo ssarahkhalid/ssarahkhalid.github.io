@@ -1,0 +1,41 @@
+<svg viewBox="0 0 960 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sarah Khalid skillset">
+  <style>
+    .lane-label { font-family: 'Fira Code', monospace; font-size: 10px; fill: #5c4d7a; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+    .chip { fill: #faf8f2; stroke: rgba(29,32,38,.4); stroke-width: 1; }
+    .chip-text { font-family: 'Fira Code', monospace; font-size: 10px; fill: #1d2026; }
+    .lane-line { stroke: rgba(29,32,38,.12); stroke-width: 1; }
+  </style>
+  <line class="lane-line" x1="0" y1="50" x2="960" y2="50"/>
+  <line class="lane-line" x1="0" y1="100" x2="960" y2="100"/>
+  <line class="lane-line" x1="0" y1="150" x2="960" y2="150"/>
+  <text class="lane-label" x="0" y="35">build</text>
+  <text class="lane-label" x="0" y="85">deliver</text>
+  <text class="lane-label" x="0" y="135">agents</text>
+  <text class="lane-label" x="0" y="185">data</text>
+
+  <rect class="chip" x="70" y="18" width="118" height="26" rx="13"/><text class="chip-text" x="82" y="36">Claude Code</text>
+  <rect class="chip" x="200" y="18" width="72" height="26" rx="13"/><text class="chip-text" x="212" y="36">Cursor</text>
+  <rect class="chip" x="284" y="18" width="88" height="26" rx="13"/><text class="chip-text" x="296" y="36">Python</text>
+  <rect class="chip" x="384" y="18" width="96" height="26" rx="13"/><text class="chip-text" x="396" y="36">HTML/CSS</text>
+  <rect class="chip" x="492" y="18" width="130" height="26" rx="13"/><text class="chip-text" x="504" y="36">spec-driven</text>
+
+  <rect class="chip" x="70" y="68" width="72" height="26" rx="13"/><text class="chip-text" x="82" y="86">CSPO</text>
+  <rect class="chip" x="154" y="68" width="64" height="26" rx="13"/><text class="chip-text" x="166" y="86">Figma</text>
+  <rect class="chip" x="230" y="68" width="64" height="26" rx="13"/><text class="chip-text" x="242" y="86">Linear</text>
+  <rect class="chip" x="306" y="68" width="56" height="26" rx="13"/><text class="chip-text" x="318" y="86">Jira</text>
+  <rect class="chip" x="374" y="68" width="148" height="26" rx="13"/><text class="chip-text" x="386" y="86">feature flags</text>
+  <rect class="chip" x="534" y="68" width="120" height="26" rx="13"/><text class="chip-text" x="546" y="86">stakeholders</text>
+
+  <rect class="chip" x="70" y="118" width="130" height="26" rx="13"/><text class="chip-text" x="82" y="136">multi-agent</text>
+  <rect class="chip" x="212" y="118" width="110" height="26" rx="13"/><text class="chip-text" x="224" y="136">workflows</text>
+  <rect class="chip" x="334" y="118" width="56" height="26" rx="13"/><text class="chip-text" x="346" y="136">RAG</text>
+  <rect class="chip" x="402" y="118" width="72" height="26" rx="13"/><text class="chip-text" x="414" y="136">evals</text>
+  <rect class="chip" x="486" y="118" width="100" height="26" rx="13"/><text class="chip-text" x="498" y="136">red-team</text>
+  <rect class="chip" x="598" y="118" width="56" height="26" rx="13"/><text class="chip-text" x="610" y="136">LLM</text>
+
+  <rect class="chip" x="70" y="168" width="96" height="26" rx="13"/><text class="chip-text" x="82" y="186">Amplitude</text>
+  <rect class="chip" x="178" y="168" width="72" height="26" rx="13"/><text class="chip-text" x="190" y="186">Pendo</text>
+  <rect class="chip" x="262" y="168" width="56" height="26" rx="13"/><text class="chip-text" x="274" y="186">SQL</text>
+  <rect class="chip" x="330" y="168" width="56" height="26" rx="13"/><text class="chip-text" x="342" y="186">ARR</text>
+  <rect class="chip" x="398" y="168" width="110" height="26" rx="13"/><text class="chip-text" x="410" y="186">packaging</text>
+</svg>

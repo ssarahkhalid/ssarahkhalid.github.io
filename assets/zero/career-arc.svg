@@ -1,0 +1,32 @@
+<svg viewBox="0 0 980 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Career arc from professional services to delivery operating system builder">
+  <style>
+    .rail { stroke: rgba(29,32,38,.5); stroke-width: 2; fill: none; }
+    .arc-flow {
+      stroke: #5c4d7a; stroke-width: 3; fill: none;
+      stroke-dasharray: 8 7;
+      animation: careerFlow 2.6s linear infinite;
+    }
+    @keyframes careerFlow { to { stroke-dashoffset: -30; } }
+    @media (prefers-reduced-motion: reduce) {
+      .arc-flow { animation: none; }
+    }
+    .label { font-family: 'Fira Code', monospace; font-size: 11px; letter-spacing: 0.1em; fill: #42454d; text-transform: uppercase; }
+    .label-hot { fill: #5c4d7a; font-weight: 600; }
+    .milestone { fill: #5c4d7a; }
+  </style>
+  <path class="rail" d="M0,100 H980"/>
+  <path class="arc-flow" d="M60,100 C 280,100 320,55 520,55 C 720,55 760,100 920,100"/>
+  <circle class="milestone" cx="60" cy="100" r="6"/>
+  <circle class="milestone" cx="280" cy="100" r="5" fill="#42454d"/>
+  <circle class="milestone" cx="520" cy="55" r="5" fill="#42454d"/>
+  <circle class="milestone" cx="760" cy="55" r="5" fill="#42454d"/>
+  <circle class="milestone" cx="920" cy="100" r="6"/>
+  <text class="label" x="14" y="130">PS consultant</text>
+  <text class="label" x="14" y="148" style="font-size:9px">$750K programs</text>
+  <text class="label" x="230" y="130">applied research</text>
+  <text class="label" x="230" y="148" style="font-size:9px">$3.1M grants</text>
+  <text class="label" x="460" y="40">AI PM</text>
+  <text class="label" x="460" y="58" style="font-size:9px">6-product portfolio</text>
+  <text class="label label-hot" x="820" y="130">OS builder</text>
+  <text class="label label-hot" x="820" y="148" style="font-size:9px">agents as code</text>
+</svg>

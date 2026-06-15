@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Unlisted application page — direct URL only
+Disallow: /zero/
