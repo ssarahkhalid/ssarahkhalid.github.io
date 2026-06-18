@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Agent Development — Healthcare — sarah khalid · sierra</title>
+<meta name="description" content="Sarah Khalid — Product Manager, Agent Development (Healthcare) application for Sierra. Interactive IDE with live member-agent demo.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PM Agent Development — Healthcare — sarah khalid · sierra">
+<meta property="og:description" content="I've built Sierra's healthcare example projects — conversational intake, member agents, agentic workflows — at 500K+ daily users and 28M+ monthly interactions under HIPAA.">
+<meta property="og:url" content="https://dialogoslabs.xyz/sierra/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sierra.css">
+</head>
+<body>
+
+<div class="spec-bar">
+  <span><b>sarah khalid</b> · sierra · pm agent development — healthcare · june 2026</span>
+  <span class="right">
+    <a href="https://sarkhalid.com/" target="_blank" rel="noopener">portfolio</a>
+    <a href="https://www.linkedin.com/in/sarkhalid/" target="_blank" rel="noopener">linkedin</a>
+    <a href="mailto:sar.khalid@outlook.com?subject=Sierra%20%E2%80%94%20Agent%20PM%2C%20Healthcare">email</a>
+  </span>
+</div>
+
+<div class="viewport">
+  <canvas id="nature-canvas" aria-hidden="true"></canvas>
+  <div class="nature-overlay-root" id="nature-overlays" aria-hidden="true">
+    <div class="nature-burst nature-burst--welcome nature-burst--glow" id="welcome-bloom"></div>
+  </div>
+  <div class="nature-sprout-root" id="nature-sprouts" aria-hidden="true"></div>
+
+  <div class="ide-shell" id="ide-shell">
+    <header class="title-bar">
+      <div class="window-dots" aria-hidden="true"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+      <div class="title-search">SIERRA-HEALTHCARE-APPLICATION</div>
+      <span class="title-agents">Agent Studio</span>
+    </header>
+
+    <aside class="activity-bar" aria-label="Activity bar">
+      <span class="activity-icon active" title="Explorer">📁</span>
+      <span class="activity-icon" title="Search">⌕</span>
+      <span class="activity-icon" title="Agent">✦</span>
+    </aside>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span>Explorer</span>
+        <button type="button" class="sidebar-toggle" id="sidebar-close" aria-label="Close sidebar">×</button>
+      </div>
+      <nav class="file-tree" id="file-tree" aria-label="File explorer"></nav>
+    </aside>
+
+    <div class="main-col">
+      <div class="tab-bar" id="tab-bar" role="tablist"></div>
+      <div class="editor-wrap">
+        <div class="editor-content" id="editor" role="tabpanel"></div>
+      </div>
+    </div>
+
+    <aside class="agent-panel" id="agent-panel">
+      <div class="agent-header">
+        <span>Member Agent</span>
+        <div class="agent-pills"><span class="agent-pill active">Trust</span><span class="agent-pill">Read-only</span></div>
+      </div>
+      <div class="agent-messages" id="agent-messages"></div>
+      <div class="agent-chips" id="agent-chips"></div>
+      <div class="agent-input-bar"><span>↑ send</span><span style="margin-left:auto;opacity:.5">scripted tour</span></div>
+    </aside>
+
+    <div class="bottom-panel" id="bottom-panel">
+      <div class="panel-tabs">
+        <button type="button" class="panel-tab" data-panel="problems">Problems</button>
+        <button type="button" class="panel-tab" data-panel="output">Output</button>
+        <button type="button" class="panel-tab active" data-panel="member-agent">Member Agent</button>
+        <button type="button" class="panel-tab" data-panel="terminal">Terminal</button>
+      </div>
+      <div class="panel-body">
+        <div class="panel-pane" id="panel-problems"><div class="terminal-inner" style="color:var(--text-dim)">No problems detected. Trust layer active.</div></div>
+        <div class="panel-pane" id="panel-output"><div class="terminal-inner" style="color:var(--text-dim)">Nature layer maps to Sierra values — trust, craftsmanship, customer obsession.</div></div>
+        <div class="panel-pane active" id="panel-member-agent">
+          <div class="demo-shell" role="region" aria-label="Member agent conversation demo">
+            <div class="demo-toolbar">
+              <div class="demo-scenarios" role="tablist" aria-label="Demo scenarios">
+                <button type="button" class="demo-scenario active" data-scenario="copay" role="tab" aria-selected="true">co-pay lookup</button>
+                <button type="button" class="demo-scenario" data-scenario="pt" role="tab" aria-selected="false">PT sessions</button>
+                <button type="button" class="demo-scenario" data-scenario="injection" role="tab" aria-selected="false">injection attempt</button>
+              </div>
+              <button type="button" class="demo-run-btn" id="demo-run">run conversation</button>
+            </div>
+            <div class="demo-panes">
+              <div class="demo-pane demo-pane--chat">
+                <div class="demo-pane__label">conversation · member view</div>
+                <div class="demo-chat" id="demo-chat" aria-live="polite"></div>
+              </div>
+              <div class="demo-pane demo-pane--trace">
+                <div class="demo-pane__label">reasoning + guardrails · pm design</div>
+                <div class="demo-trace-list" id="demo-trace"></div>
+              </div>
+            </div>
+            <div class="sr-only" id="demo-live" aria-live="polite" aria-atomic="true"></div>
+          </div>
+        </div>
+        <div class="panel-pane" id="panel-terminal">
+          <div class="terminal">
+            <div class="terminal-inner" id="terminal-scroll">
+              <div id="terminal-lines"></div>
+              <div class="term-prompt-row">
+                <span class="term-path">~/sierra</span><span class="term-branch">toronto*</span>
+                <span class="term-chevron">❯</span>
+                <button type="button" class="term-run-btn" id="terminal-run">sierra map --roadmap-to-shipped</button>
+                <span class="term-cursor" id="term-cursor">▌</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="status-bar">
+      <span class="pink">toronto*</span>
+      <span id="status-ln">Ln 1, Col 1</span>
+      <span>UTF-8</span>
+      <span id="status-lang">Markdown</span>
+      <span class="breathe-hint" id="breathe-hint">breathe</span>
+      <span class="right">
+        <span id="status-nature" aria-hidden="true">🌿</span>
+        <span>dialogoslabs.xyz/sierra</span>
+      </span>
+    </footer>
+  </div>
+</div>
+
+<div class="mobile-toggles">
+  <button type="button" class="mobile-btn" id="toggle-sidebar" aria-label="Toggle file explorer">📁</button>
+  <button type="button" class="mobile-btn" id="toggle-agent" aria-label="Toggle agent panel">✦</button>
+</div>
+
+<script src="demo.js"></script>
+<script src="sierra.js"></script>
+</body>
+</html>
