@@ -642,7 +642,7 @@
   });
 
   buildTree(fileTree, treeEl);
-  openFile('02-mapping.md', null);
+  openFile('README.md', null);
   initAgent();
   initTerminal();
   initDemo();
