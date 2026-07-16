@@ -1,5 +1,2 @@
 User-agent: *
 Allow: /
-
-# Unlisted application pages — direct URL only
-Disallow: /zero/
